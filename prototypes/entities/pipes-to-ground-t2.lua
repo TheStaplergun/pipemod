@@ -668,7 +668,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-two-L-FL-t2-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L.png",
+    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L-t2.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-two-L-FL-t2-pipe"},
@@ -782,7 +782,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-two-L-FR-t2-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L.png",
+    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L-t2.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-two-L-FL-t2-pipe"},
@@ -895,7 +895,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-two-L-RR-t2-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L.png",
+    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L-t2.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-two-L-FL-t2-pipe"},
@@ -1008,7 +1008,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-two-L-RL-t2-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L.png",
+    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L-t2.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-two-L-FL-t2-pipe"},
