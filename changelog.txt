@@ -1,3 +1,7 @@
+v0.16.60
+----------------------------
+--Fix for potential Attempt to concatenate field localised_name (a table value) error
+
 v0.16.59
 ----------------------------
 --Fix blueprint correction for one-to-two-perpendicular pipes
