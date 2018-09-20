@@ -4,6 +4,7 @@ v0.16.59
 --Hid all icons for clamped pipes and extra pipes-to-ground included in mod from logistics and other menus
 --Added lock icon for clamped pipes to differentiate them.
 --Fix missing sprite for one-to-one-reverse-pipe-right in normal or less resolution
+--Overhauled Icons
 
 v0.16.58
 ----------------------------
@@ -150,9 +151,9 @@ v0.1.1
 --Added "Underground Pump" entity which only interfaces with underground pipes. (ALPHA)
 ---Reduces need for Pipe-to-ground or pipes at the end of the pump when using over long distances.
 ---Cannot interface with standard pipes above ground.
----Doesn't have custom graphic. 
----Looks odd when facing north/south. 
----Does not show connections when placing the pump. 
+---Doesn't have custom graphic.
+---Looks odd when facing north/south.
+---Does not show connections when placing the pump.
 ---You have to hover over an underground pipe to see the connection. (even then the underground sprite goes halfway through the pump's model)
 ---Haven't playtested this. Please give feedback on if it works or not.
 --Made underground pipe rotation only available after research unlocked
