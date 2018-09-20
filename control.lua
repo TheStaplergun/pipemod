@@ -4,45 +4,42 @@ script.on_configuration_changed(modInit.mod_init)
 
 local advancedPiping = require('tables')
 
-local function checkForCorrections(entityGiven)
-    local entity = entityGiven
+local function checkForCorrections(entity)
     if global.correctTable.correctableNames[entity.name] or entity.type == "pipe" then
-        game.print("It is a correctable type" .. entityGiven.unit_number)
+        --game.print("It is a correctable type" .. entityGiven.unit_number)
         local matchFound = false
         for names, dataTable in pairs(global.correctTable.entityData) do
             for k2, aPosition in pairs(dataTable.positions) do
                 if (entity.position.x == aPosition.x) and (entity.position.y == aPosition.y) then
-                    game.print("Found a matching entity position " .. entity.unit_number)
-                    local newEntity = entity.surface.create_entity {
+                    --game.print("Found a matching entity position " .. entity.unit_number)
+                    entity = entity.surface.create_entity {
                         name = names,
                         position = aPosition,
                         direction = entity.direction,
                         force = entity.force,
                         fast_replace = true,
                         spill = false
-                    }.surface.create_entity {
+                    }
+                    entity.surface.create_entity {
                         name = 'flying-text',
                         position = aPosition,
                         text = 'Corrected',
                         color = {g = 1}
                     }
+                    matchFound = true
                     global.correctTable.entityData[names].positions[k2] = nil
-                    if #global.correctTable.entityData[names].positions == 0 then
+                    if not next(global.correctTable.entityData[names].positions) then
                         global.correctTable.entityData[names] = nil
                     end
                     if not next(global.correctTable.entityData) then
-                        newEntity.surface.create_entity {
+                        entity.surface.create_entity {
                             name = 'flying-text',
-                            position = newEntity.position,
+                            position = entity.position,
                             text = 'All Corrections Complete',
                             color = {r = 1}
                         }
                         global.correctTable.correctMode = false
                     end
-                    if entity then
-                        entity.destroy()
-                    end
-                    matchFound = true
                     break
                 end
             end
@@ -123,7 +120,7 @@ script.on_event({defines.events.on_pre_ghost_deconstructed, defines.events.on_pr
 local function onBuilt(event)
     local correctionMade = false
     if global.correctTable.correctMode then
-        game.print("Correct mode is on")
+        --game.print("Correct mode is on")
         correctionMade = checkForCorrections(event.created_entity)
     end
     if not correctionMade then
@@ -202,17 +199,18 @@ local function clampPipe(entity)
             end
         end
     end
+    local entityPosition = entity.position
     if neighborCount > 1 and tableEntry < 15 then
         entity.surface.create_entity {
             name = entity.name .. advancedPiping.clampedPipeName[tableEntry],
-            position = entity.position,
+            position = entityPosition,
             direction = defines.direction.north,
             force = entity.force,
             fast_replace = true,
             spill = false
         }.surface.create_entity {
             name = 'flying-text',
-            --position = entity.position,
+            position = entityPosition,
             text = 'Pipe clamped!',
             color = {g = 1}
         }
@@ -230,16 +228,16 @@ local function clampPipe(entity)
 end
 
 local function unClampPipe(entity)
-    local newEntity = entity.surface.create_entity {
+    local entityPosition = entity.position
+    entity.surface.create_entity {
         name = entity.prototype.mineable_properties.products[1].name,
-        position = entity.position,
+        position = entityPosition,
         force = entity.force,
         fast_replace = true,
         spill = false
-    }
-    newEntity.surface.create_entity {
+    }.surface.create_entity {
         name = 'flying-text',
-        position = entity.position,
+        position = entityPosition,
         text = 'Pipe unclamped!',
         color = {g = 1}
     }
