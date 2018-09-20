@@ -1,0 +1,159 @@
+v0.16.59
+----------------------------
+--Fix blueprint correction for one-to-two-perpendicular pipes
+--Hid all icons for clamped pipes and extra pipes-to-ground included in mod from logistics and other menus
+--Added lock icon for clamped pipes to differentiate them.
+--Fix missing sprite for one-to-one-reverse-pipe-right in normal or less resolution
+
+v0.16.58
+----------------------------
+--Temporary fix for Dectorio
+--Permanent fix for Factorissimo
+
+v0.16.57
+----------------------------
+--Added pipe clamping tool. Just press rotate (Default is R) on a pipe (any mod any pipe) and it will "clamp" it in it's current position. This allows you to build other pipes nearby without them connecting to it.
+--Press R on a clamped pipe to unclamp it.
+--Clamped pipes are able to be blueprinted. Note: when building on a clamped blueprint, single click the item or it will fast-replace it with a regular pipe. This is focused towards being more convenient for bots, as it's a blueprint anyways.
+--Changed default one to two to be perpendicular
+--Changed all fluid boxes to default size
+
+v0.16.56
+----------------------------
+--Fixed game breaking bug
+
+v0.16.55
+----------------------------
+--Backend and efficiency update. You will lose any correctable blueprint data, but just once.
+--Fixed bug where if a user places a pipe on a blueprint ghost that gets corrected, the game crashes.
+
+v0.16.54
+----------------------------
+--Fixed custom input bug
+
+v0.16.53
+----------------------------
+--Fixed intermediate products to be gated behind technology properly.
+--Fixed rotation problem on t3 pipes
+--Fixed various other random stuff
+--Added blueprint script! Now you can blueprint this stuff without worrying. You will get flying text notifications for each entity fixed, and a notification when all ghosts have been fixed.
+
+v0.16.52
+----------------------------
+--I messed up the version number in the past. Derp. People can't pull updates properly.
+
+--Added T3 pipes. Distance set to 33.
+--Added varying technology icons to match tier
+
+--Changed costs of research
+---T1, 50 Red
+---T2, 100 Red/Green
+---T3, 200 Red/Green/Blue
+
+--Added custom intermediate items to reduce pipespam, clear up inventory clutter, and make the mod less cheaty.
+---Pipe Couplers. For all underground connections. Tiered.
+----T1: 1 Iron Plate
+----T2: 1 T1, 1 iron plate
+----T3: 1 T2, 1 steel plate
+---Swivel Joint. For all rotateable pipes to ground.
+---Pipe Segments. Tiered. Unlocks with each tech. Proportionally costly.
+----T1: 1 iron plate
+----T2: 1 T1, 2 iron plate
+----T3: 1 T2, 2 steel plate
+
+--Changed pipes to "carry" more fluid. Testing on this one. May revert to regular pipe value.
+---T1 stays at 100 units.
+---T2 will be 150 units.
+---T3 will be 200 units.
+
+--Restructured build costs of all pipes to work with new items.
+---All pipe entities in mod now cost 5 segments per leg, appropriate pipe couplers for each underground port, and a pipe for the surface. Underground pipes do not cost a pipe.
+---Rotateable pipes-to-ground also cost 1 swivel joint
+
+--Because of above changes, regular pipe to ground entities are no longer rotateable. You must build the custom one-to-one pipe.
+
+
+v0.16.10
+----------------------------
+--Added proper tier icons.
+
+v0.16.9
+----------------------------
+--Fixed icon in underground L entity.
+--Added T2 pipes. Distance set to 22.
+--Added second tier research. Requires red and green research (30 units).
+--Rebalanced all costs. Every underground segment costs a pipe. Previous design was giving away free pipe lengths (1 pipe per leg underground)
+
+v0.16.8
+----------------------------
+--Altered included 4-to-4 pipe to 11 underground depth to match other pipes in pack
+--Due to multiple requests, and re-assessment of use of these items, flag replaced to "goes-to-quickbar" instead of "goes-to-main-inventory"
+--Added a prototype of a function that overrides build behavior of the underground I extension. You cannot build them any closer than their maximum distance to each other. Do not attempt to build any closer if your inventory is full.
+
+v0.16.7
+----------------------------
+--Fixed nil value bug on rotating pipes
+
+v0.16.6 (Don't hate on my numbering scheme)
+----------------------------
+--Redid graphics to match hue of each tier of belts (Only tier 1 right now. Next update will have T2 and hopefully T3 pipes)
+--Updated Ping utility to show pipes that don't have all possible neighbors in red
+
+v0.16.51 [HOTFIX]
+----------------------------
+--Fixed a bug in the 4 way underground junction being 1 tile shorter than it was supposed to be. This could have broken factories if you fast-replaced a lesser count junction.
+--Also reduced underground pipe junction costs by 10 pipes each, since you'll always be connecting it to at least one other pipe.
+
+v0.16.5
+----------------------------
+--Added a hotkey that will ping and show currently connected underground pipes for 15 seconds nearby you. This only works with pipe-to-ground entities, and the pump in this mod as of right now. What this means is that the included regular pipe with underground ports will not populate on here yet.
+--Made porthole covers slightly larger for increased visibility
+
+
+v0.16.4
+----------------------------
+--Added low resolution graphics. Near impossible to make out arrows below "Normal" graphic setting.
+--Added a regular pipe that has 4 underground ports. Again, due to the way the engine is built, it will not show underground connections when hovered over. They're there.
+--Fixed low res graphic for pump. It's not dancing any more.
+--Fixed Locale information for the groupname and such. No more "Missing key" error.
+
+
+v0.16.3
+----------------------------
+--Changed version number to match game version with my subversion
+--**REMOVED UNDERGROUND PUMP** Check your factory to make sure you replace them with the minipump
+--Added mini underground pump
+---Custom HR and low res graphics
+---Requires 50% more power to pump the same amount of fluid
+---Requires 50% less space to do this
+---No fluid colors in animation yet
+--Added grouping for mod pack
+--Organized item recipes properly
+--Restructured prototypes
+--Redid icons to be more apparent
+--Corrected issue with underground pipes not being selectable over ground resources
+--Made mod compatible with multiple surfaces and multiple forces
+
+
+v0.1.2 [HOTFIX]
+----------------------------
+--Fixed game crashing graphics reference bug
+--Playtested underground pump
+
+
+v0.1.1
+----------------------------
+--Added low res version of underground pipe covers
+--Corrected loading bug with 0,0 collision box (Changed to collision mask water-tile)
+--Renamed pack and technology (Will have to research)
+--Changed "goes-to-quickbar" to "goes-to-main-inventory"
+--Added "Underground Pump" entity which only interfaces with underground pipes. (ALPHA)
+---Reduces need for Pipe-to-ground or pipes at the end of the pump when using over long distances.
+---Cannot interface with standard pipes above ground.
+---Doesn't have custom graphic. 
+---Looks odd when facing north/south. 
+---Does not show connections when placing the pump. 
+---You have to hover over an underground pipe to see the connection. (even then the underground sprite goes halfway through the pump's model)
+---Haven't playtested this. Please give feedback on if it works or not.
+--Made underground pipe rotation only available after research unlocked
+--Removed placeholder graphics from file (Made mod download smaller)
