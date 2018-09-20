@@ -291,7 +291,7 @@ script.on_event('show-underground-sprites', function(event)
                             if (entity.position.x - neighbour.position.x) < -1.5 then
                                 local distancex = neighbour.position.x - entity.position.x
                                 for i = 1, distancex - 1, 1 do
-                                    entity.surface.create_entity {
+                                    player.surface.create_entity {
                                         name = 'underground-pipe-marker-horizontal',
                                         position = {entity.position.x + i, entity.position.y},
                                         spill = false
