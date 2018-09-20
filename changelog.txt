@@ -2,9 +2,12 @@ v0.16.59
 ----------------------------
 --Fix blueprint correction for one-to-two-perpendicular pipes
 --Hid all icons for clamped pipes and extra pipes-to-ground included in mod from logistics and other menus
---Added lock icon for clamped pipes to differentiate them.
+--Added temporary lock icon for clamped pipes to differentiate them.
 --Fix missing sprite for one-to-one-reverse-pipe-right in normal or less resolution
 --Overhauled Icons
+--Efficiency and accuracy update for blueprint corrector
+--Made clamped pipes have icons that match their unclamped version, but with a lock. Easier to determine what type of pipes you need
+--Fixed plenty of icon pointers for entities
 
 v0.16.58
 ----------------------------
