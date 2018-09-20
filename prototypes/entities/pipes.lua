@@ -3,7 +3,7 @@ data:extend(
   {
     type = "pipe",
     name = "4-to-4-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/4-to-4.png",
+    icon = "__underground-pipe-pack__/graphics/icons/4-to-4-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "4-to-4-pipe"},

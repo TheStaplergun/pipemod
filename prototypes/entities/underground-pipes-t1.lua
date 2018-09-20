@@ -5,7 +5,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "underground-i-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/underground-i.png",
+    icon = "__underground-pipe-pack__/graphics/icons/underground-i-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "underground-i-pipe"},
@@ -122,7 +122,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "underground-L-pipe",
-    icon = "__base__/graphics/icons/pipe-to-ground.png",
+    icon = "__underground-pipe-pack__/graphics/icons/underground-L-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "underground-L-pipe"},
@@ -240,7 +240,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "underground-t-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/underground-t.png",
+    icon = "__underground-pipe-pack__/graphics/icons/underground-t-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "underground-t-pipe"},
@@ -362,7 +362,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "underground-cross-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/underground-cross.png",
+    icon = "__underground-pipe-pack__/graphics/icons/underground-cross-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "underground-cross-pipe"},
