@@ -71,9 +71,9 @@ for i,pipe in pairs(data.raw["pipe"]) do
     if not string.match(pipe.name, "%-clamped%-") and not string.match(pipe.name, "dummy%-") and pipe.name ~= "4-to-4-pipe" then
       local currentEntity = util.table.deepcopy(data.raw["pipe"]["pipe"])
       currentEntity.name = clampedName
-      if pipe.localised_name then
+      --[[if pipe.localised_name then
         currentEntity.localised_name = pipe.localised_name .. " clamped"
-      end
+      end]]--
       currentEntity.icon = data.raw["pipe"][pipe.name].icon or data.raw["pipe"]["pipe"].icon
       currentEntity.minable = data.raw["pipe"][pipe.name].minable
       currentEntity.flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"}
