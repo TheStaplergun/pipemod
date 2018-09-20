@@ -441,7 +441,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-two-parallel-t3-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-parallel.png",
+    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-parallel-t3.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-two-perpendicular-t3-pipe"},
@@ -554,7 +554,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-two-perpendicular-t3-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-parallel.png",
+    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-parallel-t3.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-two-perpendicular-t3-pipe"},
@@ -1122,7 +1122,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-three-forward-t3-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-3.png",
+    icon = "__underground-pipe-pack__/graphics/icons/1-to-3-t3.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-three-forward-t3-pipe"},
@@ -1239,7 +1239,7 @@ data:extend(
     {
     type = "pipe-to-ground",
     name = "one-to-three-right-t3-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-3.png",
+    icon = "__underground-pipe-pack__/graphics/icons/1-to-3-t3.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-three-forward-t3-pipe"},
@@ -1356,7 +1356,7 @@ data:extend(
     {
     type = "pipe-to-ground",
     name = "one-to-three-reverse-t3-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-3.png",
+    icon = "__underground-pipe-pack__/graphics/icons/1-to-3-t3.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-three-forward-t3-pipe"},
@@ -1473,7 +1473,7 @@ data:extend(
     {
     type = "pipe-to-ground",
     name = "one-to-three-left-t3-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-3.png",
+    icon = "__underground-pipe-pack__/graphics/icons/1-to-3-t3.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-three-forward-t3-pipe"},
@@ -1591,7 +1591,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-four-t3-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-4.png",
+    icon = "__underground-pipe-pack__/graphics/icons/1-to-4-t3.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-four-t3-pipe"},
