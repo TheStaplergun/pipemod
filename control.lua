@@ -18,7 +18,8 @@ local function checkForCorrections(entity)
                         position = aPosition,
                         direction = entity.direction,
                         force = entity.force,
-                        fast_replace = true
+                        fast_replace = true,
+                        spill = false
                     }
                     entity.surface.create_entity {
                         name = 'flying-text',
@@ -66,7 +67,8 @@ local function RotateUnderground(oldPipe, surface)
         position = oldPipe.position,
         direction = oldPipe.direction,
         force = oldPipe.force,
-        fast_replace = true
+        fast_replace = true,
+        spill = false
     }
     newPipe.fluidbox[1] = oldPipeFluid
 end
@@ -135,7 +137,8 @@ local function onBuilt(event)
                         position = ghostEntity.position,
                         direction = ghostEntity.direction,
                         force = ghostEntity.force,
-                        fast_replace = true
+                        fast_replace = true,
+                        spill = false
                     }.surface.create_entity {
                         name = 'flying-text',
                         position = ghostEntity.position,
@@ -167,7 +170,7 @@ local function onBuilt(event)
 end
 script.on_event(defines.events.on_built_entity, onBuilt)
 
-local function clampPipe(entity)
+local function clampPipe(entity, player)
     local tableEntry = 0
     local neighborCount = 0
     for _, entities in pairs(entity.neighbours) do
@@ -196,43 +199,49 @@ local function clampPipe(entity)
     end
     local entityPosition = entity.position
     if neighborCount > 1 and tableEntry < 15 then
-        entity.surface.create_entity {
+        local new = entity.surface.create_entity {
             name = entity.name .. advancedPiping.clampedPipeName[tableEntry],
             position = entityPosition,
             force = entity.force,
-            fast_replace = true
-        }.surface.create_entity {
+            fast_replace = true,
+            spill = false
+        }
+        new.surface.create_entity {
             name = 'flying-text',
             position = entityPosition,
             text = {'advanced-pipe.clamped'},
             color = {g = 1}
         }
+        new.last_user = player
         if entity then
             entity.destroy()
         end
     else
         entity.surface.create_entity {
             name = 'flying-text',
-            position = entity.position,
+            position = entityPosition,
             text = {'advanced-pipe.fail'},
             color = {r = 1}
         }
     end
 end
 
-local function unClampPipe(entity)
+local function unClampPipe(entity, player)
     local entityPosition = entity.position
-    entity.surface.create_entity {
+    local new = entity.surface.create_entity {
         name = entity.prototype.mineable_properties.products[1].name,
         position = entityPosition,
         force = entity.force,
-        fast_replace = true
-    }.surface.create_entity {
+        fast_replace = true,
+        spill = false
+    }
+    new.surface.create_entity {
         name = 'flying-text',
         position = entityPosition,
         text = {'advanced-pipe.unclamped'},
         color = {g = 1}
     }
+    new.last_user = player
     if entity then
         entity.destroy()
     end
@@ -244,9 +253,9 @@ local function lockPipe(event)
     if selection and selection.type == 'pipe' and selection.force == player.force then
         local clamped = string.find(selection.name, '%-clamped%-')
         if not clamped and selection.name ~= '4-to-4-pipe' then
-            clampPipe(selection)
+            clampPipe(selection, player)
         elseif clamped then
-            unClampPipe(selection)
+            unClampPipe(selection, player)
         end
     end
 end
