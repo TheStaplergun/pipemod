@@ -1,4 +1,4 @@
-pipecoverspicturest2 = function()
+_G.pipecoverspicturest2 = function()
   return {
     north =
     {
@@ -146,5 +146,3 @@ pipecoverspicturest2 = function()
     }
   }
 end
-
-
