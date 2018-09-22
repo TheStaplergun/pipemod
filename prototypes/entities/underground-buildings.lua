@@ -30,16 +30,16 @@ data:extend(
     {
       base_area = 1,
       height = 1,
-      pipe_covers = pipecoverspictures(),
+      pipe_covers = _G.pipecoverspictures(),
       pipe_connections =
       {
-        { 
-			position = {0, -1}, 
+        {
+			position = {0, -1},
 			type="output",
 			max_underground_distance = 11
 		},
-        { 
-			position = {0, 1}, 
+        {
+			position = {0, 1},
 			type="input",
 			max_underground_distance = 11
 		}

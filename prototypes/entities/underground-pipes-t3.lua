@@ -31,7 +31,7 @@ data:extend(
     fluid_box =
     {
       base_area = 1,
-      pipe_covers = pipecoverspicturest3(),
+      pipe_covers = _G.pipecoverspicturest3(),
       pipe_connections =
       {
 
@@ -148,7 +148,7 @@ data:extend(
     fluid_box =
     {
       base_area = 1,
-      pipe_covers = pipecoverspicturest3(),
+      pipe_covers = _G.pipecoverspicturest3(),
       pipe_connections =
       {
 
@@ -266,7 +266,7 @@ data:extend(
     fluid_box =
     {
       base_area = 1,
-      pipe_covers = pipecoverspicturest3(),
+      pipe_covers = _G.pipecoverspicturest3(),
       pipe_connections =
       {
 
@@ -388,7 +388,7 @@ data:extend(
     fluid_box =
     {
       base_area = 1,
-      pipe_covers = pipecoverspicturest3(),
+      pipe_covers = _G.pipecoverspicturest3(),
       pipe_connections =
       {
 

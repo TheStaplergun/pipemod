@@ -3,6 +3,7 @@ data:extend(
   {
     type = "pipe",
     name = "4-to-4-pipe",
+    clamped = true,
     icon = "__underground-pipe-pack__/graphics/icons/4-to-4-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
@@ -59,7 +60,7 @@ data:extend(
       scale = 0.5
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    pictures = pipepictures(),
+    pictures = _G.pipepictures(),
     working_sound =
     {
       sound =

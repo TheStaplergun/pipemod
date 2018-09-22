@@ -5,20 +5,20 @@ script.on_configuration_changed(modInit.mod_init)
 local advancedPiping = require('tables')
 
 local function checkForCorrections(entity)
-    if global.correctTable.correctableNames[entity.name] or entity.type == "pipe" then
+    if global.correctTable.correctableNames[entity.name] then -- or entity.type == "pipe" then
         --game.print("It is a correctable type" .. entityGiven.unit_number)
         local matchFound = false
         for names, dataTable in pairs(global.correctTable.entityData) do
             for k2, aPosition in pairs(dataTable.positions) do
                 if (entity.position.x == aPosition.x) and (entity.position.y == aPosition.y) then
                     --game.print("Found a matching entity position " .. entity.unit_number)
-                    entity = entity.surface.create_entity {
+                    entity =
+                        entity.surface.create_entity {
                         name = names,
                         position = aPosition,
                         direction = entity.direction,
                         force = entity.force,
-                        fast_replace = true,
-                        spill = false
+                        fast_replace = true
                     }
                     entity.surface.create_entity {
                         name = 'flying-text',
@@ -60,13 +60,13 @@ local function RotateUnderground(oldPipe, surface)
         return
     end
     local oldPipeFluid = oldPipe.fluidbox[1]
-    local newPipe = surface.create_entity {
-            name = advancedPiping.getRotatedPipe[oldPipe.name],
-            position = oldPipe.position,
-            direction = oldPipe.direction,
-            force = oldPipe.force,
-            fast_replace = true,
-            spill = false
+    local newPipe =
+        surface.create_entity {
+        name = advancedPiping.getRotatedPipe[oldPipe.name],
+        position = oldPipe.position,
+        direction = oldPipe.direction,
+        force = oldPipe.force,
+        fast_replace = true
     }
     newPipe.fluidbox[1] = oldPipeFluid
 end
@@ -114,7 +114,6 @@ local function onPrePlayerMinedItem(event)
         end
     end
 end
-
 script.on_event({defines.events.on_pre_ghost_deconstructed, defines.events.on_pre_player_mined_item}, onPrePlayerMinedItem)
 
 local function onBuilt(event)
@@ -126,7 +125,7 @@ local function onBuilt(event)
     if not correctionMade then
         if event.ghost or (event.created_entity and event.created_entity.type == 'entity-ghost') then
             local ghostEntity = event.created_entity
-            if advancedPiping.correctBluePrintTable[ghostEntity.ghost_name] or (ghostEntity.ghost_type == "pipe" and string.match(ghostEntity.ghost_name, "%-clamped%-")) then
+            if advancedPiping.correctBluePrintTable[ghostEntity.ghost_name] then -- or (ghostEntity.ghost_type == "pipe" and string.match(ghostEntity.ghost_name, "%-clamped%-")) then
                 local correctEntity = advancedPiping.correctBluePrintTable[ghostEntity.ghost_name] or game.entity_prototypes[ghostEntity.ghost_name].mineable_properties.products[1].name
                 if correctEntity then
                     local ghostName = ghostEntity.ghost_name
@@ -136,8 +135,7 @@ local function onBuilt(event)
                         position = ghostEntity.position,
                         direction = ghostEntity.direction,
                         force = ghostEntity.force,
-                        fast_replace = true,
-                        spill = false
+                        fast_replace = true
                     }.surface.create_entity {
                         name = 'flying-text',
                         position = ghostEntity.position,
@@ -168,9 +166,6 @@ local function onBuilt(event)
     end
 end
 script.on_event(defines.events.on_built_entity, onBuilt)
-
-
---[[script.on_event("reset-mod", modInit.reset)]]-- --?Why
 
 local function clampPipe(entity)
     local tableEntry = 0
@@ -204,14 +199,12 @@ local function clampPipe(entity)
         entity.surface.create_entity {
             name = entity.name .. advancedPiping.clampedPipeName[tableEntry],
             position = entityPosition,
-            direction = defines.direction.north,
             force = entity.force,
-            fast_replace = true,
-            spill = false
+            fast_replace = true
         }.surface.create_entity {
             name = 'flying-text',
             position = entityPosition,
-            text = 'Pipe clamped!',
+            text = {'advanced-pipe.clamped'},
             color = {g = 1}
         }
         if entity then
@@ -221,7 +214,7 @@ local function clampPipe(entity)
         entity.surface.create_entity {
             name = 'flying-text',
             position = entity.position,
-            text = 'Failed to clamp!',
+            text = {'advanced-pipe.fail'},
             color = {r = 1}
         }
     end
@@ -233,12 +226,11 @@ local function unClampPipe(entity)
         name = entity.prototype.mineable_properties.products[1].name,
         position = entityPosition,
         force = entity.force,
-        fast_replace = true,
-        spill = false
+        fast_replace = true
     }.surface.create_entity {
         name = 'flying-text',
         position = entityPosition,
-        text = 'Pipe unclamped!',
+        text = {'advanced-pipe.unclamped'},
         color = {g = 1}
     }
     if entity then
@@ -246,85 +238,80 @@ local function unClampPipe(entity)
     end
 end
 
-
-
-
-script.on_event('lock-pipe', function(event)
+local function lockPipe(event)
     local player = game.players[event.player_index]
     local selection = player.selected
-    if selection and selection.force == player.force then
-        local nameCheck = selection.name
-        if selection.type == 'pipe' and not string.match(selection.name, "%-clamped%-") and selection.name ~= "4-to-4-pipe" then
+    if selection and selection.type == 'pipe' and selection.force == player.force then
+        local clamped = string.find(selection.name, '%-clamped%-')
+        if not clamped and selection.name ~= '4-to-4-pipe' then
             clampPipe(selection)
-        elseif selection.type == 'pipe' and string.match(nameCheck, "%-clamped%-") then
+        elseif clamped then
             unClampPipe(selection)
         end
     end
-end)
+end
+script.on_event('lock-pipe', lockPipe)
 
-script.on_event('rotate-underground-pipe', function(event)
-        local player = game.players[event.player_index]
-        local selection = player.selected
-        if selection and selection.force == player.force then
-            if (selection.type == 'pipe-to-ground' or (selection.type == 'entity-ghost' and selection.ghost_type == 'pipe-to-ground')) and player.force.technologies['advanced-underground-piping'].researched then
-                RotateUnderground(selection, player.surface)
-            end
+local function rotateUndergroundPipe(event)
+    local player = game.players[event.player_index]
+    local selection = player.selected
+    if selection and selection.force == player.force then
+        local researched = player.force.technologies['advanced-underground-piping'].researched
+        if (selection.type == 'pipe-to-ground' or (selection.type == 'entity-ghost' and selection.ghost_type == 'pipe-to-ground')) and researched then
+            RotateUnderground(selection, player.surface)
         end
     end
-)
+end
+script.on_event('rotate-underground-pipe', rotateUndergroundPipe)
 
-script.on_event('show-underground-sprites', function(event)
-        local player = game.players[event.player_index]
-        if player.force.technologies['advanced-underground-piping'].researched then
-            local filter = {
-                area = {{player.position.x - 80, player.position.y - 50}, {player.position.x + 80, player.position.y + 50}},
-                type = {'pipe-to-ground', 'pump'},
-                force = player.force
-            }
-            for _, entity in pairs(player.surface.find_entities_filtered(filter)) do
-                if entity.type == 'pipe-to-ground' or (entity.type == 'pump' and entity.name == 'underground-mini-pump') then
-                    local neighborCounter = 0
-                    local maxNeighbors = advancedPiping.pipetable[entity.name] or 2
-                    for _, entities in pairs(entity.neighbours) do
-                        for _, neighbour in pairs(entities) do
-                            neighborCounter = neighborCounter + 1
-                            if (entity.position.x - neighbour.position.x) < -1.5 then
-                                local distancex = neighbour.position.x - entity.position.x
-                                for i = 1, distancex - 1, 1 do
-                                    player.surface.create_entity {
-                                        name = 'underground-pipe-marker-horizontal',
-                                        position = {entity.position.x + i, entity.position.y},
-                                        spill = false
-                                    }
-                                end
-                            end
-                            if (entity.position.y - neighbour.position.y) < -1.5 then
-                                local distancey = neighbour.position.y - entity.position.y
-                                for i = 1, distancey - 1, 1 do
-                                    player.surface.create_entity {
-                                        name = 'underground-pipe-marker-vertical',
-                                        position = {entity.position.x, entity.position.y + i},
-                                        spill = false
-                                    }
-                                end
+local function showUndergroundSprites(event)
+    local player = game.players[event.player_index]
+    if player.force.technologies['advanced-underground-piping'].researched then
+        local filter = {
+            area = {{player.position.x - 80, player.position.y - 50}, {player.position.x + 80, player.position.y + 50}},
+            type = {'pipe-to-ground', 'pump'},
+            force = player.force
+        }
+        for _, entity in pairs(player.surface.find_entities_filtered(filter)) do
+            if entity.type == 'pipe-to-ground' or (entity.type == 'pump' and entity.name == 'underground-mini-pump') then
+                local neighborCounter = 0
+                local maxNeighbors = advancedPiping.pipetable[entity.name] or 2
+                for _, entities in pairs(entity.neighbours) do
+                    for _, neighbour in pairs(entities) do
+                        neighborCounter = neighborCounter + 1
+                        if (entity.position.x - neighbour.position.x) < -1.5 then
+                            local distancex = neighbour.position.x - entity.position.x
+                            for i = 1, distancex - 1, 1 do
+                                player.surface.create_entity {
+                                    name = 'underground-pipe-marker-horizontal',
+                                    position = {entity.position.x + i, entity.position.y}
+                                }
                             end
                         end
-                        if (maxNeighbors == neighborCounter) then
-                            entity.surface.create_entity {
-                                name = 'pipe-marker-box-good',
-                                position = entity.position,
-                                spill = false
-                            }
-                        elseif (neighborCounter < maxNeighbors) then
-                            entity.surface.create_entity {
-                                name = 'pipe-marker-box-bad',
-                                position = entity.position,
-                                spill = false
-                            }
+                        if (entity.position.y - neighbour.position.y) < -1.5 then
+                            local distancey = neighbour.position.y - entity.position.y
+                            for i = 1, distancey - 1, 1 do
+                                player.surface.create_entity {
+                                    name = 'underground-pipe-marker-vertical',
+                                    position = {entity.position.x, entity.position.y + i}
+                                }
+                            end
                         end
+                    end
+                    if (maxNeighbors == neighborCounter) then
+                        entity.surface.create_entity {
+                            name = 'pipe-marker-box-good',
+                            position = entity.position
+                        }
+                    elseif (neighborCounter < maxNeighbors) then
+                        entity.surface.create_entity {
+                            name = 'pipe-marker-box-bad',
+                            position = entity.position
+                        }
                     end
                 end
             end
         end
     end
-)
+end
+script.on_event('show-underground-sprites', showUndergroundSprites)
