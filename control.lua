@@ -170,29 +170,53 @@ local function onBuilt(event)
 end
 script.on_event(defines.events.on_built_entity, onBuilt)
 
+local function getEW(deltaX)
+    if deltaX > 0 then
+        --west
+        return 1
+    end
+    if deltaX < 0 then
+        --east
+        return 2
+    end
+end
+
+local function getNS(deltaY)
+    if deltaY > 0 then
+        --north
+        return 4
+    end
+    if deltaY < 0 then
+        --south
+        return 8
+    end
+end
+
+
+
 local function clampPipe(entity, player)
     local tableEntry = 0
     local neighborCount = 0
     for _, entities in pairs(entity.neighbours) do
         for _, neighbour in pairs(entities) do
-            if (entity.position.x - neighbour.position.x) > 0 then
-                --west
-                tableEntry = tableEntry + 1
+            local deltaX = entity.position.x - neighbour.position.x
+            local deltaY = entity.position.y - neighbour.position.y
+            if deltaX ~= 0 and deltaY == 0 then
+                game.print("It's a x difference")
+                tableEntry = tableEntry + getEW(deltaX)
                 neighborCount = neighborCount + 1
-            end
-            if (entity.position.x - neighbour.position.x) < 0 then
-                --east
-                tableEntry = tableEntry + 2
+            elseif deltaX == 0 and deltaY ~= 0 then
+                game.print("It's a y difference")
+                tableEntry = tableEntry + getNS(deltaY)
                 neighborCount = neighborCount + 1
-            end
-            if (entity.position.y - neighbour.position.y) > 0 then
-                --north
-                tableEntry = tableEntry + 4
-                neighborCount = neighborCount + 1
-            end
-            if (entity.position.y - neighbour.position.y) < 0 then
-                --south
-                tableEntry = tableEntry + 8
+            elseif deltaX ~=0 and deltaY ~= 0 then
+                if math.abs(deltaX) > math.abs(deltaY) then
+                    game.print("They're both different but x is larger")
+                    tableEntry = tableEntry + getEW(deltaX)
+                elseif math.abs(deltaX) < math.abs(deltaY) then
+                    game.print("They're both different but y is larger")
+                    tableEntry = tableEntry + getNS(deltaY)
+                end
                 neighborCount = neighborCount + 1
             end
         end
