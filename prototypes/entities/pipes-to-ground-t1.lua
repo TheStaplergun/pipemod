@@ -33,7 +33,7 @@ data:extend(
         { position = {0, -1} },
         {
           position = {0, 1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
       },
     },
@@ -142,7 +142,7 @@ data:extend(
         { position = {0, -1} },
         {
           position = {-1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
       },
     },
@@ -251,7 +251,7 @@ data:extend(
         { position = {0, -1} },
         {
           position = {0, -1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
       },
     },
@@ -360,7 +360,7 @@ data:extend(
         { position = {0, -1} },
         {
           position = {1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
       },
     },
@@ -470,11 +470,11 @@ data:extend(
         { position = {0, -1} },
         {
           position = {0, -1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {0, 1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
       },
     },
@@ -583,11 +583,11 @@ data:extend(
         { position = {0, -1} },
         {
           position = {1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {-1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         }
       },
     },
@@ -697,11 +697,11 @@ data:extend(
         { position = {0, -1} },
         {
           position = {1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {0, 1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         }
       },
     },
@@ -811,11 +811,11 @@ data:extend(
         { position = {0, -1} },
         {
           position = {-1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {0, 1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         }
       },
     },
@@ -924,11 +924,11 @@ data:extend(
         { position = {0, -1} },
         {
           position = {-1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {0, -1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         }
       },
     },
@@ -1037,11 +1037,11 @@ data:extend(
         { position = {0, -1} },
         {
           position = {1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {0, -1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         }
       },
     },
@@ -1151,15 +1151,15 @@ data:extend(
         { position = {0, -1} },
         {
           position = {0, 1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {-1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         }
       },
     },
@@ -1268,15 +1268,15 @@ data:extend(
         { position = {0, -1} },
         {
           position = {0, 1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {0, -1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {-1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         }
       },
     },
@@ -1385,15 +1385,15 @@ data:extend(
         { position = {0, -1} },
         {
           position = {1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {0, -1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {-1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         }
       },
     },
@@ -1502,15 +1502,15 @@ data:extend(
         { position = {0, -1} },
         {
           position = {1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {0, -1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {0, 1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         }
       },
     },
@@ -1620,19 +1620,19 @@ data:extend(
         { position = {0, -1} },
         {
           position = {0, -1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {0, 1},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         },
         {
           position = {-1, 0},
-          max_underground_distance = 10
+          max_underground_distance = 11
         }
       },
     },
