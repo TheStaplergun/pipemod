@@ -145,6 +145,6 @@ data.pipetable = {
         [12] = "-clamped-NS",
         [13] = "-clamped-NSW",
         [14] = "-clamped-NSE",
-        --[15] = "-clamped-NSEW",
+        --[15] = "-clamped-nsew",
     }
 return data

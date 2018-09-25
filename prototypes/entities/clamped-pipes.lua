@@ -1,153 +1,129 @@
+local north = {position = {0, -1}}
+local south = {position = {0, 1}}
+local west = {position = {-1, 0}}
+local east = {position = {1, 0}}
+
 local nameTable = {
-  ["-clamped-EW"] = {
-    positions = {
-      { position = {1, 0} },
-      { position = {-1, 0} },
+    ['EW'] = {
+        locale = '[East, West]',
+        positions = {east, west}
     },
-  },
-  ["-clamped-NW"] = {
-    positions = {
-      { position = {0, -1} },
-      { position = {-1, 0} },
+    ['NW'] = {
+        locale = '[North, West]',
+        positions = {north, west}
     },
-  },
-  ["-clamped-NE"] = {
-    positions = {
-      { position = {0, -1} },
-      { position = {1, 0} },
+    ['NE'] = {
+        locale = '[North, East]',
+        positions = {north, east}
     },
-  },
-  ["-clamped-NEW"] = {
-    positions = {
-      { position = {0, -1} },
-      { position = {1, 0} },
-      { position = {-1, 0} },
+    ['NEW'] = {
+        locale = '[North, East, West]',
+        positions = {north, east, west}
     },
-  },
-  ["-clamped-SW"] = {
-    positions = {
-      { position = {0, 1} },
-      { position = {-1, 0} },
+    ['SW'] = {
+        locale = '[South, West]',
+        positions = {south, west}
     },
-  },
-  ["-clamped-SE"] = {
-    positions = {
-      { position = {0, 1} },
-      { position = {1, 0} },
+    ['SE'] = {
+        locale = '[South, East]',
+        positions = {south, east}
     },
-  },
-  ["-clamped-SEW"] = {
-    positions = {
-      { position = {0, 1} },
-      { position = {1, 0} },
-      { position = {-1, 0} },
+    ['SEW'] = {
+        locale = '[South, East, West]',
+        positions = {south, east, west}
     },
-  },
-  ["-clamped-NS"] = {
-    positions = {
-      { position = {0, -1} },
-      { position = {0, 1} },
+    ['NS'] = {
+        locale = '[North, South]',
+        positions = {north, south}
     },
-  },
-  ["-clamped-NSW"] = {
-    positions = {
-      { position = {0, -1} },
-      { position = {0, 1} },
-      { position = {-1, 0} },
+    ['NSW'] = {
+        locale = '[North, South, West]',
+        positions = {north, south, west}
     },
-  },
-  ["-clamped-NSE"] = {
-    positions = {
-      { position = {0, -1} },
-      { position = {0, 1} },
-      { position = {1, 0} },
-    },
-  },
+    ['NSE'] = {
+        locale = '[North, South, East]',
+        positions = {north, south, east}
+    }
 }
 
-for i,pipe in pairs(data.raw["pipe"]) do
-  for names, _ in pairs(nameTable) do
-    local clampedName = pipe.name .. names
-    if not string.match(pipe.name, "%-clamped%-") and not string.match(pipe.name, "dummy%-") and pipe.name ~= "4-to-4-pipe" then
-      local currentEntity = util.table.deepcopy(data.raw["pipe"]["pipe"])
-      currentEntity.name = clampedName
-      --[[if pipe.localised_name then
-        currentEntity.localised_name = pipe.localised_name .. " clamped"
-      end]]--
-      currentEntity.icon = data.raw["pipe"][pipe.name].icon or data.raw["pipe"]["pipe"].icon
-      currentEntity.minable = data.raw["pipe"][pipe.name].minable
-      currentEntity.flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"}
-      currentEntity.corpse = "small-remnants"
-      currentEntity.max_health = data.raw["pipe"][pipe.name].max_health
-      currentEntity.resistances = data.raw["pipe"][pipe.name].resistances
-      currentEntity.fast_replaceable_group = data.raw["pipe"][pipe.name].fast_replaceable_group
-      currentEntity.collision_box = data.raw["pipe"][pipe.name].collision_box
-      currentEntity.selection_box = data.raw["pipe"][pipe.name].selection_box
-      currentEntity.fluid_box = {
-        base_area = 1,
-        pipe_connections = nameTable[names].positions
-      }
-      currentEntity.two_direction_only = false
-      local dontChange = {
-        gas_flow = true,
-        fluid_background = true,
-        window_background = true,
-        flow_sprite = true,
-      }
-      local pictureSet = util.table.deepcopy(data.raw["pipe"][pipe.name].pictures)
-      for pictureName, pictureStuff in pairs(pictureSet) do
-        if not dontChange[pictureName] then
-          local currentLayerData = pictureSet[pictureName]
-          pictureSet[pictureName] = {
-            layers = {
-              currentLayerData,
-              {
-                filename = "__underground-pipe-pack__/graphics/icons/lock.png",
-                priority = "extra-high",
-                width = 32,
-                height = 32,
-                scale = 0.8,
-                shift = util.by_pixel(0, -5),
-                hr_version =
+local dontChange = {
+    gas_flow = true,
+    fluid_background = true,
+    window_background = true,
+    flow_sprite = true
+}
+
+local pipeEntities = {}
+for i, pipe in pairs(data.raw['pipe']) do
+    for name, pipeData in pairs(nameTable) do
+        if not pipe.clamped and not string.find(pipe.name, 'dummy%-') then
+            local currentEntity = util.table.deepcopy(pipe)
+
+            currentEntity.name = pipe.name .. '-clamped-' .. name
+            currentEntity.clamped = true
+            currentEntity.localised_name = {'advanced-pipe.clamped-name', pipe.name, pipeData.locale}
+            currentEntity.placeable_by = {item = pipe.name, count = pipe.minable and pipe.minable.count or 1}
+            currentEntity.icons = {
                 {
-                  filename = "__underground-pipe-pack__/graphics/icons/hr-lock.png",
-                  priority = "extra-high",
-                  width = 64,
-                  height = 64,
-                  scale = 0.4,
-                  shift = util.by_pixel(0, -5)
+                    icon = currentEntity.icon or data.raw['pipe']['pipe'].icon,
+                    icon_size = 32
+                },
+                {
+                    icon = '__underground-pipe-pack__/graphics/icons/lock.png',
+                    icon_size = 32
                 }
-              },
             }
-          }
+            currentEntity.flags = {'placeable-neutral', 'player-creation', 'fast-replaceable-no-build-while-moving'}
+            currentEntity.fluid_box.pipe_connections = pipeData.positions
+
+            for pictureName, _ in pairs(currentEntity.pictures) do
+                if not dontChange[pictureName] then
+                    local currentLayerData = currentEntity.pictures[pictureName]
+                    currentEntity.pictures[pictureName] = {
+                        layers = {
+                            currentLayerData,
+                            {
+                                filename = '__underground-pipe-pack__/graphics/icons/lock.png',
+                                priority = 'extra-high',
+                                width = 32,
+                                height = 32,
+                                scale = 0.8,
+                                shift = util.by_pixel(0, -5),
+                                hr_version = {
+                                    filename = '__underground-pipe-pack__/graphics/icons/hr-lock.png',
+                                    priority = 'extra-high',
+                                    width = 64,
+                                    height = 64,
+                                    scale = 0.4,
+                                    shift = util.by_pixel(0, -5)
+                                }
+                            }
+                        }
+                    }
+                end
+            end
+            pipeEntities[#pipeEntities + 1] = currentEntity
         end
-      end
-      currentEntity.pictures = pictureSet
-      currentEntity.circuit_wire_max_distance = 0
-      currentEntity.working_sound = nil
-
-      local currentItem = util.table.deepcopy(data.raw["item"]["pipe"])
-      currentItem.name = clampedName
-      currentItem.flags = {"hidden"}
-        --{icon = "__base__/graphics/icons/accumulator.png", tint = {r=1, g=0.8, b=1, a=1}}
-      local setIcon = data.raw["item"][pipe.name].icon or data.raw["item"]["pipe"].icon
-      currentItem.icons = {
-        {
-          icon = setIcon,
-          icon_size = 32
-        },
-        {
-          icon = "__underground-pipe-pack__/graphics/icons/lock.png",
-          icon_size = 32
-        }
-      }
-      currentItem.place_result = clampedName
-
-
-      data:extend{
-        util.table.deepcopy(currentEntity),
-        util.table.deepcopy(currentItem)
-      }
     end
-  end
 end
+data:extend(
+  pipeEntities,
+{
+    type = 'selection-tool',
+    name = 'picker-pipe-clamper',
+    icon = '__PickerPipeTools__/graphics/icons/hr-lock.png',
+    icon_size = 64,
+    flags = {'hidden'},
+    subgroup = 'tool',
+    order = 'c[selection-tool]-a[pipe-cleaner]',
+    stack_size = 1,
+    stackable = false,
+    selection_color = {r = 1, g = 0, b = 0},
+    alt_selection_color = {r = 0, g = 1, b = 0},
+    selection_mode = {'same-force', 'buildable-type', 'items-to-place'},
+    alt_selection_mode = {'same-force', 'buildable-type', 'items-to-place'},
+    selection_cursor_box_type = 'copy',
+    alt_selection_cursor_box_type = 'copy',
+    always_include_tiles = false,
+    show_in_library = true
+})
