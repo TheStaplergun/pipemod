@@ -172,95 +172,131 @@ script.on_event(defines.events.on_built_entity, onBuilt)
 
 --[[script.on_event("reset-mod", modInit.reset)]]-- --?Why
 
-local function clampPipe(entity)
+local function getEW(deltaX)
+    if deltaX > 0 then
+        --west
+        return 1
+    end
+    if deltaX < 0 then
+        --east
+        return 2
+    end
+end
+
+local function getNS(deltaY)
+    if deltaY > 0 then
+        --north
+        return 4
+    end
+    if deltaY < 0 then
+        --south
+        return 8
+    end
+end
+
+
+
+local function clampPipe(entity, player)
     local tableEntry = 0
     local neighborCount = 0
     for _, entities in pairs(entity.neighbours) do
         for _, neighbour in pairs(entities) do
-            if (entity.position.x - neighbour.position.x) > 0 then
-                --west
-                tableEntry = tableEntry + 1
+            local deltaX = entity.position.x - neighbour.position.x
+            local deltaY = entity.position.y - neighbour.position.y
+            if deltaX ~= 0 and deltaY == 0 then
+                game.print("It's a x difference")
+                tableEntry = tableEntry + getEW(deltaX)
                 neighborCount = neighborCount + 1
-            end
-            if (entity.position.x - neighbour.position.x) < 0 then
-                --east
-                tableEntry = tableEntry + 2
+            elseif deltaX == 0 and deltaY ~= 0 then
+                game.print("It's a y difference")
+                tableEntry = tableEntry + getNS(deltaY)
                 neighborCount = neighborCount + 1
-            end
-            if (entity.position.y - neighbour.position.y) > 0 then
-                --north
-                tableEntry = tableEntry + 4
-                neighborCount = neighborCount + 1
-            end
-            if (entity.position.y - neighbour.position.y) < 0 then
-                --south
-                tableEntry = tableEntry + 8
+            elseif deltaX ~=0 and deltaY ~= 0 then
+                if math.abs(deltaX) > math.abs(deltaY) then
+                    game.print("They're both different but x is larger")
+                    tableEntry = tableEntry + getEW(deltaX)
+                elseif math.abs(deltaX) < math.abs(deltaY) then
+                    game.print("They're both different but y is larger")
+                    tableEntry = tableEntry + getNS(deltaY)
+                end
                 neighborCount = neighborCount + 1
             end
         end
     end
     local entityPosition = entity.position
     if neighborCount > 1 and tableEntry < 15 then
-        entity.surface.create_entity {
+        local new = entity.surface.create_entity {
             name = entity.name .. advancedPiping.clampedPipeName[tableEntry],
             position = entityPosition,
-            direction = defines.direction.north,
             force = entity.force,
             fast_replace = true,
             spill = false
-        }.surface.create_entity {
+        }
+        new.surface.create_entity {
             name = 'flying-text',
             position = entityPosition,
-            text = 'Pipe clamped!',
+            text = {'advanced-pipe.clamped'},
             color = {g = 1}
         }
+        new.last_user = player
         if entity then
             entity.destroy()
         end
     else
         entity.surface.create_entity {
             name = 'flying-text',
-            position = entity.position,
-            text = 'Failed to clamp!',
+            position = entityPosition,
+            text = {'advanced-pipe.fail'},
             color = {r = 1}
         }
     end
 end
 
-local function unClampPipe(entity)
+local function unClampPipe(entity, player)
     local entityPosition = entity.position
-    entity.surface.create_entity {
+    local new = entity.surface.create_entity {
         name = entity.prototype.mineable_properties.products[1].name,
         position = entityPosition,
         force = entity.force,
         fast_replace = true,
         spill = false
-    }.surface.create_entity {
+    }
+    new.surface.create_entity {
         name = 'flying-text',
         position = entityPosition,
-        text = 'Pipe unclamped!',
+        text = {'advanced-pipe.unclamped'},
         color = {g = 1}
     }
+    new.last_user = player
     if entity then
         entity.destroy()
     end
 end
 
+local function lockPipe(event)
+    local player = game.players[event.player_index]
+    local selection = player.selected
+    if selection and selection.type == 'pipe' and selection.force == player.force then
+        local clamped = string.find(selection.name, '%-clamped%-')
+        if not clamped and selection.name ~= '4-to-4-pipe' then
+            clampPipe(selection, player)
+        elseif clamped then
+            unClampPipe(selection, player)
+        end
+    end
+end
+script.on_event('lock-pipe', lockPipe)
 
-
-
-script.on_event('lock-pipe', function(event)
+local function rotateUndergroundPipe(event)
     local player = game.players[event.player_index]
     local selection = player.selected
     if selection and selection.force == player.force then
-        local nameCheck = selection.name
-        if selection.type == 'pipe' and not string.match(selection.name, "%-clamped%-") and selection.name ~= "4-to-4-pipe" then
-            clampPipe(selection)
-        elseif selection.type == 'pipe' and string.match(nameCheck, "%-clamped%-") then
-            unClampPipe(selection)
+        local researched = player.force.technologies['advanced-underground-piping'].researched
+        if (selection.type == 'pipe-to-ground' or (selection.type == 'entity-ghost' and selection.ghost_type == 'pipe-to-ground')) and researched then
+            RotateUnderground(selection, player.surface)
         end
     end
-end)
+end
 
 script.on_event('rotate-underground-pipe', function(event)
         local player = game.players[event.player_index]
