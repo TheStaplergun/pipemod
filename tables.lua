@@ -130,21 +130,4 @@ data.pipetable = {
         ['one-to-three-reverse-t3-pipe'] = 'one-to-three-forward-t3-pipe',
         ['one-to-three-left-t3-pipe'] = 'one-to-three-forward-t3-pipe'
     }
-    data.clampedPipeName = {
-        --1 =
-        --2 =
-        [3] = "-clamped-EW",
-        --4 =
-        [5] = "-clamped-NW",
-        [6] = "-clamped-NE",
-        [7] = "-clamped-NEW",
-        --8 =
-        [9] = "-clamped-SW",
-        [10] = "-clamped-SE",
-        [11] = "-clamped-SEW",
-        [12] = "-clamped-NS",
-        [13] = "-clamped-NSW",
-        [14] = "-clamped-NSE",
-        --[15] = "-clamped-nsew",
-    }
 return data

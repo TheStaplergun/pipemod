@@ -4,7 +4,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-one-forward-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-1-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-one-t2.png",
       icon_size = 32,
       flags = {"goes-to-quickbar"},
       subgroup = "pipes-to-ground-t2",
@@ -15,7 +15,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-one-right-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-1-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-one-t2.png",
       icon_size = 32,
       flags = {"hidden"},
       subgroup = "pipes-to-ground-t2",
@@ -26,7 +26,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-one-reverse-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-1-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-one-t2.png",
       icon_size = 32,
       flags = {"hidden"},
       subgroup = "pipes-to-ground-t2",
@@ -37,7 +37,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-one-left-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-1-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-one-t2.png",
       icon_size = 32,
       flags = {"hidden"},
       subgroup = "pipes-to-ground-t2",
@@ -49,7 +49,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-two-parallel-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-2-parallel-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-two-parallel-t2.png",
       icon_size = 32,
       flags = {"hidden"},
       subgroup = "pipes-to-ground-t2",
@@ -60,7 +60,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-two-perpendicular-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-2-parallel-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-two-parallel-t2.png",
       icon_size = 32,
       flags = {"goes-to-quickbar"},
       subgroup = "pipes-to-ground-t2",
@@ -71,7 +71,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-two-L-FL-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-two-L-t2.png",
       icon_size = 32,
       flags = {"goes-to-quickbar"},
       subgroup = "pipes-to-ground-t2",
@@ -82,7 +82,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-two-L-FR-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-two-L-t2.png",
       icon_size = 32,
       flags = {"hidden"},
       subgroup = "pipes-to-ground-t2",
@@ -93,7 +93,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-two-L-RR-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-two-L-t2.png",
       icon_size = 32,
       flags = {"hidden"},
       subgroup = "pipes-to-ground-t2",
@@ -104,7 +104,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-two-L-RL-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-two-L-t2.png",
       icon_size = 32,
       flags = {"hidden"},
       subgroup = "pipes-to-ground-t2",
@@ -116,7 +116,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-three-forward-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-3-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-three-t2.png",
       icon_size = 32,
       flags = {"goes-to-quickbar"},
       subgroup = "pipes-to-ground-t2",
@@ -127,7 +127,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-three-right-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-3-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-three-t2.png",
       icon_size = 32,
       flags = {"hidden"},
       subgroup = "pipes-to-ground-t2",
@@ -138,7 +138,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-three-reverse-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-3-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-three-t2.png",
       icon_size = 32,
       flags = {"hidden"},
       subgroup = "pipes-to-ground-t2",
@@ -149,7 +149,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-three-left-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-3-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-three-t2.png",
       icon_size = 32,
       flags = {"hidden"},
       subgroup = "pipes-to-ground-t2",
@@ -161,7 +161,7 @@ data:extend(
     {
       type = "item",
       name = "one-to-four-t2-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/1-to-4-t2.png",
+      icon = "__underground-pipe-pack__/graphics/icons/one-to-four-t2.png",
       icon_size = 32,
       flags = {"goes-to-quickbar"},
       subgroup = "pipes-to-ground-t2",

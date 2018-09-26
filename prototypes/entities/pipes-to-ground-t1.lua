@@ -4,7 +4,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-one-forward-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-1-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-one-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-one-forward-pipe"},
@@ -113,7 +113,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-one-right-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-1-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-one-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-one-forward-pipe"},
@@ -222,7 +222,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-one-reverse-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-1-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-one-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-one-forward-pipe"},
@@ -331,7 +331,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-one-left-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-1-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-one-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-one-forward-pipe"},
@@ -441,7 +441,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-two-parallel-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-parallel-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-two-parallel-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-two-perpendicular-pipe"},
@@ -554,7 +554,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-two-perpendicular-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-parallel-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-two-parallel-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-two-perpendicular-pipe"},
@@ -668,7 +668,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-two-L-FL-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-two-L-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-two-L-FL-pipe"},
@@ -782,7 +782,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-two-L-FR-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-two-L-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-two-L-FL-pipe"},
@@ -895,7 +895,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-two-L-RR-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-two-L-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-two-L-FL-pipe"},
@@ -1008,7 +1008,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-two-L-RL-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-2-L-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-two-L-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-two-L-FL-pipe"},
@@ -1122,7 +1122,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-three-forward-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-3-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-three-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-three-forward-pipe"},
@@ -1239,7 +1239,7 @@ data:extend(
     {
     type = "pipe-to-ground",
     name = "one-to-three-right-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-3-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-three-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-three-forward-pipe"},
@@ -1356,7 +1356,7 @@ data:extend(
     {
     type = "pipe-to-ground",
     name = "one-to-three-reverse-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-3-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-three-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-three-forward-pipe"},
@@ -1473,7 +1473,7 @@ data:extend(
     {
     type = "pipe-to-ground",
     name = "one-to-three-left-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-3-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-three-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-three-forward-pipe"},
@@ -1591,7 +1591,7 @@ data:extend(
   {
     type = "pipe-to-ground",
     name = "one-to-four-pipe",
-    icon = "__underground-pipe-pack__/graphics/icons/1-to-4-t1.png",
+    icon = "__underground-pipe-pack__/graphics/icons/one-to-four-t1.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "one-to-four-pipe"},
