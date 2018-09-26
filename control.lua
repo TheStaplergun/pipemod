@@ -3,6 +3,7 @@ script.on_init(modInit.mod_init)
 script.on_configuration_changed(modInit.mod_init)
 
 require("scripts.clamp-tool")
+
 local advancedPiping = require('tables')
 
 local function checkForCorrections(entity)

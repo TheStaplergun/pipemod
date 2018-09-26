@@ -104,6 +104,9 @@ local function unClampPipe(entity, player)
 end
 
 local function lockPipe(event)
+    if game.active_mods["clamp-pipe"] then
+        return
+    end
     local player = game.players[event.player_index]
     local selection = player.selected
     if selection and selection.type == 'pipe' and selection.force == player.force then

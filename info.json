@@ -9,6 +9,7 @@
   "description": "Adds new functionality to underground piping.",
   "dependencies": [
   "base >= 0.16.0",
-  "? Dectorio"
+  "? Dectorio",
+  "? clamp-tool"
   ]
 }

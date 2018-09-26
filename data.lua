@@ -39,7 +39,7 @@ data:extend({
     key_sequence = "CONTROL + SHIFT + ALT + PAD 0",
     linked_game_control = 'rotate',
     consuming = "script-only"
-  },
+  }
   --[[{
     type = "custom-input",
     name = "reset-mod",
