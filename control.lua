@@ -173,25 +173,11 @@ script.on_event(defines.events.on_built_entity, onBuilt)
 --[[script.on_event("reset-mod", modInit.reset)]]-- --?Why
 
 local function getEW(deltaX)
-    if deltaX > 0 then
-        --west
-        return 1
-    end
-    if deltaX < 0 then
-        --east
-        return 2
-    end
+    return deltaX > 0 and 1 or 2
 end
 
 local function getNS(deltaY)
-    if deltaY > 0 then
-        --north
-        return 4
-    end
-    if deltaY < 0 then
-        --south
-        return 8
-    end
+    return deltaY > 0 and 4 or 8
 end
 
 
