@@ -56,7 +56,7 @@ local dontChange = {
 local pipeEntities = {}
 for i, pipe in pairs(data.raw['pipe']) do
     for name, pipeData in pairs(nameTable) do
-        if not pipe.clamped and not string.find(pipe.name, 'dummy%-') then
+        if not pipe.clamped and not string.find(pipe.name, 'dummy%-') and not string.find(pipe.name, '%[') then
             local currentEntity = util.table.deepcopy(pipe)
 
             currentEntity.name = pipe.name .. '-clamped-' .. name
