@@ -251,7 +251,7 @@ local function unClampPipe(entity, player)
         name = 'flying-text',
         position = entityPosition,
         text = {'advanced-pipe.unclamped'},
-        color = {g = 1}
+        color = {r = 1, g = 1}
     }
     new.last_user = player
     if entity then
