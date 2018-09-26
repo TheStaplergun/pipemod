@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.62
+Date: 9/26/2018
+  Features:
+    - Moved clamp script to own file
+    - Optional dependency for pipe-clamp mod
+  Fixes:
+    - Fix conflict with own mod
+    - Fix issue brought up in discussions forum with [] in pipe name
+---------------------------------------------------------------------------------------------------
 Version: 0.16.61
 Date: 9/25/2018
   Features:
