@@ -1,3 +1,4 @@
+require("prototypes.entities.pipecovers-t1")
 require("prototypes.entities.pipecovers-t2")
 require("prototypes.entities.pipecovers-t3")
 require("prototypes.entities.underground-pipes-t1")
