@@ -1,8 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.64
+Date: 9/26/2018
+  Fixes:
+    - Fixed issue with case sensitivity in certain icon paths (success)
+---------------------------------------------------------------------------------------------------
 Version: 0.16.63
 Date: 9/26/2018
   Fixes:
-    - Fixed issue with case sensitivity in certain icon paths
+    - Fixed issue with case sensitivity in certain icon paths (Failed)
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.62
 Date: 9/26/2018
