@@ -182,6 +182,15 @@ local function rotateUndergroundPipe(event)
 end
 script.on_event('rotate-underground-pipe', rotateUndergroundPipe)
 
+-- Cheat Mode HAX
+local function on_player_pipette(event)
+    if event.used_cheat_mode and event.item and advancedPiping.correctBluePrintTable[event.item.name] then
+        local player = game.players[event.player_index]
+        player.cursor_stack.set_stack(advancedPiping.correctBluePrintTable[event.item.name])
+    end
+end
+script.on_event(defines.events.on_player_pipette, on_player_pipette)
+
 local function get_pipe_table()
     return advancedPiping.pipetable
 end
