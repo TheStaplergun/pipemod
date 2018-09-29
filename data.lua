@@ -9,7 +9,6 @@ require("prototypes.entities.pipes-to-ground-t1")
 require("prototypes.entities.pipes-to-ground-t2")
 require("prototypes.entities.pipes-to-ground-t3")
 require("prototypes.entities.pipes")
-require("prototypes.entities.markers")
 require("prototypes.groups")
 require("prototypes.items.items-t1")
 require("prototypes.items.items-t2")
@@ -26,15 +25,6 @@ data:extend{
         type = "custom-input",
         name = "rotate-underground-pipe",
         key_sequence = "CONTROL + R",
-        consuming = "script-only"
-    }
-}
-
-data:extend{
-    {
-        type = "custom-input",
-        name = "show-underground-sprites",
-        key_sequence = "CONTROL + SHIFT + P",
         consuming = "script-only"
     }
 }
