@@ -21,30 +21,20 @@ require("prototypes.recipes.recipes-t3")
 require("prototypes.recipes.recipes-intermediary")
 require("prototypes.technology")
 
-data:extend({
-  {
-    type = "custom-input",
-    name = "rotate-underground-pipe",
-    key_sequence = "CONTROL + R",
-    consuming = "script-only"
-  },
-  {
-    type = "custom-input",
-    name = "show-underground-sprites",
-    key_sequence = "CONTROL + SHIFT + P",
-    consuming = "script-only"
-  },
-  {
-    type = "custom-input",
-    name = "lock-pipe",
-    key_sequence = "CONTROL + SHIFT + ALT + PAD 0",
-    linked_game_control = 'rotate',
-    consuming = "script-only"
-  }
-  --[[{
-    type = "custom-input",
-    name = "reset-mod",
-    key_sequence = "CONTROL + P",
-    consuming = "script-only"
-  },]]--
-})
+data:extend{
+    {
+        type = "custom-input",
+        name = "rotate-underground-pipe",
+        key_sequence = "CONTROL + R",
+        consuming = "script-only"
+    }
+}
+
+data:extend{
+    {
+        type = "custom-input",
+        name = "show-underground-sprites",
+        key_sequence = "CONTROL + SHIFT + P",
+        consuming = "script-only"
+    }
+}

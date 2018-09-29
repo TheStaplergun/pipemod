@@ -2,8 +2,6 @@ local modInit = require('init')
 script.on_init(modInit.mod_init)
 script.on_configuration_changed(modInit.mod_init)
 
-require("scripts.clamp-tool")
-
 local advancedPiping = require('tables')
 
 local function checkForCorrections(entity)
@@ -234,4 +232,14 @@ local function showUndergroundSprites(event)
         end
     end
 end
-script.on_event('show-underground-sprites', showUndergroundSprites)
+if modInit.noUgSprites then
+    script.on_event('show-underground-sprites', showUndergroundSprites)
+end
+
+local function get_pipe_table()
+    return advancedPiping.pipetable
+end
+local function get_ignored_pipes()
+    return advancedPiping.ignore
+end
+remote.add_interface(script.mod_name, {get_pipe_table = get_pipe_table, get_ignored_pipes = get_ignored_pipes})
