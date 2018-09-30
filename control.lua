@@ -182,59 +182,14 @@ local function rotateUndergroundPipe(event)
 end
 script.on_event('rotate-underground-pipe', rotateUndergroundPipe)
 
-local function showUndergroundSprites(event)
-    local player = game.players[event.player_index]
-    if player.force.technologies['advanced-underground-piping'].researched then
-        local filter = {
-            area = {{player.position.x - 80, player.position.y - 50}, {player.position.x + 80, player.position.y + 50}},
-            type = {'pipe-to-ground', 'pump'},
-            force = player.force
-        }
-        for _, entity in pairs(player.surface.find_entities_filtered(filter)) do
-            if entity.type == 'pipe-to-ground' or (entity.type == 'pump' and entity.name == 'underground-mini-pump') then
-                local neighborCounter = 0
-                local maxNeighbors = advancedPiping.pipetable[entity.name] or 2
-                for _, entities in pairs(entity.neighbours) do
-                    for _, neighbour in pairs(entities) do
-                        neighborCounter = neighborCounter + 1
-                        if (entity.position.x - neighbour.position.x) < -1.5 then
-                            local distancex = neighbour.position.x - entity.position.x
-                            for i = 1, distancex - 1, 1 do
-                                player.surface.create_entity {
-                                    name = 'underground-pipe-marker-horizontal',
-                                    position = {entity.position.x + i, entity.position.y}
-                                }
-                            end
-                        end
-                        if (entity.position.y - neighbour.position.y) < -1.5 then
-                            local distancey = neighbour.position.y - entity.position.y
-                            for i = 1, distancey - 1, 1 do
-                                player.surface.create_entity {
-                                    name = 'underground-pipe-marker-vertical',
-                                    position = {entity.position.x, entity.position.y + i}
-                                }
-                            end
-                        end
-                    end
-                    if (maxNeighbors == neighborCounter) then
-                        entity.surface.create_entity {
-                            name = 'pipe-marker-box-good',
-                            position = entity.position
-                        }
-                    elseif (neighborCounter < maxNeighbors) then
-                        entity.surface.create_entity {
-                            name = 'pipe-marker-box-bad',
-                            position = entity.position
-                        }
-                    end
-                end
-            end
-        end
+-- Cheat Mode HAX
+local function on_player_pipette(event)
+    if event.used_cheat_mode and event.item and advancedPiping.correctBluePrintTable[event.item.name] then
+        local player = game.players[event.player_index]
+        player.cursor_stack.set_stack(advancedPiping.correctBluePrintTable[event.item.name])
     end
 end
-if modInit.noUgSprites then
-    script.on_event('show-underground-sprites', showUndergroundSprites)
-end
+script.on_event(defines.events.on_player_pipette, on_player_pipette)
 
 local function get_pipe_table()
     return advancedPiping.pipetable
