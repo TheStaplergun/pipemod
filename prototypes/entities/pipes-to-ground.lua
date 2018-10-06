@@ -3,63 +3,35 @@ local south = {position = {0, 1}}
 local west = {position = {-1, 0}}
 local east = {position = {1, 0}}
 
-local directionTable = {
-  ['N'] = {
-    positions = {north}
-  },
-  ['S'] = {
-    positions = {south}
-  },
-  ['E'] = {
-    positions = {east}
-  },
-  ['W'] = {
-    positions = {west}
-  },
-  ['EW'] = {
-      positions = {east, west}
-  },
-  ['NW'] = {
-      positions = {north, west}
-  },
-  ['NE'] = {
-      positions = {north, east}
-  },
-  ['NEW'] = {
-      positions = {north, east, west}
-  },
-  ['SW'] = {
-      positions = {south, west}
-  },
-  ['SE'] = {
-      positions = {south, east}
-  },
-  ['SEW'] = {
-      positions = {south, east, west}
-  },
-  ['NS'] = {
-      positions = {north, south}
-  },
-  ['NSW'] = {
-      positions = {north, south, west}
-  },
-  ['NSE'] = {
-      positions = {north, south, east}
-  },
-  ['NSEW'] = {
-    positions = {north, south, east, west}
-  }
+local direction_table = {
+  ['N'] = {north},
+  ['S'] = {south},
+  ['E'] = {east},
+  ['W'] = {west},
+  ['EW'] = {east, west},
+  ['NW'] = {north, west},
+  ['NE'] = {north, east},
+  ['NEW'] = {north, east, west},
+  ['SW'] = {south, west},
+  ['SE'] = {south, east},
+  ['SEW'] = {south, east, west},
+  ['NS'] = {north, south},
+  ['NSW'] = {north, south, west},
+  ['NSE'] = {north, south, east},
+  ['NSEW'] = {north, south, east, west}
 }
-local base_ug_distance = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"].fluid_box)
-local function setUGDistance(directions, level)
-  local ugConnectionsTable = {}
-  for _, data in pairs(directionTable[directions].positions) do
-    ugConnectionsTable[#ugConnectionsTable + 1] = {
-      util.table.deepcopy(data),
-      base_ug_distance = (base_ug_distance + 1) * level
+local base_ug_distance = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"].fluid_box.pipe_connections[2].max_underground_distance)
+local function build_connections_table(directions, level)
+  local connections_table = {
+    { position = {0, -1} },
+  }
+  for _, datas in pairs(direction_table[directions]) do
+    connections_table[#connections_table + 1] = {
+      position = datas.position,
+      max_underground_distance = (base_ug_distance + 1) * level
     }
   end
-  return ugConnectionsTable
+  return connections_table
 end
 
 local namesTable = {
@@ -78,7 +50,7 @@ local namesTable = {
   ["one-to-two"] = {
     {
       icon = "one-to-two-parallel",
-      mine_and_place = "-perpendicular-pipe",
+      mine_and_place = "-perpendicular-pipe", 
       variant = {
       ["-perpendicular-"] = "EW",
       ["-parallel-"] = "NS",
@@ -86,7 +58,7 @@ local namesTable = {
     },
     {
       icon = "one-to-two-l",
-      mine_and_place = "-L-FL-pipe",
+      mine_and_place = "-L-FL-pipe", 
       variant = {
         ["-L-FL-"] = "SE",
         ["-L-FR-"] = "SW",
@@ -98,7 +70,7 @@ local namesTable = {
   ["one-to-three"] = {
     {
       icon = "one-to-three",
-      mine_and_place = "-forward-pipe",
+      mine_and_place = "-forward-pipe", 
       variant = {
       ["-forward-"] = "SEW",
       ["-left-"] = "NSE",
@@ -110,7 +82,7 @@ local namesTable = {
   ["one-to-four"] = {
     {
       icon = "one-to-four",
-      mine_and_place = "-pipe",
+      mine_and_place = "-pipe", 
       variant = {
         ["-"] = "NSEW"
       }
@@ -131,24 +103,90 @@ local levelsTable = {
   ["3"] = 3
 }
 
+local file_path = "__underground-pipe-pack__/graphics/entity/level-"
+local function build_picture_table(type, variant, level)
+  return {
+    up = {
+      filename = file_path .. level .. "/" .. type .. variant .. "pipe-up.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      hr_version = 
+      {
+        filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-up.png",
+        priority = "extra-high",
+        width = 128,
+        height = 128,
+        scale = 0.5
+      }
+    },
+    down = {
+      filename = file_path .. level .. "/" .. type .. variant .. "pipe-down.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      hr_version = 
+      {
+        filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-down.png",
+        priority = "extra-high",
+        width = 128,
+        height = 128,
+        scale = 0.5
+      }
+    },
+    left = {
+      filename = file_path .. level .. "/" .. type .. variant .. "pipe-left.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      hr_version = 
+      {
+        filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-left.png",
+        priority = "extra-high",
+        width = 128,
+        height = 128,
+        scale = 0.5
+      }
+    },
+    right = {
+      filename = file_path .. level .. "/" .. type .. variant .. "pipe-right.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      hr_version = 
+      {
+        filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-right.png",
+        priority = "extra-high",
+        width = 128,
+        height = 128,
+        scale = 0.5
+      }
+    }
+  }
+end
+
+
 local pipes ={}
 for types, sets in pairs(namesTable) do
-  for _ , data in pairs(sets) do
-    for variants, directions in pairs(data.variant) do
+  for set_index , datas in pairs(sets) do
+    for variants, directions in pairs(datas.variant) do
       for levelsS , levelsN in pairs(levelsTable) do
         local currentPipe = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"])
-        local currentName = types .. variants .. "pipe"
-        currentPipe.name = currentName
-        currentPipe.icon = "__underground-pipe-pack__/graphics/icons/" .. data.icon .. "-t" .. levelsS .. ".png"
+        if levelsS == "1" then
+          currentPipe.name = types .. variants ..  "pipe"
+        else
+          currentPipe.name = types .. variants .. "t" .. levelsS .. "-pipe"
+        end
+        currentPipe.icon = "__underground-pipe-pack__/graphics/icons/" .. datas.icon .. "-t" .. levelsS .. ".png"
+        currentPipe.placeable_by = {item = types .. datas.mine_and_place, count = 1}
         local fluidBox = util.table.deepcopy(currentPipe.fluid_box)
         fluidBox.pipe_covers = _G.tierpipecoverspictures(levelsS)
-        fluidBox.pipe_connections =
-        {
-          { position = { 0, -1 } },
-          setUGDistance(directions, levelsN)
-        }
+        fluidBox.pipe_connections = build_connections_table(directions, levelsN)
         currentPipe.fluid_box = fluidBox
+        currentPipe.pictures = build_picture_table(types, variants, levelsS)
+        pipes[#pipes + 1] = currentPipe
       end
     end
   end
 end
+data:extend(pipes)
