@@ -57,7 +57,7 @@ local namesTable = {
       }
     },
     {
-      icon = "one-to-two-l",
+      icon = "one-to-two-L",
       mine_and_place = "-L-FL-pipe", 
       variant = {
         ["-L-FL-"] = "SE",
