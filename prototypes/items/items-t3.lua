@@ -12,51 +12,7 @@ data:extend(
       place_result = "one-to-one-forward-t3-pipe",
       stack_size = 50
     },
-    {
-      type = "item",
-      name = "one-to-one-right-t3-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/one-to-one-t3.png",
-      icon_size = 32,
-      flags = {"hidden"},
-      subgroup = "pipes-to-ground-t3",
-      order = "e-a",
-      place_result = "one-to-one-right-t3-pipe",
-      stack_size = 50
-    },
-    {
-      type = "item",
-      name = "one-to-one-reverse-t3-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/one-to-one-t3.png",
-      icon_size = 32,
-      flags = {"hidden"},
-      subgroup = "pipes-to-ground-t3",
-      order = "e-a",
-      place_result = "one-to-one-reverse-t3-pipe",
-      stack_size = 50
-    },
-    {
-      type = "item",
-      name = "one-to-one-left-t3-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/one-to-one-t3.png",
-      icon_size = 32,
-      flags = {"hidden"},
-      subgroup = "pipes-to-ground-t3",
-      order = "e-a",
-      place_result = "one-to-one-left-t3-pipe",
-      stack_size = 50
-    },
     -- ONE TO TWO PIPES
-    {
-      type = "item",
-      name = "one-to-two-parallel-t3-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/one-to-two-parallel-t3.png",
-      icon_size = 32,
-      flags = {"hidden"},
-      subgroup = "pipes-to-ground-t3",
-      order = "e-b",
-      place_result = "one-to-two-parallel-t3-pipe",
-      stack_size = 50
-    },
     {
       type = "item",
       name = "one-to-two-perpendicular-t3-pipe",
@@ -79,39 +35,6 @@ data:extend(
       place_result = "one-to-two-L-FL-t3-pipe",
       stack_size = 50
     },
-    {
-      type = "item",
-      name = "one-to-two-L-FR-t3-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/one-to-two-L-t3.png",
-      icon_size = 32,
-      flags = {"hidden"},
-      subgroup = "pipes-to-ground-t3",
-      order = "e-c",
-      place_result = "one-to-two-L-FR-t3-pipe",
-      stack_size = 50
-    },
-    {
-      type = "item",
-      name = "one-to-two-L-RR-t3-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/one-to-two-L-t3.png",
-      icon_size = 32,
-      flags = {"hidden"},
-      subgroup = "pipes-to-ground-t3",
-      order = "e-c",
-      place_result = "one-to-two-L-RR-t3-pipe",
-      stack_size = 50
-    },
-    {
-      type = "item",
-      name = "one-to-two-L-RL-t3-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/one-to-two-L-t3.png",
-      icon_size = 32,
-      flags = {"hidden"},
-      subgroup = "pipes-to-ground-t3",
-      order = "e-c",
-      place_result = "one-to-two-L-RL-t3-pipe",
-      stack_size = 50
-    },
     -- ONE TO THREE PIPES
     {
       type = "item",
@@ -122,39 +45,6 @@ data:extend(
       subgroup = "pipes-to-ground-t3",
       order = "e-d",
       place_result = "one-to-three-forward-t3-pipe",
-      stack_size = 50
-    },
-    {
-      type = "item",
-      name = "one-to-three-right-t3-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/one-to-three-t3.png",
-      icon_size = 32,
-      flags = {"hidden"},
-      subgroup = "pipes-to-ground-t3",
-      order = "e-d",
-      place_result = "one-to-three-right-t3-pipe",
-      stack_size = 50
-    },
-    {
-      type = "item",
-      name = "one-to-three-reverse-t3-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/one-to-three-t3.png",
-      icon_size = 32,
-      flags = {"hidden"},
-      subgroup = "pipes-to-ground-t3",
-      order = "e-d",
-      place_result = "one-to-three-reverse-t3-pipe",
-      stack_size = 50
-    },
-    {
-      type = "item",
-      name = "one-to-three-left-t3-pipe",
-      icon = "__underground-pipe-pack__/graphics/icons/one-to-three-t3.png",
-      icon_size = 32,
-      flags = {"hidden"},
-      subgroup = "pipes-to-ground-t3",
-      order = "e-d",
-      place_result = "one-to-three-left-t3-pipe",
       stack_size = 50
     },
     -- ONE TO FOUR PIPES

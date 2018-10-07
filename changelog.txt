@@ -4,6 +4,7 @@ Date: 9/26/2018
   Changes:
     - Removed pipeclamp (get PickerPipeTools)
     - Removed pipehighlight (get PickerPipeTools)
+    - Blueprinted items behave like they should now. No more scripts to fix.
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.64
 Date: 9/26/2018

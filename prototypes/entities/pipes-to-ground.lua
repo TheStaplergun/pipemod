@@ -38,7 +38,7 @@ local namesTable = {
   ["one-to-one"] = {
     {
       icon = "one-to-one",
-      mine_and_place = "-forward-pipe",
+      mine_and_place = "-forward",
       variant = {
       ["-forward-"] = "S",
       ["-left-"] = "E",
@@ -50,7 +50,7 @@ local namesTable = {
   ["one-to-two"] = {
     {
       icon = "one-to-two-parallel",
-      mine_and_place = "-perpendicular-pipe", 
+      mine_and_place = "-perpendicular", 
       variant = {
       ["-perpendicular-"] = "EW",
       ["-parallel-"] = "NS",
@@ -58,7 +58,7 @@ local namesTable = {
     },
     {
       icon = "one-to-two-L",
-      mine_and_place = "-L-FL-pipe", 
+      mine_and_place = "-L-FL", 
       variant = {
         ["-L-FL-"] = "SE",
         ["-L-FR-"] = "SW",
@@ -70,7 +70,7 @@ local namesTable = {
   ["one-to-three"] = {
     {
       icon = "one-to-three",
-      mine_and_place = "-forward-pipe", 
+      mine_and_place = "-forward", 
       variant = {
       ["-forward-"] = "SEW",
       ["-left-"] = "NSE",
@@ -82,7 +82,7 @@ local namesTable = {
   ["one-to-four"] = {
     {
       icon = "one-to-four",
-      mine_and_place = "-pipe", 
+      mine_and_place = "", 
       variant = {
         ["-"] = "NSEW"
       }
@@ -174,11 +174,14 @@ for types, sets in pairs(namesTable) do
         local currentPipe = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"])
         if levelsS == "1" then
           currentPipe.name = types .. variants ..  "pipe"
+          currentPipe.minable.result = types .. datas.mine_and_place .. "-pipe"
+          currentPipe.placeable_by = {item = types .. datas.mine_and_place .. "-pipe", count = 1}
         else
           currentPipe.name = types .. variants .. "t" .. levelsS .. "-pipe"
+          currentPipe.minable.result = types .. datas.mine_and_place .. "-t" .. levelsS .. "-pipe"
+          currentPipe.placeable_by = {item = types .. datas.mine_and_place .. "-t" .. levelsS .. "-pipe", count = 1}
         end
         currentPipe.icon = "__underground-pipe-pack__/graphics/icons/" .. datas.icon .. "-t" .. levelsS .. ".png"
-        currentPipe.placeable_by = {item = types .. datas.mine_and_place, count = 1}
         local fluidBox = util.table.deepcopy(currentPipe.fluid_box)
         fluidBox.pipe_covers = _G.tierpipecoverspictures(levelsS)
         fluidBox.pipe_connections = build_connections_table(directions, levelsN)

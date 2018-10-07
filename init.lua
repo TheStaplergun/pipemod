@@ -1,17 +1,26 @@
 local init = {}
 local versionsTable = {
-    ["0.16.54"] = true,
-    ["0.16.53"] = true
-}
-local migrateToFiveNine = {
+    ["0.16.64"] = true,
+    ["0.16.63"] = true,
+    ["0.16.62"] = true,
+    ["0.16.61"] = true,
+    ["0.16.60"] = true,
+    ["0.16.59"] = true,
     ["0.16.58"] = true,
-    ["0.16.57"] = true,
-    ["0.16.56"] = true,
-    ["0.16.55"] = true,
-    ["0.16.54"] = true,
-    ["0.16.53"] = true
+    ["0.16.57"] = true
 }
 function init.mod_init(modData)
+    global.correctTable = nil
+    if modData
+        and modData.mod_changes["underground-pipe-pack"]
+        and modData.mod_changes["underground-pipe-pack"].old_version
+    then
+        if versionsTable[modData.mod_changes["underground-pipe-pack"].old_version] then
+            game.print("Pipe clamp and highlight tool have been migrated to a new mod")
+            game.print("Download 'PickerPipeTools' from the mod portal to keep clamped pipes")
+        end
+    end
+        --[[
     if not global.correctTable then
         global.correctTable =
         {
@@ -80,7 +89,7 @@ function init.mod_init(modData)
                         ["one-to-three-forward-t3-pipe"] = true,
             }
         end
-    end
+    end]]
 end
 
 
