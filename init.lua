@@ -16,8 +16,8 @@ function init.mod_init(modData)
         and modData.mod_changes["underground-pipe-pack"].old_version
     then
         if versionsTable[modData.mod_changes["underground-pipe-pack"].old_version] then
-            game.print("Pipe clamp and highlight tool have been migrated to a new mod")
-            game.print("Download 'PickerPipeTools' from the mod portal to keep clamped pipes")
+            game.print("Pipe clamp and highlight tool have been migrated to a new mod 'PickerPipeTools'")
+            game.print("Download 'PickerPipeTools' from the mod portal to keep clamped pipes and more tools")
         end
     end
         --[[
