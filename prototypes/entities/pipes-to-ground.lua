@@ -50,7 +50,7 @@ local namesTable = {
   ["one-to-two"] = {
     {
       icon = "one-to-two-parallel",
-      mine_and_place = "-perpendicular", 
+      mine_and_place = "-perpendicular",
       variant = {
       ["-perpendicular-"] = "EW",
       ["-parallel-"] = "NS",
@@ -58,7 +58,7 @@ local namesTable = {
     },
     {
       icon = "one-to-two-L",
-      mine_and_place = "-L-FL", 
+      mine_and_place = "-L-FL",
       variant = {
         ["-L-FL-"] = "SE",
         ["-L-FR-"] = "SW",
@@ -70,7 +70,7 @@ local namesTable = {
   ["one-to-three"] = {
     {
       icon = "one-to-three",
-      mine_and_place = "-forward", 
+      mine_and_place = "-forward",
       variant = {
       ["-forward-"] = "SEW",
       ["-left-"] = "NSE",
@@ -82,19 +82,12 @@ local namesTable = {
   ["one-to-four"] = {
     {
       icon = "one-to-four",
-      mine_and_place = "", 
+      mine_and_place = "",
       variant = {
         ["-"] = "NSEW"
       }
     }
   }
-}
-
-local directionsTable = {
-  "up",
-  "down",
-  "left",
-  "right"
 }
 
 local levelsTable = {
@@ -111,7 +104,7 @@ local function build_picture_table(type, variant, level)
       priority = "high",
       width = 64,
       height = 64,
-      hr_version = 
+      hr_version =
       {
         filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-up.png",
         priority = "extra-high",
@@ -125,7 +118,7 @@ local function build_picture_table(type, variant, level)
       priority = "high",
       width = 64,
       height = 64,
-      hr_version = 
+      hr_version =
       {
         filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-down.png",
         priority = "extra-high",
@@ -139,7 +132,7 @@ local function build_picture_table(type, variant, level)
       priority = "high",
       width = 64,
       height = 64,
-      hr_version = 
+      hr_version =
       {
         filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-left.png",
         priority = "extra-high",
@@ -153,7 +146,7 @@ local function build_picture_table(type, variant, level)
       priority = "high",
       width = 64,
       height = 64,
-      hr_version = 
+      hr_version =
       {
         filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-right.png",
         priority = "extra-high",
