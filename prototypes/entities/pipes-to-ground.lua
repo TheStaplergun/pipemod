@@ -161,7 +161,7 @@ end
 
 local pipes ={}
 for types, sets in pairs(namesTable) do
-  for set_index , datas in pairs(sets) do
+  for _ , datas in pairs(sets) do
     for variants, directions in pairs(datas.variant) do
       for levelsS , levelsN in pairs(levelsTable) do
         local currentPipe = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"])
