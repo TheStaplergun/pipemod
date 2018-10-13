@@ -131,6 +131,81 @@ data.correctBluePrintTable = {
     ['one-to-three-left-t3-pipe'] = 'one-to-three-forward-t3-pipe'
 }
 
+data.adjustable_valve_table = {
+    ["10-overflow-valve"] = {
+        previous_valve = nil,
+        next_valve = "20-overflow-valve"
+    },
+    ["20-overflow-valve"] = {
+        previous_valve = "10-overflow-valve",
+        next_valve = "30-overflow-valve"
+    },
+    ["30-overflow-valve"] = {
+        previous_valve = "20-overflow-valve",
+        next_valve = "40-overflow-valve"
+    },
+    ["40-overflow-valve"] = {
+        previous_valve = "30-overflow-valve",
+        next_valve = "50-overflow-valve"
+    },
+    ["50-overflow-valve"] = {
+        previous_valve = "40-overflow-valve",
+        next_valve = "60-overflow-valve"
+    },
+    ["60-overflow-valve"] = {
+        previous_valve = "50-overflow-valve",
+        next_valve = "70-overflow-valve"
+    },
+    ["70-overflow-valve"] = {
+        previous_valve = "60-overflow-valve",
+        next_valve = "80-overflow-valve"
+    },
+    ["80-overflow-valve"] = {
+        previous_valve = "70-overflow-valve",
+        next_valve = "90-overflow-valve"
+    },
+    ["90-overflow-valve"] = {
+        previous_valve = "80-overflow-valve",
+        next_valve = nil
+    },
+    ["10-top-up-valve"] = {
+        previous_valve = nil,
+        next_valve = "20-top-up-valve"
+    },
+    ["20-top-up-valve"] = {
+        previous_valve = "10-top-up-valve",
+        next_valve = "30-top-up-valve"
+    },
+    ["30-top-up-valve"] = {
+        previous_valve = "20-top-up-valve",
+        next_valve = "40-top-up-valve"
+    },
+    ["40-top-up-valve"] = {
+        previous_valve = "30-top-up-valve",
+        next_valve = "50-top-up-valve"
+    },
+    ["50-top-up-valve"] = {
+        previous_valve = "40-top-up-valve",
+        next_valve = "60-top-up-valve"
+    },
+    ["60-top-up-valve"] = {
+        previous_valve = "50-top-up-valve",
+        next_valve = "70-top-up-valve"
+    },
+    ["70-top-up-valve"] = {
+        previous_valve = "60-top-up-valve",
+        next_valve = "80-top-up-valve"
+    },
+    ["80-top-up-valve"] = {
+        previous_valve = "70-top-up-valve",
+        next_valve = "90-top-up-valve"
+    },
+    ["90-top-up-valve"] = {
+        previous_valve = "80-top-up-valve",
+        next_valve = nil
+    },
+}
+
 data.ignore = {
     ['4-to-4-pipe'] = '4-to-4-pipe'
 }

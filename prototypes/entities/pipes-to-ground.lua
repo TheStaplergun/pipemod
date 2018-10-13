@@ -179,6 +179,7 @@ for types, sets in pairs(namesTable) do
         fluidBox.pipe_covers = _G.tierpipecoverspictures(levelsS)
         fluidBox.pipe_connections = build_connections_table(directions, levelsN)
         currentPipe.fluid_box = fluidBox
+        currentPipe.fast_replaceable_group = "pipe-to-ground"
         currentPipe.pictures = build_picture_table(types, variants, levelsS)
         pipes[#pipes + 1] = currentPipe
       end

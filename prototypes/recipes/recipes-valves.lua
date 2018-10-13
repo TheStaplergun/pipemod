@@ -20,14 +20,14 @@ data:extend(
             enabled = true,
             result = "80-top-up-valve"
         },
-        --[[{
+        {
             type = 'recipe',
-            name = "50-mini-flow-valve",
+            name = "check-valve",
             ingredients = {
                 {'pipe', 1},
             },
             enabled = true,
-            result = "50-mini-flow-valve"
-        }]]
+            result = "check-valve"
+        }
     }
 )

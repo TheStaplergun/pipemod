@@ -37,6 +37,58 @@ local function rotateUndergroundPipe(event)
 end
 script.on_event('rotate-underground-pipe', rotateUndergroundPipe)
 
+local function plus_valve(event)
+    local player = game.players[event.player_index]
+    local selection = player.selected
+    if selection and selection.force == player.force then
+        local valve_table = advancedPiping.adjustable_valve_table
+        if valve_table[selection.name] and valve_table[selection.name].next_valve then
+            local old_valve_fluid = selection.fluidbox[1]
+            local new_valve =
+                selection.surface.create_entity {
+                name = valve_table[selection.name].next_valve,
+                position = selection.position,
+                direction = selection.direction,
+                force = selection.force,
+                fast_replace = true,
+                spill = false
+            }
+            new_valve.fluidbox[1] = old_valve_fluid
+            new_valve.last_user = player
+            if selection then
+                selection.destroy()
+            end
+        end
+    end
+end
+script.on_event('plus-valve', plus_valve)
+
+local function minus_valve(event)
+    local player = game.players[event.player_index]
+    local selection = player.selected
+    if selection and selection.force == player.force then
+        local valve_table = advancedPiping.adjustable_valve_table
+        if valve_table[selection.name] and valve_table[selection.name].previous_valve then
+            local old_valve_fluid = selection.fluidbox[1]
+            local new_valve =
+                selection.surface.create_entity {
+                name = valve_table[selection.name].previous_valve,
+                position = selection.position,
+                direction = selection.direction,
+                force = selection.force,
+                fast_replace = true,
+                spill = false
+            }
+            new_valve.fluidbox[1] = old_valve_fluid
+            new_valve.last_user = player
+            if selection then
+                selection.destroy()
+            end
+        end
+    end
+end
+script.on_event('minus-valve', minus_valve)
+
 -- Cheat Mode HAX
 local function on_player_pipette(event)
     if event.used_cheat_mode and event.item and advancedPiping.correctBluePrintTable[event.item.name] then

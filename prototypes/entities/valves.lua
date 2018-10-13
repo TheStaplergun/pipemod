@@ -3,46 +3,95 @@ local valve_table =
   ["overflow"] = {
     mine_and_place = "80-overflow-valve",
     percents = {
-      ["10"] = 0.1,
-      ["20"] = 0.2,
-      ["30"] = 0.3,
-      ["40"] = 0.4,
-      ["50"] = 0.5,
-      ["60"] = 0.6,
-      ["70"] = 0.7,
-      ["80"] = 0.8,
-      ["90"] = 0.9,
-      ["100"] = 0.99,
+      ["10"] = {
+        base_level = 0.1,
+        base_size = 0.9,
+      },
+      ["20"] = {
+        base_level = 0.2,
+        base_size = 0.8,
+      },
+      ["30"] = {
+        base_level = 0.3,
+        base_size = 0.7,
+      },
+      ["40"] = {
+        base_level = 0.4,
+        base_size = 0.6,
+      },
+      ["50"] = {
+        base_level = 0.5,
+        base_size = 0.5,
+      },
+      ["60"] = {
+        base_level = 0.6,
+        base_size = 0.4,
+      },
+      ["70"] = {
+        base_level = 0.7,
+        base_size = 0.3,
+      },
+      ["80"] = {
+        base_level = 0.8,
+        base_size = 0.2,
+      },
+      ["90"] = {
+        base_level = 0.9,
+        base_size = 0.1,
+      },
     }
   },
   ["top-up"] = {
     mine_and_place = "80-top-up-valve",
     percents = {
-    ["10"] = -0.9,
-    ["20"] = -0.8,
-    ["30"] = -0.7,
-    ["40"] = -0.6,
-    ["50"] = -0.5,
-    ["60"] = -0.4,
-    ["70"] = -0.3,
-    ["80"] = -0.2,
-    ["90"] = -0.1,
+      ["10"] = {
+        base_level = -0.9,
+        base_size = 0.9,
+      },
+      ["20"] = {
+        base_level = -0.8,
+        base_size = 0.8,
+      },
+      ["30"] = {
+        base_level = -0.7,
+        base_size = 0.7,
+      },
+      ["40"] = {
+        base_level = -0.6,
+        base_size = 0.6,
+      },
+      ["50"] = {
+        base_level = -0.5,
+        base_size = 0.5,
+      },
+      ["60"] = {
+        base_level = -0.4,
+        base_size = 0.4,
+      },
+      ["70"] = {
+        base_level = -0.3,
+        base_size = 0.3,
+      },
+      ["80"] = {
+        base_level = -0.2,
+        base_size = 0.2,
+      },
+      ["90"] = {
+        base_level = -0.1,
+        base_size = 0.1,
+      },
     }
   },
-  --[[["mini-flow"] = {
-    mine_and_place = "50-mini-flow-valve",
+  [""] = {
+    mine_and_place = "check-valve",
     percents = {
-      ["10"] = 0.1,
-      ["20"] = 0.2,
-      ["30"] = 0.3,
-      ["40"] = 0.4,
-      ["50"] = 0.5,
-      ["60"] = 0.6,
-      ["70"] = 0.7,
-      ["80"] = 0.8,
-      ["90"] = 0.9,
+      ["check"] =
+      {
+        base_level = 1,
+        base_size = 1
+      }
     }
-  },]]--
+  },
 }
 
 local empty_sprite =
@@ -58,7 +107,11 @@ local valves_to_add = {}
 for valve, datas in pairs(valve_table) do
   for percent, stat in pairs(datas.percents) do
     local current_valve = util.table.deepcopy(data.raw["storage-tank"]["storage-tank"])
-    current_valve.name = percent .. "-" .. valve .. "-valve"
+    if percent == "check" then
+      current_valve.name = percent .. "-" .. valve .. "valve"
+    else
+      current_valve.name = percent .. "-" .. valve .. "-valve"
+    end
     current_valve.icon = "__base__/graphics/icons/pipe.png"
     current_valve.minable.result = datas.mine_and_place
     current_valve.placeable_by = {item = datas.mine_and_place, count = 1}
@@ -83,11 +136,8 @@ for valve, datas in pairs(valve_table) do
         { position = {0, 1} }
       },
     }
-    if valve == "mini-flow" then
-      current_valve.fluid_box.height = stat
-    else
-      current_valve.fluid_box.base_level = stat
-    end
+    current_valve.fluid_box.base_level = stat.base_level
+    current_valve.fluid_box.base_area = stat.base_size
     current_valve.two_direction_only = false
     current_valve.pictures =
     {

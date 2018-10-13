@@ -24,16 +24,16 @@ data:extend(
       place_result = "80-top-up-valve",
       stack_size = 50
     },
-    --[[{
+    {
       type = "item",
-      name = "50-mini-flow-valve",
+      name = "check-valve",
       icon = "__base__/graphics/icons/pipe.png",
       icon_size = 32,
       flags = {"goes-to-quickbar"},
       subgroup = "pipes-to-ground",
       order = "c-c",
-      place_result = "50-mini-flow-valve",
+      place_result = "check-valve",
       stack_size = 50
-    },]]--
+    },
   }
 )
