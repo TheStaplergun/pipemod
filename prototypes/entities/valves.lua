@@ -371,7 +371,7 @@ for valve, datas in pairs(valve_table) do
       current_valve.localised_name = {"valves.check-valve-name"}
     else
       current_valve.name = percent .. "-" .. valve .. "-valve"
-      current_valve.localised_name = {"valves.valve-name", percent .. "% ", valve}
+      current_valve.localised_name = {"valves.valve-name", percent .. "%", valve}
     end
     current_valve.icon = "__base__/graphics/icons/pipe.png"
     current_valve.minable.result = datas.mine_and_place
