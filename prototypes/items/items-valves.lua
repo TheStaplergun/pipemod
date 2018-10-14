@@ -4,11 +4,11 @@ data:extend(
     {
       type = "item",
       name = "80-overflow-valve",
-      icon = "__base__/graphics/icons/pipe.png",
+      icon = "__underground-pipe-pack__/graphics/icons/overflow-valve.png",
       icon_size = 32,
       flags = {"goes-to-quickbar"},
-      subgroup = "pipes-to-ground",
-      order = "c-a",
+      subgroup = "underground-buildings",
+      order = "a-b",
       place_result = "80-overflow-valve",
       stack_size = 50
     },
@@ -16,22 +16,22 @@ data:extend(
     {
       type = "item",
       name = "80-top-up-valve",
-      icon = "__base__/graphics/icons/pipe.png",
+      icon = "__underground-pipe-pack__/graphics/icons/top-up-valve.png",
       icon_size = 32,
       flags = {"goes-to-quickbar"},
-      subgroup = "pipes-to-ground",
-      order = "c-b",
+      subgroup = "underground-buildings",
+      order = "a-b",
       place_result = "80-top-up-valve",
       stack_size = 50
     },
     {
       type = "item",
       name = "check-valve",
-      icon = "__base__/graphics/icons/pipe.png",
+      icon = "__underground-pipe-pack__/graphics/icons/check-valve.png",
       icon_size = 32,
       flags = {"goes-to-quickbar"},
-      subgroup = "pipes-to-ground",
-      order = "c-c",
+      subgroup = "underground-buildings",
+      order = "a-b",
       place_result = "check-valve",
       stack_size = 50
     },
