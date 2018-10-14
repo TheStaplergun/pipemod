@@ -1,23 +1,25 @@
 data:extend(
     {
-        -- ONE TO ONE PIPES
         {
             type = 'recipe',
             name = "80-overflow-valve",
             ingredients = {
                 {'pipe', 1},
+                {'iron-plate', 1},
+                {'iron-gear-wheel', 1},
             },
-            enabled = true,
+            enabled = false,
             result = "80-overflow-valve"
         },
-        -- ONE TO TWO PIPES
         {
             type = 'recipe',
             name = "80-top-up-valve",
             ingredients = {
                 {'pipe', 1},
+                {'iron-plate', 1},
+                {'iron-gear-wheel', 1},
             },
-            enabled = true,
+            enabled = false,
             result = "80-top-up-valve"
         },
         {
@@ -25,8 +27,10 @@ data:extend(
             name = "check-valve",
             ingredients = {
                 {'pipe', 1},
+                {'iron-plate', 1},
+                {'iron-gear-wheel', 1},
             },
-            enabled = true,
+            enabled = false,
             result = "check-valve"
         }
     }

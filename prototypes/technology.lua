@@ -74,6 +74,19 @@ data:extend({
       type = "unlock-recipe",
       recipe = "underground-pipe-segment-t1"
     },
+    -- VALVES
+    {
+      type = "unlock-recipe",
+      recipe = "80-overflow-valve"
+    },
+    {
+      type = "unlock-recipe",
+      recipe = "80-top-up-valve"
+    },
+    {
+      type = "unlock-recipe",
+      recipe = "check-valve"
+    },
   },
     unit =
     {
