@@ -368,13 +368,14 @@ for valve, datas in pairs(valve_table) do
     local current_valve = util.table.deepcopy(data.raw["storage-tank"]["storage-tank"])
     if percent == "check" then
       current_valve.name = percent .. "-" .. valve .. "valve"
+      current_valve.localised_name = {"valves.check-valve-name"}
     else
       current_valve.name = percent .. "-" .. valve .. "-valve"
+      current_valve.localised_name = {"valves.valve-name", percent .. "% ", valve}
     end
     current_valve.icon = "__base__/graphics/icons/pipe.png"
     current_valve.minable.result = datas.mine_and_place
     current_valve.placeable_by = {item = datas.mine_and_place, count = 1}
-    current_valve.localised_name = {"valves.valve-name", percent , valve}
     current_valve.corpse = "small-remnants"
     current_valve.max_health = data.raw["pipe"]["pipe"].max_health
     current_valve.resistances = data.raw["pipe"]["pipe"].resistances
