@@ -4,24 +4,34 @@ script.on_configuration_changed(modInit.mod_init)
 
 local advancedPiping = require('tables')
 
-local function RotateUnderground(oldPipe, player)
-    if not advancedPiping.getRotatedPipe[oldPipe.name] then
+local function RotateUnderground(old_pipe, player)
+    if not advancedPiping.getRotatedPipe[old_pipe.name] then
         return
     end
-    local oldPipeFluid = oldPipe.fluidbox[1]
-    local newPipe =
-        oldPipe.surface.create_entity {
-        name = advancedPiping.getRotatedPipe[oldPipe.name],
-        position = oldPipe.position,
-        direction = oldPipe.direction,
-        force = oldPipe.force,
+    local old_pipeFluid = old_pipe.fluidbox[1]
+    local event_data = {
+        entity = old_pipe,
+        player_index = player.index,
+    }
+    script.raise_event(defines.events.script_raised_destroy, event_data)
+    local new_pipe =
+        old_pipe.surface.create_entity {
+        name = advancedPiping.getRotatedPipe[old_pipe.name],
+        position = old_pipe.position,
+        direction = old_pipe.direction,
+        force = old_pipe.force,
         fast_replace = true,
         spill = false
     }
-    newPipe.fluidbox[1] = oldPipeFluid
-    newPipe.last_user = player
-    if oldPipe then
-        oldPipe.destroy()
+    new_pipe.fluidbox[1] = old_pipeFluid
+    new_pipe.last_user = player
+    event_data = {
+        created_entity = new_pipe,
+        player_index = player.index,
+    }
+    script.raise_event(defines.events.script_raised_built, event_data)
+    if old_pipe then
+        old_pipe.destroy()
     end
 end
 
@@ -44,6 +54,11 @@ local function plus_valve(event)
         local valve_table = advancedPiping.adjustable_valve_table
         if valve_table[selection.name] and valve_table[selection.name].next_valve then
             local old_valve_fluid = selection.fluidbox[1]
+            local event_data = {
+                entity = selection,
+                player_index = player.index,
+            }
+            script.raise_event(defines.events.script_raised_destroy, event_data)
             local new_valve =
                 selection.surface.create_entity {
                 name = valve_table[selection.name].next_valve,
@@ -55,6 +70,11 @@ local function plus_valve(event)
             }
             new_valve.fluidbox[1] = old_valve_fluid
             new_valve.last_user = player
+            event_data = {
+                created_entity = new_valve,
+                player_index = player.index,
+            }
+            script.raise_event(defines.events.script_raised_built, event_data)
             if selection then
                 selection.destroy()
             end
@@ -70,6 +90,11 @@ local function minus_valve(event)
         local valve_table = advancedPiping.adjustable_valve_table
         if valve_table[selection.name] and valve_table[selection.name].previous_valve then
             local old_valve_fluid = selection.fluidbox[1]
+            local event_data = {
+                entity = selection,
+                player_index = player.index,
+            }
+            script.raise_event(defines.events.script_raised_destroy, event_data)
             local new_valve =
                 selection.surface.create_entity {
                 name = valve_table[selection.name].previous_valve,
@@ -81,6 +106,11 @@ local function minus_valve(event)
             }
             new_valve.fluidbox[1] = old_valve_fluid
             new_valve.last_user = player
+            event_data = {
+                created_entity = new_valve,
+                player_index = player.index,
+            }
+            script.raise_event(defines.events.script_raised_built, event_data)
             if selection then
                 selection.destroy()
             end
