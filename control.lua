@@ -4,6 +4,18 @@ script.on_configuration_changed(modInit.mod_init)
 
 local advancedPiping = require('tables')
 
+local Event = require('lib/event')
+Event.protected_mode = true
+
+require('lib/area')
+require('lib/position')
+
+require('lib/player').register_events(true)
+
+local Player = require('lib/player')
+local Event = require('lib/event')
+local Position = require('lib/position')
+
 local function RotateUnderground(old_pipe, player)
     if not advancedPiping.getRotatedPipe[old_pipe.name] then
         return
@@ -45,7 +57,7 @@ local function rotateUndergroundPipe(event)
         end
     end
 end
-script.on_event('rotate-underground-pipe', rotateUndergroundPipe)
+Event.register('rotate-underground-pipe', rotateUndergroundPipe)
 
 local function plus_valve(event)
     local player = game.players[event.player_index]
@@ -81,7 +93,7 @@ local function plus_valve(event)
         end
     end
 end
-script.on_event('plus-valve', plus_valve)
+Event.register('plus-valve', plus_valve)
 
 local function minus_valve(event)
     local player = game.players[event.player_index]
@@ -117,7 +129,7 @@ local function minus_valve(event)
         end
     end
 end
-script.on_event('minus-valve', minus_valve)
+Event.register('minus-valve', minus_valve)
 
 -- Cheat Mode HAX
 local function on_player_pipette(event)
@@ -126,7 +138,7 @@ local function on_player_pipette(event)
         player.cursor_stack.set_stack(advancedPiping.correctBluePrintTable[event.item.name])
     end
 end
-script.on_event(defines.events.on_player_pipette, on_player_pipette)
+Event.register(defines.events.on_player_pipette, on_player_pipette)
 
 local function get_pipe_table()
     return advancedPiping.pipetable
