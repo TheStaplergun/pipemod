@@ -1,3 +1,41 @@
+local levels = {
+  [1] = '-t1',
+  [2] = '-t2',
+  [3] = '-t3'
+}
+
+local base_ug_distance = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"].fluid_box.pipe_connections[2].max_underground_distance)
+
+local underground_pumps = {
+  'underground-mini-pump'
+}
+
+for level_int , tier in pairs(levels) do
+  local new_pump = util.table.deepcopy(data.raw['pump']['pump'])
+  new_pump.name = 'underground-mini-pump' .. tier
+  new_pump.icon = "__underground-pipe-pack__/graphics/icons/underground-mini-pump" .. tier .. ".png"
+  new_pump.minable.result = 'underground-mini-pump' .. tier
+  new_pump.fast_replaceable_group = "pipe-to-ground"
+  new_pump.collision_box = {{-0.29, -0.29}, {0.29, 0.29}}
+	new_pump.collision_mask = {"water-tile"}
+  new_pump.selection_box = {{-0.5, -0.5}, {0.5, 0.5}}
+  new_pump.selection_priority = 51
+  new_pump.fluid_box.pipe_connections =
+  {
+    {
+      position = {0, -1},
+      type="output",
+      max_underground_distance = (base_ug_distance + 1) * level_int
+    },
+    {
+      position = {0, 1},
+      type="input",
+      max_underground_distance = (base_ug_distance + 1) * level_int
+    }
+  }
+  new_pump.energy_usage = 30 + ( 15 * level_int ) .. "kW"
+end
+
 data:extend(
   {
 	  {
@@ -34,15 +72,15 @@ data:extend(
       pipe_connections =
       {
         {
-			position = {0, -1},
-			type="output",
-			max_underground_distance = 11
-		},
+			    position = {0, -1},
+			    type="output",
+			    max_underground_distance = 11
+        },
         {
-			position = {0, 1},
-			type="input",
-			max_underground_distance = 11
-		}
+          position = {0, 1},
+          type="input",
+          max_underground_distance = 11
+        }
       }
     },
 	underground_sprite =
