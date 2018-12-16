@@ -27,7 +27,7 @@ data:extend({
 	enabled = false,
     result = "one-to-two-perpendicular-t3-pipe"
   },
-  {
+  --[[{
     type = "recipe",
     name = "one-to-two-L-FL-t3-pipe",
     ingredients =
@@ -39,7 +39,7 @@ data:extend({
     },
 	enabled = false,
     result = "one-to-two-L-FL-t3-pipe"
-  },
+  },]]--
 
 
   -- ONE TO THREE PIPES

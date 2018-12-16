@@ -24,7 +24,7 @@ data:extend(
       place_result = "one-to-two-perpendicular-pipe",
       stack_size = 50
     },
-    {
+    --[[{
       type = "item",
       name = "one-to-two-L-FL-pipe",
       icon = "__underground-pipe-pack__/graphics/icons/one-to-two-L-t1.png",
@@ -34,7 +34,7 @@ data:extend(
       order = "c-c",
       place_result = "one-to-two-L-FL-pipe",
       stack_size = 50
-    },
+    },]]--
     -- ONE TO THREE PIPES
     {
       type = "item",

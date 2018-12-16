@@ -17,10 +17,10 @@ data:extend({
         type = "unlock-recipe",
         recipe = "one-to-two-perpendicular-pipe"
       },
-      {
+      --[[{
         type = "unlock-recipe",
         recipe = "one-to-two-L-FL-pipe"
-      },
+      },]]--
 	  -- ONE TO THREE PIPES
       {
         type = "unlock-recipe",
@@ -114,10 +114,10 @@ data:extend({
           type = "unlock-recipe",
           recipe = "one-to-two-perpendicular-t2-pipe"
         },
-        {
+        --[[{
           type = "unlock-recipe",
           recipe = "one-to-two-L-FL-t2-pipe"
-        },
+        },]]--
       -- ONE TO THREE PIPES
         {
           type = "unlock-recipe",
@@ -188,10 +188,10 @@ data:extend({
           type = "unlock-recipe",
           recipe = "one-to-two-perpendicular-t3-pipe"
         },
-        {
+        --[[{
           type = "unlock-recipe",
           recipe = "one-to-two-L-FL-t3-pipe"
-        },
+        },]]--
       -- ONE TO THREE PIPES
         {
           type = "unlock-recipe",

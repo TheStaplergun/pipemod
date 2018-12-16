@@ -54,9 +54,15 @@ local namesTable = {
       variant = {
       ["-perpendicular-"] = "EW",
       ["-parallel-"] = "NS",
+      ["-perpendicular-secondary-"] = "EW",
+      ["-parallel-secondary-"] = "NS",
+      ["-L-FL-"] = "SE",
+      ["-L-FR-"] = "SW",
+      ["-L-RR-"] = "NW",
+      ["-L-RL-"] = "NE"
       }
     },
-    {
+    --[[{
       icon = "one-to-two-L",
       mine_and_place = "-L-FL",
       variant = {
@@ -65,7 +71,7 @@ local namesTable = {
         ["-L-RR-"] = "NW",
         ["-L-RL-"] = "NE"
       }
-    }
+    }]]--
   },
   ["one-to-three"] = {
     {
@@ -98,6 +104,11 @@ local levelsTable = {
 
 local file_path = "__underground-pipe-pack__/graphics/entity/level-"
 local function build_picture_table(type, variant, level)
+  if variant == "-perpendicular-secondary-" then
+    variant = "-perpendicular-"
+  elseif variant == "-parallel-secondary-" then
+    variant = "-parallel-"
+  end
   return {
     up = {
       filename = file_path .. level .. "/" .. type .. variant .. "pipe-up.png",

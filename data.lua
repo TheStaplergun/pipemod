@@ -18,24 +18,4 @@ require("prototypes.recipes.recipes-t3")
 require("prototypes.recipes.recipes-valves")
 require("prototypes.recipes.recipes-intermediary")
 require("prototypes.technology")
-
-data:extend{
-    {
-        type = "custom-input",
-        name = "rotate-underground-pipe",
-        key_sequence = "CONTROL + R",
-        consuming = "script-only"
-    },
-    {
-        type = "custom-input",
-        name = "minus-valve",
-        key_sequence = "PAD -",
-        consuming = "script-only"
-    },
-    {
-        type = "custom-input",
-        name = "plus-valve",
-        key_sequence = "PAD +",
-        consuming = "script-only"
-    }
-}
+require("prototypes.controls")
