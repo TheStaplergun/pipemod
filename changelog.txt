@@ -1,8 +1,9 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.16.67
-Date: 17. 12. 2018
+Version: 0.17.0
+Date: 22. 3. 2019
   Features:
     - Add reverse rotation (finally)
+    - Update to 0.17
   Changes:
     - All 1-to-2 pipes are now a single recipe.
   Fixes:
