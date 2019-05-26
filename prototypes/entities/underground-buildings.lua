@@ -74,12 +74,12 @@ data:extend(
         {
 			    position = {0, -1},
 			    type="output",
-			    max_underground_distance = 11
+			    max_underground_distance = 33
         },
         {
           position = {0, 1},
           type="input",
-          max_underground_distance = 11
+          max_underground_distance = 33
         }
       }
     },
