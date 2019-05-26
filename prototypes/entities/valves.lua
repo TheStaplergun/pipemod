@@ -382,6 +382,7 @@ for valve, datas in pairs(valve_table) do
     current_valve.fast_replaceable_group = data.raw["pipe"]["pipe"].fast_replaceable_group
     current_valve.collision_box = data.raw["pipe"]["pipe"].collision_box
     current_valve.selection_box = data.raw["pipe"]["pipe"].selection_box
+    current_valve.next_upgrade = nil
     current_valve.fluid_box =
     {
       base_area = 1,
