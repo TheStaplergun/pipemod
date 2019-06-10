@@ -87,7 +87,7 @@ local valve_table =
     percents = {
       ["check"] =
       {
-        base_level = 1,
+        base_level = 0,
         base_size = 1
       }
     }
@@ -385,8 +385,8 @@ for valve, datas in pairs(valve_table) do
     current_valve.next_upgrade = nil
     current_valve.fluid_box =
     {
-      base_area = 1,
-      --base_level = stat,
+      base_area = stat.base_size,
+      base_level = stat.base_level,
       pipe_covers = _G.pipecoverspictures(),
       pipe_connections =
       {
@@ -397,23 +397,12 @@ for valve, datas in pairs(valve_table) do
         { position = {0, 1} }
       },
     }
-    current_valve.fluid_box.base_level = stat.base_level
-    current_valve.fluid_box.base_area = stat.base_size
     current_valve.two_direction_only = false
     if percent == "check" then
       current_valve.pictures = build_valve_picture(percent)
     else
       current_valve.pictures = build_valve_picture_with_percent(percent, valve)
     end
-    --[[current_valve.pictures =
-    {
-      picture =
-      {
-        north = _G.pipepictures().straight_vertical,
-        east = _G.pipepictures().straight_horizontal,
-        south = _G.pipepictures().straight_vertical,
-        west = _G.pipepictures().straight_horizontal
-      },]]--
     current_valve.pictures.gas_flow = empty_sprite
     current_valve.pictures.fluid_background = empty_sprite
     current_valve.pictures.window_background = empty_sprite
