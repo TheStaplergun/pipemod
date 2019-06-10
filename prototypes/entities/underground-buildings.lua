@@ -105,91 +105,87 @@ data:extend(
     {
       north =
       {
-        filename = "__underground-pipe-pack__/graphics/entity/minipump/underground-mini-pump.png",
-        width = 68,
-        height = 53,
-		scale = 0.5,
+        filename = "__underground-pipe-pack__/graphics/entity/minipump/lr-minipump-north.png",
+        width = 48,
+        height = 48,
         line_length =8,
-        frame_count =32,
+        frame_count =64,
         animation_speed = 1.0,
-        --shift = util.by_pixel(8.000, 7.500),
+        shift = {0,0.1875},
         hr_version =
         {
-          filename = "__underground-pipe-pack__/graphics/entity/minipump/hr-underground-mini-pump.png",
-          width = 135,
-          height = 105,
-          scale = 0.25,
+          filename = "__underground-pipe-pack__/graphics/entity/minipump/hr-minipump-north.png",
+          width = 96,
+          height = 96,
+          scale = 0.5,
           line_length =8,
-          frame_count =32,
+          frame_count =64,
           animation_speed = 1.0,
-          --shift = util.by_pixel(8, 3.5) -- {0.515625, 0.21875}
+          shift = {0,0.1875},
         }
       },
       east =
       {
-        filename = "__underground-pipe-pack__/graphics/entity/minipump/underground-mini-pump.png",
-        width = 68,
-        height = 53,
-		scale = 0.5,
+        filename = "__underground-pipe-pack__/graphics/entity/minipump/lr-minipump-east.png",
+        width = 48,
+        height = 48,
         line_length =8,
-        frame_count =32,
+        frame_count =64,
         animation_speed = 1.0,
-        --shift = util.by_pixel(0, 4),
+        shift = {0,0.1875},
         hr_version =
         {
-          filename = "__underground-pipe-pack__/graphics/entity/minipump/hr-underground-mini-pump.png",
-          width = 135,
-          height = 105,
-          scale = 0.25,
+          filename = "__underground-pipe-pack__/graphics/entity/minipump/hr-minipump-east.png",
+          width = 96,
+          height = 96,
+          scale = 0.5,
           line_length =8,
-          frame_count =32,
+          frame_count =64,
           animation_speed = 1.0,
-          --shift = util.by_pixel(-0.5, 1.75) --{-0.03125, 0.109375}
+          shift = {0,0.1875},
         }
       },
 
       south =
       {
-        filename = "__underground-pipe-pack__/graphics/entity/minipump/underground-mini-pump.png",
-        width = 68,
-        height = 53,
-		scale = 0.5,
+        filename = "__underground-pipe-pack__/graphics/entity/minipump/lr-minipump-south.png",
+        width = 48,
+        height = 48,
         line_length =8,
-        frame_count =32,
+        frame_count =64,
         animation_speed = 1.0,
-        --shift = util.by_pixel(13.5, 0.5),
+        shift = {0,0.1875},
         hr_version =
         {
-          filename = "__underground-pipe-pack__/graphics/entity/minipump/hr-underground-mini-pump.png",
-          width = 135,
-          height = 105,
-          scale = 0.25,
+          filename = "__underground-pipe-pack__/graphics/entity/minipump/hr-minipump-south.png",
+          width = 96,
+          height = 96,
+          scale = 0.5,
           line_length =8,
-          frame_count =32,
+          frame_count =64,
           animation_speed = 1.0,
-          --shift = util.by_pixel(12.5, -8) -- {0.75, -0.5}
+          shift = {0,0.1875},
         }
       },
       west =
       {
-        filename = "__underground-pipe-pack__/graphics/entity/minipump/underground-mini-pump.png",
-        width = 68,
-        height = 53,
-		scale = 0.5,
+        filename = "__underground-pipe-pack__/graphics/entity/minipump/lr-minipump-west.png",
+        width = 48,
+        height = 48,
         line_length =8,
-        frame_count =32,
+        frame_count =64,
         animation_speed = 1.0,
-        --shift = util.by_pixel(0.5, -0.5),
+        shift = {0,0.1875},
         hr_version =
         {
-          filename = "__underground-pipe-pack__/graphics/entity/minipump/hr-underground-mini-pump.png",
-          width = 135,
-          height = 105,
-          scale = 0.25,
+          filename = "__underground-pipe-pack__/graphics/entity/minipump/hr-minipump-west.png",
+          width = 96,
+          height = 96,
+          scale = 0.5,
           line_length =8,
-          frame_count =32,
+          frame_count =64,
           animation_speed = 1.0,
-          --shift = util.by_pixel(-0.25, 1.25) -- {-0.015625, 0.078125}
+          shift = {0,0.1875},
         }
       }
     },
