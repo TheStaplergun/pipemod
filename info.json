@@ -9,6 +9,7 @@
   "description": "Adds new functionality to underground piping.",
   "dependencies": [
   "base >= 0.17.0",
-  "? Dectorio"
+  "(?) Dectorio",
+  "stdlib >= 1.2.0"
   ]
 }

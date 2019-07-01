@@ -1,3 +1,5 @@
+local Color = require('__stdlib__/stdlib/utils/color')
+
 local north = {position = {0, -1}}
 local south = {position = {0, 1}}
 local west = {position = {-1, 0}}
@@ -61,9 +63,11 @@ local names_table = {
 }
 
 local levels_table = {
-    [1] = {r=255/255,g=191/255,b=0,a=255/255},
-    [2] = {r=227/255,g=38/255,b=45/255,a=255/255},
-    [3] = {r=38/255,g=173/255,b=227/255,a=255/255}
+    [1] = Color.from_rgb(255,191,0,255),
+    [2] = Color.from_rgb(227,38,45,255),
+    [3] = Color.from_rgb(38,173,227,255),
+    --[4] = Color.from_rgb(75,0,130,255),
+    --[5] = Color.from_rgb(5,73,53,255)
 }
 
 local file_path = "__underground-pipe-pack__/graphics/entity/underground-cap/"
@@ -79,12 +83,35 @@ local function build_picture_table(variants, color)
                     priority = "high",
                     width = 48,
                     height = 48,
+                    shift = {0,0.1875},
                     hr_version =
                     {
                         filename = file_path .. "hr-ug-" .. variant .. ".png",
                         priority = "extra-high",
                         width = 96,
                         height = 96,
+                        shift = {0,0.1875},
+                        scale = 0.5
+                    }
+                },
+                {
+                    filename = file_path .. "hr-ug-arrow-" .. variant .. ".png",
+                    priority = "high",
+                    width = 48,
+                    height = 48,
+                    shift = {0,0.1875},
+                    scale= 0.25,
+                    apply_runtime_tint = true,
+                    tint = color,
+                    hr_version =
+                    {
+                        filename = file_path .. "hr-ug-arrow-" .. variant .. ".png",
+                        priority = "extra-high",
+                        width = 96,
+                        height = 96,
+                        shift = {0,0.1875},
+                        apply_runtime_tint = true,
+                        tint = color,
                         scale = 0.5
                     }
                 },
@@ -94,6 +121,7 @@ local function build_picture_table(variants, color)
                     width = 96,
                     height = 96,
                     scale = 0.25,
+                    shift = {0,0.1875},
                     apply_runtime_tint = true,
                     tint = color,
                     hr_version =
@@ -105,6 +133,25 @@ local function build_picture_table(variants, color)
                         scale = 0.5,
                         apply_runtime_tint = true,
                         tint = color,
+                        shift = {0,0.1875},
+                    }
+                },
+                {
+                    filename = "__underground-pipe-pack__/graphics/entity/shadows/lr-minipump-shadow.png",
+                    priority = "high",
+                    width = 48,
+                    height = 48,
+                    shift = {0,0.1875},
+                    draw_as_shadow = true,
+                    hr_version =
+                    {
+                        filename = "__underground-pipe-pack__/graphics/entity/shadows/hr-minipump-shadow.png",
+                        priority = "high",
+                        width = 96,
+                        height = 96,
+                        scale = 0.5,
+                        shift = {0,0.1875},
+                        draw_as_shadow = true,
                     }
                 }
             }
@@ -132,6 +179,7 @@ for name, properties in pairs(names_table) do
         current_pipe.fluid_box = fluid_box
         current_pipe.fast_replaceable_group = "pipe-to-ground"
         current_pipe.pictures = build_picture_table(properties.picture_variants, color)
+        --current_pipe.dont_flip_on_build = true
         pipes[#pipes + 1] = current_pipe
     end
 end
