@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.2
+Date: 25. 5. 2019
+  Features:
+  Changes:
+    - Major graphics overhaul
+  Fixes:
+    - Potential fix for check valve
+    - Fix rotational directions for 1-2 pipes
+---------------------------------------------------------------------------------------------------
 Version: 0.17.1
 Date: 25. 5. 2019
   Features:
