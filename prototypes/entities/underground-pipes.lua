@@ -6,7 +6,7 @@ local west = {position = {-1, 0}}
 local east = {position = {1, 0}}
 
 local direction_table = {
-    ['NE'] = {north, east},
+    ['NS'] = {north, south},
     ['ES'] = {east, south},
     ['ESW'] = {east, south, west},
     ['NSEW'] = {north, south, east, west}
