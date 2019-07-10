@@ -36,19 +36,19 @@ local names_table = {
     ["underground-L-"] = {
         directions = 'NE',
         picture_variants = {
-            up = 'NE',
-            down = 'SW',
-            right = 'ES',
-            left = 'NW'
+            up = 'ES',
+            down = 'NW',
+            right = 'SW',
+            left = 'NE'
         }
     },
     ["underground-t-"] = {
         directions = 'NEW',
         picture_variants = {
-            up = 'NEW',
-            right = 'NES',
-            down = 'ESW',
-            left = 'NSW'
+            up = 'ESW',
+            right = 'NSW',
+            down = 'NEW',
+            left = 'NES'
         }
     },
     ["underground-cross-"] = {
