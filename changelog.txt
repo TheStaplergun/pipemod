@@ -1,6 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.3
+Date: 09. 07. 2019
+  Features:
+  Changes:
+  Fixes:
+    - Fix bad prototype accidental migration. (Rotation bug)
+---------------------------------------------------------------------------------------------------
 Version: 0.17.2
-Date: 25. 5. 2019
+Date: 09. 07. 2019
   Features:
   Changes:
     - Major graphics overhaul
