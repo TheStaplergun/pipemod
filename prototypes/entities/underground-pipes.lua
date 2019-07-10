@@ -7,8 +7,8 @@ local east = {position = {1, 0}}
 
 local direction_table = {
     ['NE'] = {north, east},
-    ['NS'] = {north, south},
-    ['NEW'] = {north, east, west},
+    ['ES'] = {east, south},
+    ['ESW'] = {east, south, west},
     ['NSEW'] = {north, south, east, west}
 }
 local base_ug_distance = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"].fluid_box.pipe_connections[2].max_underground_distance)
@@ -34,7 +34,7 @@ local names_table = {
         }
     },
     ["underground-L-"] = {
-        directions = 'NE',
+        directions = 'ES',
         picture_variants = {
             up = 'ES',
             down = 'NW',
@@ -43,7 +43,7 @@ local names_table = {
         }
     },
     ["underground-t-"] = {
-        directions = 'NEW',
+        directions = 'ESW',
         picture_variants = {
             up = 'ESW',
             right = 'NSW',
