@@ -97,10 +97,10 @@ local function build_picture_table(variants, color)
                 {
                     filename = file_path .. "hr-ug-arrow-" .. variant .. ".png",
                     priority = "high",
-                    width = 48,
-                    height = 48,
+                    width = 96,
+                    height = 96,
                     shift = {0,0.1875},
-                    scale= 0.25,
+                    scale = 0.5,
                     apply_runtime_tint = true,
                     tint = color,
                     hr_version =
@@ -120,7 +120,7 @@ local function build_picture_table(variants, color)
                     priority = "high",
                     width = 96,
                     height = 96,
-                    scale = 0.25,
+                    scale = 0.5,
                     shift = {0,0.1875},
                     apply_runtime_tint = true,
                     tint = color,
@@ -166,11 +166,12 @@ for name, properties in pairs(names_table) do
         local current_pipe = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"])
         if level == 1 then
             current_pipe.name = name .. "pipe"
+            current_pipe.minable.result = name .. "pipe"
         else
             current_pipe.name = name .. "t" .. level .. "-pipe"
+            current_pipe.minable.result = name .. "t" .. level .. "-pipe"
         end
         current_pipe.icon = "__underground-pipe-pack__/graphics/icons/" .. name .. "t" .. level .. ".png"
-        current_pipe.minable.result = name .. "pipe"
         current_pipe.collision_mask = {"water-tile"}
         current_pipe.selection_priority = 51
         local fluid_box = util.table.deepcopy(current_pipe.fluid_box)
