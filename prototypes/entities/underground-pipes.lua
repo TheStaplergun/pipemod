@@ -71,6 +71,7 @@ local levels_table = {
 }
 
 local file_path = "__underground-pipe-pack__/graphics/entity/underground-cap/"
+local a_file_path = "__underground-pipe-pack__/graphics/entity/arrows/"
 
 local function build_picture_table(variants, color)
     local picture_table = {}
@@ -95,7 +96,7 @@ local function build_picture_table(variants, color)
                     }
                 },
                 {
-                    filename = file_path .. "hr-ug-arrow-" .. variant .. ".png",
+                    filename = a_file_path .. "hr-ug-arrow-" .. variant .. ".png",
                     priority = "high",
                     width = 96,
                     height = 96,
@@ -105,7 +106,7 @@ local function build_picture_table(variants, color)
                     tint = color,
                     hr_version =
                     {
-                        filename = file_path .. "hr-ug-arrow-" .. variant .. ".png",
+                        filename = a_file_path .. "hr-ug-arrow-" .. variant .. ".png",
                         priority = "extra-high",
                         width = 96,
                         height = 96,
