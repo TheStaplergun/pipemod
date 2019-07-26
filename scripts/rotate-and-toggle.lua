@@ -23,6 +23,7 @@ local function RotateUnderground(old_pipe, player, reverse)
         direction = old_pipe.direction,
         force = old_pipe.force,
         fast_replace = true,
+        create_build_effect_smoke = false,
         spill = false
     }
     new_pipe.fluidbox[1] = old_pipeFluid
@@ -72,6 +73,7 @@ local function plus_valve(event)
                 direction = selection.direction,
                 force = selection.force,
                 fast_replace = true,
+                create_build_effect_smoke = false,
                 spill = false
             }
             new_valve.fluidbox[1] = old_valve_fluid
@@ -108,6 +110,7 @@ local function minus_valve(event)
                 direction = selection.direction,
                 force = selection.force,
                 fast_replace = true,
+                create_build_effect_smoke = false,
                 spill = false
             }
             new_valve.fluidbox[1] = old_valve_fluid
