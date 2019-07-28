@@ -1,7 +1,4 @@
 require("prototypes.entities.pipecovers")
---require("prototypes.entities.underground-pipes-t1")
---require("prototypes.entities.underground-pipes-t2")
---require("prototypes.entities.underground-pipes-t3")
 require("prototypes.entities.underground-pipes")
 require("prototypes.entities.underground-buildings")
 require("prototypes.entities.pipes-to-ground")
