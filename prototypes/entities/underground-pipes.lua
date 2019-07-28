@@ -175,11 +175,14 @@ for name, properties in pairs(names_table) do
         current_pipe.icon = "__underground-pipe-pack__/graphics/icons/" .. name .. "t" .. level .. ".png"
         current_pipe.collision_mask = {"water-tile"}
         current_pipe.selection_priority = 51
+
         local fluid_box = util.table.deepcopy(current_pipe.fluid_box)
         fluid_box.pipe_connections = build_connections_table(properties.directions, level)
         fluid_box.pipe_covers = nil
         current_pipe.fluid_box = fluid_box
+
         current_pipe.fast_replaceable_group = "pipe-to-ground"
+        current_pipe.next_upgrade = nil
         current_pipe.pictures = build_picture_table(properties.picture_variants, color)
         --current_pipe.dont_flip_on_manual_build = true
         pipes[#pipes + 1] = current_pipe
