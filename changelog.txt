@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.6
+Date: 24. 07. 2019
+  Features:
+  Changes:
+    - Remove the puff of smoke when rotating the underground ports of pipe-to-ground or adjusting valves
+  Fixes:
+---------------------------------------------------------------------------------------------------
 Version: 0.17.5
 Date: 24. 07. 2019
   Features:
