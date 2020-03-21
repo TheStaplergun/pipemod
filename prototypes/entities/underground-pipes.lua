@@ -180,7 +180,7 @@ for name, properties in pairs(names_table) do
         fluid_box.pipe_connections = build_connections_table(properties.directions, level)
         fluid_box.pipe_covers = nil
         current_pipe.fluid_box = fluid_box
-
+		current_pipe.icon_size = 32
         current_pipe.fast_replaceable_group = "pipe-to-ground"
         current_pipe.next_upgrade = nil
         current_pipe.pictures = build_picture_table(properties.picture_variants, color)
