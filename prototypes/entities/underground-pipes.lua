@@ -173,6 +173,7 @@ for name, properties in pairs(names_table) do
             current_pipe.minable.result = name .. "t" .. level .. "-pipe"
         end
         current_pipe.icon = "__underground-pipe-pack__/graphics/icons/" .. name .. "t" .. level .. ".png"
+        current_pipe.icon_size = 32
         current_pipe.collision_mask = {"water-tile"}
         current_pipe.selection_priority = 51
 

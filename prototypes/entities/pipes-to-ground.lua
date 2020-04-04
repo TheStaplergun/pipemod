@@ -186,6 +186,7 @@ for types, sets in pairs(namesTable) do
           currentPipe.placeable_by = {item = types .. datas.mine_and_place .. "-t" .. levelsS .. "-pipe", count = 1}
         end
         currentPipe.icon = "__underground-pipe-pack__/graphics/icons/" .. datas.icon .. "-t" .. levelsS .. ".png"
+        currentPipe.icon_size = 32
         local fluidBox = util.table.deepcopy(currentPipe.fluid_box)
         fluidBox.pipe_covers = _G.tierpipecoverspictures(levelsS)
         fluidBox.pipe_connections = build_connections_table(directions, levelsN)
