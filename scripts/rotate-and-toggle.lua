@@ -29,6 +29,7 @@ local function RotateUnderground(old_pipe, player, reverse)
     new_pipe.fluidbox[1] = old_pipeFluid
     new_pipe.last_user = player
     local event = {
+        entity = new_pipe,
         created_entity = new_pipe,
         player_index = player.index,
         clamped = true,
