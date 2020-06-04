@@ -17,3 +17,29 @@ require("prototypes.recipes.recipes-valves")
 require("prototypes.recipes.recipes-intermediary")
 require("prototypes.technology")
 require("prototypes.controls")
+
+afh_space_only =
+{
+  "water-tile",
+  "ground-tile",
+  "item-layer",
+  "object-layer",
+  "player-layer"
+}
+
+if _G.mods["space-exploration"] then
+
+  -- RECIPES
+
+  require("prototypes.recipes.space-exploration-compat.recipes-space-pipes")
+  require("prototypes.recipes.space-exploration-compat.recipes-space-valves")
+
+  -- ITEMS
+
+  require("prototypes.items.space-exploration-compat.items-space-intermediary")
+  require("prototypes.items.space-exploration-compat.recipes-space-valves")
+
+  --[[
+    Entities are generated as part of a script and perform a check at that stage.
+  ]]
+end
