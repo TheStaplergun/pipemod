@@ -10,6 +10,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "4-to-4-pipe"},
     max_health = 100,
     corpse = "small-remnants",
+    se_allow_in_space = false,
     resistances =
     {
       {

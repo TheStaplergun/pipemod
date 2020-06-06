@@ -104,7 +104,7 @@ local empty_sprite =
 }
 local valves_to_add = {}
 
-local function build_valve_picture(valve, type)
+local function build_valve_picture(valve)
   local file_path = "__underground-pipe-pack__/graphics/entity/valves/"
   local pictures = {
     picture = {
@@ -112,7 +112,7 @@ local function build_valve_picture(valve, type)
         layers = {
           _G.pipepictures().straight_vertical,
           {
-            filename = file_path .. valve .. type .. "/up-arrow.png",
+            filename = file_path .. valve .. "/up-arrow.png",
             priority = "extra-high",
             width = 128,
             height = 128,
@@ -120,7 +120,7 @@ local function build_valve_picture(valve, type)
             scale = 0.5,
             --shift = util.by_pixel(0, -5),
             hr_version = {
-                filename = file_path .. valve .. type .. "/up-arrow.png",
+                filename = file_path .. valve .. "/up-arrow.png",
                 priority = "extra-high",
                 width = 128,
                 height = 128,
@@ -134,7 +134,7 @@ local function build_valve_picture(valve, type)
         layers = {
           _G.pipepictures().straight_horizontal,
           {
-            filename = file_path .. valve .. type .. "/right-arrow.png",
+            filename = file_path .. valve .. "/right-arrow.png",
             priority = "extra-high",
             width = 128,
             height = 128,
@@ -142,7 +142,7 @@ local function build_valve_picture(valve, type)
             scale = 0.5,
             --shift = util.by_pixel(0, -5),
             hr_version = {
-                filename = file_path .. valve .. type .. "/right-arrow.png",
+                filename = file_path .. valve .. "/right-arrow.png",
                 priority = "extra-high",
                 width = 128,
                 height = 128,
@@ -156,7 +156,7 @@ local function build_valve_picture(valve, type)
         layers = {
           _G.pipepictures().straight_vertical,
           {
-            filename = file_path .. valve .. type .. "/down-arrow.png",
+            filename = file_path .. valve .. "/down-arrow.png",
             priority = "extra-high",
             width = 128,
             height = 128,
@@ -164,7 +164,7 @@ local function build_valve_picture(valve, type)
             scale = 0.5,
             --shift = util.by_pixel(0, -5),
             hr_version = {
-                filename = file_path .. valve .. type .. "/down-arrow.png",
+                filename = file_path .. valve .. "/down-arrow.png",
                 priority = "extra-high",
                 width = 128,
                 height = 128,
@@ -178,7 +178,7 @@ local function build_valve_picture(valve, type)
         layers = {
           _G.pipepictures().straight_horizontal,
           {
-            filename = file_path .. valve .. type .. "/left-arrow.png",
+            filename = file_path .. valve .. "/left-arrow.png",
             priority = "extra-high",
             width = 128,
             height = 128,
@@ -186,7 +186,7 @@ local function build_valve_picture(valve, type)
             scale = 0.5,
             --shift = util.by_pixel(0, -5),
             hr_version = {
-                filename = file_path .. valve .. type .. "/left-arrow.png",
+                filename = file_path .. valve .. "/left-arrow.png",
                 priority = "extra-high",
                 width = 128,
                 height = 128,
@@ -201,7 +201,7 @@ local function build_valve_picture(valve, type)
 return pictures
 
 end
-local function build_valve_picture_with_percent(percent, valve, type)
+local function build_valve_picture_with_percent(percent, valve)
   local file_path = "__underground-pipe-pack__/graphics/entity/valves/"
   local pictures = {
     picture = {
@@ -209,7 +209,7 @@ local function build_valve_picture_with_percent(percent, valve, type)
         layers = {
           _G.pipepictures().straight_vertical,
           {
-            filename = file_path .. valve .. type .. "/up-arrow.png",
+            filename = file_path .. valve .. "/up-arrow.png",
             priority = "extra-high",
             width = 128,
             height = 128,
@@ -217,7 +217,7 @@ local function build_valve_picture_with_percent(percent, valve, type)
             scale = 0.5,
             shift = util.by_pixel(0, -2),
             hr_version = {
-                filename = file_path .. valve .. type .. "/up-arrow.png",
+                filename = file_path .. valve .. "/up-arrow.png",
                 priority = "extra-high",
                 width = 128,
                 height = 128,
@@ -226,14 +226,14 @@ local function build_valve_picture_with_percent(percent, valve, type)
             }
           },
           {
-            filename = file_path .. valve .. type .. "/" .. percent .. ".png",
+            filename = file_path .. valve .. "/" .. percent .. ".png",
             priority = "extra-high",
             width = 38,
             height = 28,
             scale = 0.5,
             shift = util.by_pixel(0, -6),
             hr_version = {
-                filename = file_path .. valve .. type .. "/" .. percent .. ".png",
+                filename = file_path .. valve .. "/" .. percent .. ".png",
                 priority = "extra-high",
                 width = 38,
                 height = 28,
@@ -247,7 +247,7 @@ local function build_valve_picture_with_percent(percent, valve, type)
         layers = {
           _G.pipepictures().straight_horizontal,
           {
-            filename = file_path .. valve .. type .. "/right-arrow.png",
+            filename = file_path .. valve .. "/right-arrow.png",
             priority = "extra-high",
             width = 128,
             height = 128,
@@ -255,7 +255,7 @@ local function build_valve_picture_with_percent(percent, valve, type)
             scale = 0.5,
             --shift = util.by_pixel(0, -5),
             hr_version = {
-                filename = file_path .. valve .. type .. "/right-arrow.png",
+                filename = file_path .. valve .. "/right-arrow.png",
                 priority = "extra-high",
                 width = 128,
                 height = 128,
@@ -264,14 +264,14 @@ local function build_valve_picture_with_percent(percent, valve, type)
             }
           },
           {
-            filename = file_path .. valve .. type .. "/" .. percent .. ".png",
+            filename = file_path .. valve .. "/" .. percent .. ".png",
             priority = "extra-high",
             width = 38,
             height = 28,
             scale = 0.5,
             shift = util.by_pixel(-6, -7),
             hr_version = {
-                filename = file_path .. valve .. type .. "/" .. percent .. ".png",
+                filename = file_path .. valve .. "/" .. percent .. ".png",
                 priority = "extra-high",
                 width = 38,
                 height = 28,
@@ -285,7 +285,7 @@ local function build_valve_picture_with_percent(percent, valve, type)
         layers = {
           _G.pipepictures().straight_vertical,
           {
-            filename = file_path .. valve .. type .. "/down-arrow.png",
+            filename = file_path .. valve .. "/down-arrow.png",
             priority = "extra-high",
             width = 128,
             height = 128,
@@ -293,7 +293,7 @@ local function build_valve_picture_with_percent(percent, valve, type)
             scale = 0.5,
             --shift = util.by_pixel(0, -5),
             hr_version = {
-                filename = file_path .. valve .. type .. "/down-arrow.png",
+                filename = file_path .. valve .. "/down-arrow.png",
                 priority = "extra-high",
                 width = 128,
                 height = 128,
@@ -302,14 +302,14 @@ local function build_valve_picture_with_percent(percent, valve, type)
             }
           },
           {
-            filename = file_path .. valve .. type .. "/" .. percent .. ".png",
+            filename = file_path .. valve .. "/" .. percent .. ".png",
             priority = "extra-high",
             width = 38,
             height = 28,
             scale = 0.5,
             shift = util.by_pixel(0, -12),
             hr_version = {
-                filename = file_path .. valve .. type .. "/" .. percent .. ".png",
+                filename = file_path .. valve .. "/" .. percent .. ".png",
                 priority = "extra-high",
                 width = 38,
                 height = 28,
@@ -323,7 +323,7 @@ local function build_valve_picture_with_percent(percent, valve, type)
         layers = {
           _G.pipepictures().straight_horizontal,
           {
-            filename = file_path .. valve .. type .. "/left-arrow.png",
+            filename = file_path .. valve .. "/left-arrow.png",
             priority = "extra-high",
             width = 128,
             height = 128,
@@ -331,7 +331,7 @@ local function build_valve_picture_with_percent(percent, valve, type)
             scale = 0.5,
             --shift = util.by_pixel(0, -5),
             hr_version = {
-                filename = file_path .. valve .. type .. "/left-arrow.png",
+                filename = file_path .. valve .. "/left-arrow.png",
                 priority = "extra-high",
                 width = 128,
                 height = 128,
@@ -340,14 +340,14 @@ local function build_valve_picture_with_percent(percent, valve, type)
             }
           },
           {
-            filename = file_path .. valve .. type .. "/" .. percent .. ".png",
+            filename = file_path .. valve .. "/" .. percent .. ".png",
             priority = "extra-high",
             width = 38,
             height = 28,
             scale = 0.5,
             shift = util.by_pixel(6, -7),
             hr_version = {
-                filename = file_path .. valve .. type .. "/" .. percent .. ".png",
+                filename = file_path .. valve .. "/" .. percent .. ".png",
                 priority = "extra-high",
                 width = 38,
                 height = 28,
@@ -376,23 +376,35 @@ for num, type in pairs(types) do
   for valve, datas in pairs(valve_table) do
     for percent, stat in pairs(datas.percents) do
       local current_valve = util.table.deepcopy(data.raw["storage-tank"]["storage-tank"])
-      if percent == "check" then
-        current_valve.name = percent .. "-" .. valve .. "valve"
-        current_valve.localised_name = {"valves.check-valve-name"}
-      else
-        current_valve.name = percent ..  "-" .. valve .. "-valve"
-        current_valve.localised_name = {"valves.valve-name", percent .. "%", valve}
-      end
+
       if num == 2 then
-        current_valve.name = current_valve.name .. type
+
+        if percent == "check" then
+          current_valve.name = percent .. valve .. type .. "-valve"
+          current_valve.localised_name = {"valves.check-valve-space-name"}
+        else
+          current_valve.name = percent ..  "-" .. valve .. type .. "-valve"
+          current_valve.localised_name = {"valves.valve-name", percent .. "%", valve}
+        end
+
         current_valve.se_allow_in_space = true
         current_valve.collision_mask = nil
         current_valve.collision_mask = afh_space_only
       else
+
+        if percent == "check" then
+          current_valve.name = percent .. "-" .. valve .. "valve"
+          current_valve.localised_name = {"valves.check-valve-name"}
+        else
+          current_valve.name = percent ..  "-" .. valve .. "-valve"
+          current_valve.localised_name = {"valves.valve-name", percent .. "%", valve}
+        end
+        current_valve.se_allow_in_space = false
         if types[2] then
-          table.insert(current_valve.collision_mask, "layer-14") -- Prevents space placement if SE is active
+          current_valve.collision_mask = afh_ground_only -- Prevents space placement if SE is active
         end
       end
+
       current_valve.icon = "__base__/graphics/icons/pipe.png"
       current_valve.minable.result = datas.mine_and_place
       current_valve.placeable_by = {item = datas.mine_and_place, count = 1}

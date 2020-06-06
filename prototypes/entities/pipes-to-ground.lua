@@ -27,8 +27,8 @@ local function build_connections_table(directions, level)
   }
   local max_distance
   for _, datas in pairs(direction_table[directions]) do
-    if level == "space" then
-      max_distance = 14
+    if level == 4 then
+      max_distance = 16
     else
       max_distance = (base_ug_distance + 1) * level
     end
@@ -109,7 +109,7 @@ local levelsTable = {
 }
 
 if mods["space-exploration"] then
-  levelsTable["space"] = 16
+  levelsTable["space"] = 4
 end
 
 local file_path = "__underground-pipe-pack__/graphics/entity/level-"
@@ -194,13 +194,20 @@ for types, sets in pairs(namesTable) do
           currentPipe.name = types .. variants ..  "space-pipe"
           currentPipe.minable.result = types .. datas.mine_and_place .. "-space-pipe"
           currentPipe.placeable_by = {item = types .. datas.mine_and_place .. "-space-pipe", count = 1}
-          currentPipe.se_allow_in_space = true
         else
           currentPipe.name = types .. variants .. "t" .. levelsS .. "-pipe"
           currentPipe.minable.result = types .. datas.mine_and_place .. "-t" .. levelsS .. "-pipe"
           currentPipe.placeable_by = {item = types .. datas.mine_and_place .. "-t" .. levelsS .. "-pipe", count = 1}
         end
-        currentPipe.icon = "__underground-pipe-pack__/graphics/icons/" .. datas.icon .. "-t" .. levelsS .. ".png"
+
+        if levelsS == "space" then
+          currentPipe.icon = "__underground-pipe-pack__/graphics/icons/space-exploration-compat/" .. datas.icon .. ".png"
+          currentPipe.se_allow_in_space = true
+        else
+          currentPipe.icon = "__underground-pipe-pack__/graphics/icons/" .. datas.icon .. "-t" .. levelsS .. ".png"
+          currentPipe.se_allow_in_space = false
+        end
+
         currentPipe.icon_size = 32
         local fluidBox = util.table.deepcopy(currentPipe.fluid_box)
         fluidBox.pipe_covers = _G.tierpipecoverspictures(levelsS)
