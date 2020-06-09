@@ -278,6 +278,80 @@ data.adjustable_valve_table = {
         previous_valve = "80-top-up-valve",
         next_valve = nil
     },
+
+    --SPACE EXPLORATION
+    ["10-overflow-space-valve"] = {
+        previous_valve = nil,
+        next_valve = "20-overflow-space-valve"
+    },
+    ["20-overflow-space-valve"] = {
+        previous_valve = "10-overflow-space-valve",
+        next_valve = "30-overflow-space-valve"
+    },
+    ["30-overflow-space-valve"] = {
+        previous_valve = "20-overflow-space-valve",
+        next_valve = "40-overflow-space-valve"
+    },
+    ["40-overflow-space-valve"] = {
+        previous_valve = "30-overflow-space-valve",
+        next_valve = "50-overflow-space-valve"
+    },
+    ["50-overflow-space-valve"] = {
+        previous_valve = "40-overflow-space-valve",
+        next_valve = "60-overflow-space-valve"
+    },
+    ["60-overflow-space-valve"] = {
+        previous_valve = "50-overflow-space-valve",
+        next_valve = "70-overflow-space-valve"
+    },
+    ["70-overflow-space-valve"] = {
+        previous_valve = "60-overflow-space-valve",
+        next_valve = "80-overflow-space-valve"
+    },
+    ["80-overflow-space-valve"] = {
+        previous_valve = "70-overflow-space-valve",
+        next_valve = "90-overflow-space-valve"
+    },
+    ["90-overflow-space-valve"] = {
+        previous_valve = "80-overflow-space-valve",
+        next_valve = nil
+    },
+    ["10-top-up-space-valve"] = {
+        previous_valve = nil,
+        next_valve = "20-top-up-space-valve"
+    },
+    ["20-top-up-space-valve"] = {
+        previous_valve = "10-top-up-space-valve",
+        next_valve = "30-top-up-space-valve"
+    },
+    ["30-top-up-space-valve"] = {
+        previous_valve = "20-top-up-space-valve",
+        next_valve = "40-top-up-space-valve"
+    },
+    ["40-top-up-space-valve"] = {
+        previous_valve = "30-top-up-space-valve",
+        next_valve = "50-top-up-space-valve"
+    },
+    ["50-top-up-space-valve"] = {
+        previous_valve = "40-top-up-space-valve",
+        next_valve = "60-top-up-space-valve"
+    },
+    ["60-top-up-space-valve"] = {
+        previous_valve = "50-top-up-space-valve",
+        next_valve = "70-top-up-space-valve"
+    },
+    ["70-top-up-space-valve"] = {
+        previous_valve = "60-top-up-space-valve",
+        next_valve = "80-top-up-space-valve"
+    },
+    ["80-top-up-space-valve"] = {
+        previous_valve = "70-top-up-space-valve",
+        next_valve = "90-top-up-space-valve"
+    },
+    ["90-top-up-space-valve"] = {
+        previous_valve = "80-top-up-space-valve",
+        next_valve = nil
+    },
 }
 
 data.ignore = {
