@@ -129,7 +129,7 @@ data:extend({
       {"small-pipe-coupler", 2},
       {"underground-pipe-segment-t1", 10},
     },
-	enabled = false,
+    enabled = false,
     result = "underground-mini-pump"
   },
   -- MULTI PIPES

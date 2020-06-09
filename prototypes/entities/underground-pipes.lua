@@ -13,18 +13,26 @@ local direction_table = {
 }
 local base_ug_distance = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"].fluid_box.pipe_connections[2].max_underground_distance)
 local function build_connections_table(directions, level)
-    local connections_table = {}
-    for _, datas in pairs(direction_table[directions]) do
-        connections_table[#connections_table + 1] = {
-        position = datas.position,
-        max_underground_distance = (base_ug_distance + 1) * level
-    }
+  local connections_table = {
+    { position = {0, -1} },
+  }
+  local max_distance
+  for _, datas in pairs(direction_table[directions]) do
+    if level == "space" then
+      max_distance = 14
+    else
+      max_distance = (base_ug_distance + 1) * level
     end
-    return connections_table
+    connections_table[#connections_table + 1] = {
+      position = datas.position,
+      max_underground_distance = max_distance
+    }
+  end
+  return connections_table
 end
 
 local names_table = {
-    ["underground-i-"] = {
+    ["underground-i"] = {
         directions = 'NS',
         picture_variants = {
             up = 'NS',
@@ -33,7 +41,7 @@ local names_table = {
             left = 'EW'
         }
     },
-    ["underground-L-"] = {
+    ["underground-L"] = {
         directions = 'ES',
         picture_variants = {
             up = 'ES',
@@ -42,7 +50,7 @@ local names_table = {
             left = 'NE'
         }
     },
-    ["underground-t-"] = {
+    ["underground-t"] = {
         directions = 'ESW',
         picture_variants = {
             up = 'ESW',
@@ -51,7 +59,7 @@ local names_table = {
             left = 'NES'
         }
     },
-    ["underground-cross-"] = {
+    ["underground-cross"] = {
         directions = 'NSEW',
         picture_variants = {
             up = 'NESW',
@@ -66,6 +74,7 @@ local levels_table = {
     [1] = Color.from_rgb(255,191,0,255/2),
     [2] = Color.from_rgb(227,38,45,255/2),
     [3] = Color.from_rgb(38,173,227,255/2),
+    ["space"] = Color.from_rgb(255,255,255,255/2)
     --[4] = Color.from_rgb(75,0,130,255),
     --[5] = Color.from_rgb(5,73,53,255)
 }
@@ -166,15 +175,27 @@ for name, properties in pairs(names_table) do
     for level, color in pairs(levels_table) do
         local current_pipe = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"])
         if level == 1 then
-            current_pipe.name = name .. "pipe"
-            current_pipe.minable.result = name .. "pipe"
+            current_pipe.name = name .. "-pipe"
+            current_pipe.minable.result = name .. "-pipe"
+        elseif level == "space" then
+            current_pipe.name = name .. "-space-pipe"
+            current_pipe.minable.result = name .. "-space-pipe"
         else
-            current_pipe.name = name .. "t" .. level .. "-pipe"
-            current_pipe.minable.result = name .. "t" .. level .. "-pipe"
+            current_pipe.name = name .. "-t" .. level .. "-pipe"
+            current_pipe.minable.result = name .. "-t" .. level .. "-pipe"
         end
-        current_pipe.icon = "__underground-pipe-pack__/graphics/icons/" .. name .. "t" .. level .. ".png"
+
+        if level == "space" then
+            current_pipe.collision_mask = afh_space_only
+            current_pipe.icon = "__underground-pipe-pack__/graphics/icons/space-exploration-compat/" .. name .. ".png"
+            current_pipe.se_allow_in_space = true
+        else
+            current_pipe.collision_mask = afh_ground_only
+            current_pipe.icon = "__underground-pipe-pack__/graphics/icons/" .. name .. "-t" .. level .. ".png"
+            current_pipe.se_allow_in_space = false
+        end
+
         current_pipe.icon_size = 32
-        current_pipe.collision_mask = {"water-tile"}
         current_pipe.selection_priority = 51
 
         local fluid_box = util.table.deepcopy(current_pipe.fluid_box)

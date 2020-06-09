@@ -81,6 +81,7 @@ local function plus_valve(event)
             new_valve.last_user = player
             event_data = {
                 created_entity = new_valve,
+                entity = new_valve,
                 player_index = player.index,
             }
             script.raise_event(defines.events.script_raised_built, event_data)
@@ -118,14 +119,13 @@ local function minus_valve(event)
             new_valve.last_user = player
             event_data = {
                 created_entity = new_valve,
+                entity = new_valve,
                 player_index = player.index,
             }
             script.raise_event(defines.events.script_raised_built, event_data)
-            game.print(event_data.created_entity.name .. " 1")
             if selection then
                 selection.destroy()
             end
-            game.print(event_data.created_entity.name .. " 2")
         end
     end
 end
