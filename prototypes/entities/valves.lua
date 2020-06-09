@@ -384,7 +384,7 @@ for num, type in pairs(types) do
           current_valve.localised_name = {"valves.check-valve-space-name"}
         else
           current_valve.name = percent ..  "-" .. valve .. type .. "-valve"
-          current_valve.localised_name = {"valves.valve-name", percent .. "%", valve}
+          current_valve.localised_name = {"valves.valve-name-space", percent .. "%", valve}
         end
 
         current_valve.se_allow_in_space = true
