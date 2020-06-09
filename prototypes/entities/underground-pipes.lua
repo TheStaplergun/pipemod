@@ -74,10 +74,13 @@ local levels_table = {
     [1] = Color.from_rgb(255,191,0,255/2),
     [2] = Color.from_rgb(227,38,45,255/2),
     [3] = Color.from_rgb(38,173,227,255/2),
-    ["space"] = Color.from_rgb(255,255,255,255/2)
     --[4] = Color.from_rgb(75,0,130,255),
     --[5] = Color.from_rgb(5,73,53,255)
 }
+
+if mods["space-exploration"] then
+    levels_table["space"] = Color.from_rgb(255,255,255,255/2)
+end
 
 local file_path = "__underground-pipe-pack__/graphics/entity/underground-cap/"
 local a_file_path = "__underground-pipe-pack__/graphics/entity/arrows/"

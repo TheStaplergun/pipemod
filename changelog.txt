@@ -1,10 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.18.3
+Date: 08. 06. 2020
+  Features:
+  Changes:
+  Fixes:
+    - Mod was not working if space exploration was not installed.
+---------------------------------------------------------------------------------------------------
 Version: 0.18.2
-Date: 03. 06. 2020
+Date: 08. 06. 2020
   Features:
     - Space exploration compatible pipes added that have over double the reach.
   Changes:
   Fixes:
+    - Script raised built no longer throws an error.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.1
 Date: 01. 05. 2020
