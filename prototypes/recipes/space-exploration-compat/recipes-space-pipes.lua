@@ -6,7 +6,7 @@ data:extend({
     {
       {"underground-pipe-segment-t1", 1},
       {"copper-cable", 2 },
-      {"steel-plate", 1},
+      {"se-heavy-girder", 1},
       {"plastic-bar", 1 },
       {"glass", 1 },
     },
@@ -23,7 +23,7 @@ data:extend({
     {
       {'small-pipe-coupler', 1},
       {"copper-cable", 2 },
-      {"steel-plate", 1},
+      {"se-heavy-girder", 1},
       {"plastic-bar", 1 },
     },
     enabled = false,
@@ -159,7 +159,7 @@ data:extend({
     ingredients =
     {
       {"engine-unit", 1},
-      {"steel-plate", 1},
+      {"se-heavy-girder", 1},
       {"space-pipe-coupler", 2},
       {"underground-pipe-segment-space", 10},
     },

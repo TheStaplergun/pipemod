@@ -249,7 +249,7 @@ if mods['space-exploration'] then
                 name = 'advanced-underground-piping-space',
                 icon_size = 128,
                 icon = '__underground-pipe-pack__/graphics/technology/advanced-underground-piping-space.png',
-                prerequisites = {'advanced-underground-piping-t3', 'se-space-platform-scaffold'},
+                prerequisites = {'advanced-underground-piping-t3', 'se-heavy-girder'},
                 effects = {
                     -- ONE TO ONE PIPES
                     {
@@ -328,7 +328,9 @@ if mods['space-exploration'] then
                     ingredients = {
                         {'automation-science-pack', 1},
                         {'logistic-science-pack', 1},
-                        {'chemical-science-pack', 1}
+                        {'chemical-science-pack', 1},
+                        {'se-rocket-science-pack', 1},
+                        {'se-material-science-pack-1', 1}
                     },
                     time = 30
                 },
