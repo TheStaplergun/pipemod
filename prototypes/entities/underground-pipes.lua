@@ -13,9 +13,7 @@ local direction_table = {
 }
 local base_ug_distance = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"].fluid_box.pipe_connections[2].max_underground_distance)
 local function build_connections_table(directions, level)
-  local connections_table = {
-    { position = {0, -1} },
-  }
+  local connections_table = {}
   local max_distance
   for _, datas in pairs(direction_table[directions]) do
     if level == "space" then
