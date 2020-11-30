@@ -207,7 +207,7 @@ for name, properties in pairs(names_table) do
         current_pipe.fast_replaceable_group = "pipe-to-ground"
         current_pipe.next_upgrade = nil
         current_pipe.pictures = build_picture_table(properties.picture_variants, color)
-        --current_pipe.dont_flip_on_manual_build = true
+        current_pipe.draw_fluid_icon_override = true
         pipes[#pipes + 1] = current_pipe
     end
 end

@@ -1,3 +1,21 @@
+afh_space_only =
+{
+  "water-tile",
+  "ground-tile",
+  "item-layer",
+  "object-layer",
+  "player-layer"
+}
+
+afh_ground_only =
+{
+  "water-tile",
+  "item-layer",
+  "object-layer",
+  "player-layer",
+  "layer-14"
+}
+
 require("prototypes.entities.pipecovers")
 require("prototypes.entities.underground-pipes")
 require("prototypes.entities.underground-buildings")
@@ -17,24 +35,6 @@ require("prototypes.recipes.recipes-valves")
 require("prototypes.recipes.recipes-intermediary")
 require("prototypes.technology")
 require("prototypes.controls")
-
-afh_space_only =
-{
-  "water-tile",
-  "ground-tile",
-  "item-layer",
-  "object-layer",
-  "player-layer"
-}
-
-afh_ground_only =
-{
-  "water-tile",
-  "item-layer",
-  "object-layer",
-  "player-layer",
-  "layer-14"
-}
 if _G.mods["space-exploration"] then
 
   -- RECIPES
