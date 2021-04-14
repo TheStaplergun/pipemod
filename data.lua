@@ -2,17 +2,17 @@ afh_space_only =
 {
   "water-tile",
   "ground-tile",
-  "item-layer",
-  "object-layer",
-  "player-layer"
+  --"item-layer",
+  --"object-layer",
+  --"player-layer"
 }
 
 afh_ground_only =
 {
   "water-tile",
-  "item-layer",
-  "object-layer",
-  "player-layer",
+  --"item-layer",
+  --"object-layer",
+  --"player-layer",
   "layer-14"
 }
 

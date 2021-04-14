@@ -1,3 +1,4 @@
+require "circuit_connector_definitions"
 local base_ug_distance = util.table.deepcopy(data.raw['pipe-to-ground']['pipe-to-ground'].fluid_box.pipe_connections[2].max_underground_distance)
 
 local blue_color = {0, 0.831, 1, 0.5}
@@ -19,6 +20,9 @@ data:extend(
             selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
             selection_priority = 51,
             se_allow_in_space = false,
+            circuit_wire_connection_points = circuit_connector_definitions["underground-mini-pump"].points,
+            circuit_connector_sprites = circuit_connector_definitions["underground-mini-pump"].sprites,
+            circuit_wire_max_distance = inserter_circuit_wire_max_distance,
             resistances = {
                 {
                     type = 'fire',

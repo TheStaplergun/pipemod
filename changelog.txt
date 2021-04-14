@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.1
+Date: 14. 04. 2020
+  Features:
+    - Wire compatibility (finally) for the underground pump.
+  Fixes:
+    - Fix issue with space exploration compatible valves giving wrong result from mining.
+    - Fix collision layer issues.
+---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+Date: 30. 11. 2020
+  Features:
+    - Update for 1.1
+    - Single tile underground pipe junctions now draw their contained fluid icon in Alt Mode.
+---------------------------------------------------------------------------------------------------
 Version: 0.18.6
 Date: 12. 06. 2020
   Features:
