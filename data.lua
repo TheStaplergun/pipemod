@@ -1,19 +1,14 @@
+
 afh_space_only =
 {
   "water-tile",
-  "ground-tile",
-  --"item-layer",
-  --"object-layer",
-  --"player-layer"
+  "ground-tile"
 }
 
 afh_ground_only =
 {
   "water-tile",
-  --"item-layer",
-  --"object-layer",
-  --"player-layer",
-  "layer-14"
+
 }
 
 require("prototypes.entities.pipecovers")
@@ -35,8 +30,17 @@ require("prototypes.recipes.recipes-valves")
 require("prototypes.recipes.recipes-intermediary")
 require("prototypes.technology")
 require("prototypes.controls")
-if _G.mods["space-exploration"] then
 
+if _G.mods["space-exploration"] then
+  local collision_mask_util_extended = require("collision-mask-util.collision-mask-util-extended")
+
+  local collision_mask_empty_space_tile = get_make_named_collision_mask("empty-space-tile")
+  table.insert(afh_ground_only, collision_mask_empty_space_tile)
+
+  local collision_mask_space_tile = get_make_named_collision_mask("space-tile")
+  table.insert(afh_space_only, collision_mask_space_tile)
+  table.insert(afh_space_only, collision_mask_empty_space_tile)
+  
   -- RECIPES
 
   require("prototypes.recipes.space-exploration-compat.recipes-space-pipes")
