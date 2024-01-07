@@ -223,7 +223,7 @@ end
 data:extend(pipes)
 
 
-if settings.startup["bobmods-logistics-highpipes"].value == true then
+if mods["bobslogistics"] and settings.startup["bobmods-logistics-highpipes"] and settings.startup["bobmods-logistics-highpipes"].value == true then
   bobmods.logistics.set_pipe_height("one-to-one-left-t2-pipe", 2)
   bobmods.logistics.set_pipe_height("one-to-one-forward-t2-pipe", 2)
   bobmods.logistics.set_pipe_height("one-to-one-reverse-t2-pipe", 2)
