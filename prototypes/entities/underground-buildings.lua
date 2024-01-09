@@ -297,7 +297,7 @@ if mods["space-exploration"] then
   data:extend{space_pump}
 end
 
-if mods["bobslogistics"] and settings.startup["bobmods-logistics-highpipes"] and settings.startup["bobmods-logistics-highpipes"].value == true then
+if mods["boblogistics"] and settings.startup["bobmods-logistics-highpipes"] and settings.startup["bobmods-logistics-highpipes"].value == true then
   bobmods.logistics.set_pump_height("underground-mini-pump", 4)
   bobmods.logistics.set_pumping_speed("underground-mini-pump", 4)
 end
