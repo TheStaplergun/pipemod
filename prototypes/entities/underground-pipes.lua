@@ -212,3 +212,16 @@ for name, properties in pairs(names_table) do
     end
 end
 data:extend(pipes)
+
+
+if  mods["boblogistics"] and settings.startup["bobmods-logistics-highpipes"] and settings.startup["bobmods-logistics-highpipes"].value == true then
+  bobmods.logistics.set_pipe_height("underground-L-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("underground-i-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("underground-t-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("underground-cross-t2-pipe", 2)
+
+  bobmods.logistics.set_pipe_height("underground-L-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("underground-i-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("underground-t-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("underground-cross-t3-pipe", 4)
+end

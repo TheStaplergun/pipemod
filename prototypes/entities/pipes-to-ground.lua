@@ -221,3 +221,43 @@ for types, sets in pairs(namesTable) do
   end
 end
 data:extend(pipes)
+
+
+if mods["boblogistics"] and settings.startup["bobmods-logistics-highpipes"] and settings.startup["bobmods-logistics-highpipes"].value == true then
+  bobmods.logistics.set_pipe_height("one-to-one-left-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-one-forward-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-one-reverse-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-one-right-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-two-perpendicular-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-two-perpendicular-secondary-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-two-parallel-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-two-parallel-secondary-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-two-L-FL-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-two-L-FR-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-two-L-RR-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-two-L-RL-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-three-left-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-three-forward-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-three-reverse-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-three-right-t2-pipe", 2)
+  bobmods.logistics.set_pipe_height("one-to-four-t2-pipe", 2)
+
+
+  bobmods.logistics.set_pipe_height("one-to-one-left-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-one-forward-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-one-reverse-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-one-right-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-two-perpendicular-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-two-perpendicular-secondary-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-two-parallel-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-two-parallel-secondary-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-two-L-FL-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-two-L-FR-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-two-L-RR-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-two-L-RL-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-three-left-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-three-forward-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-three-reverse-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-three-right-t3-pipe", 4)
+  bobmods.logistics.set_pipe_height("one-to-four-t3-pipe", 4)
+end
