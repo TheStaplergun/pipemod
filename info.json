@@ -12,6 +12,7 @@
     "(?) Dectorio",
     "stdlib >= 1.4.2",
     "(?) space-exploration",
+    "(?) Krastorio",
     "(?) boblogistics"
   ]
 }

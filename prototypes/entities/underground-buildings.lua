@@ -1,5 +1,5 @@
 require "circuit_connector_definitions"
-local base_ug_distance = util.table.deepcopy(data.raw['pipe-to-ground']['pipe-to-ground'].fluid_box.pipe_connections[2].max_underground_distance)
+local base_ug_distance = 10
 
 local blue_color = {0, 0.831, 1, 0.5}
 data:extend(
@@ -289,7 +289,7 @@ if mods["space-exploration"] then
   local space_pump = util.table.deepcopy(data.raw['pump']['underground-mini-pump'])
   space_pump.name = "underground-space-pump"
   for _, connection in pairs(space_pump.fluid_box.pipe_connections) do
-    connection.max_underground_distance = 16
+    connection.max_underground_distance = base_ug_distance
   end
   space_pump.minable.result = "underground-space-pump"
   space_pump.collision_mask = afh_space_only

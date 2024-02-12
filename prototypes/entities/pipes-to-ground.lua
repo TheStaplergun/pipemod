@@ -1,3 +1,5 @@
+local pipeData = require("prototypes.pipe-definitions")
+
 local north = {position = {0, -1}}
 local south = {position = {0, 1}}
 local west = {position = {-1, 0}}
@@ -20,7 +22,8 @@ local direction_table = {
   ['NSE'] = {north, south, east},
   ['NSEW'] = {north, south, east, west}
 }
-local base_ug_distance = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"].fluid_box.pipe_connections[2].max_underground_distance)
+
+local base_ug_distance = 10
 local function build_connections_table(directions, level)
   local connections_table = {
     { position = {0, -1} },
@@ -38,78 +41,6 @@ local function build_connections_table(directions, level)
     }
   end
   return connections_table
-end
-
-local namesTable = {
-  ["one-to-one"] = {
-    {
-      icon = "one-to-one",
-      mine_and_place = "-forward",
-      variant = {
-      ["-forward-"] = "S",
-      ["-left-"] = "E",
-      ["-reverse-"] = "N",
-      ["-right-"] = "W"
-      }
-    }
-  },
-  ["one-to-two"] = {
-    {
-      icon = "one-to-two-parallel",
-      mine_and_place = "-perpendicular",
-      variant = {
-      ["-perpendicular-"] = "EW",
-      ["-parallel-"] = "NS",
-      ["-perpendicular-secondary-"] = "EW",
-      ["-parallel-secondary-"] = "NS",
-      ["-L-FL-"] = "SE",
-      ["-L-FR-"] = "SW",
-      ["-L-RR-"] = "NW",
-      ["-L-RL-"] = "NE"
-      }
-    },
-    --[[{
-      icon = "one-to-two-L",
-      mine_and_place = "-L-FL",
-      variant = {
-        ["-L-FL-"] = "SE",
-        ["-L-FR-"] = "SW",
-        ["-L-RR-"] = "NW",
-        ["-L-RL-"] = "NE"
-      }
-    }]]--
-  },
-  ["one-to-three"] = {
-    {
-      icon = "one-to-three",
-      mine_and_place = "-forward",
-      variant = {
-      ["-forward-"] = "SEW",
-      ["-left-"] = "NSE",
-      ["-reverse-"] = "NEW",
-      ["-right-"] = "NSW"
-      }
-    }
-  },
-  ["one-to-four"] = {
-    {
-      icon = "one-to-four",
-      mine_and_place = "",
-      variant = {
-        ["-"] = "NSEW"
-      }
-    }
-  }
-}
-
-local levelsTable = {
-  ["1"] = 1,
-  ["2"] = 2,
-  ["3"] = 3
-}
-
-if mods["space-exploration"] then
-  levelsTable["space"] = 4
 end
 
 local file_path = "__underground-pipe-pack__/graphics/entity/level-"
@@ -181,10 +112,10 @@ end
 
 
 local pipes ={}
-for types, sets in pairs(namesTable) do
+for types, sets in pairs(pipeData.pipeNames) do
   for _ , datas in pairs(sets) do
     for variants, directions in pairs(datas.variant) do
-      for levelsS , levelsN in pairs(levelsTable) do
+      for levelsS , levelsN in pairs(pipeData.levels) do
         local currentPipe = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"])
         if levelsS == "1" then
           currentPipe.name = types .. variants ..  "pipe"
