@@ -138,8 +138,7 @@ underground_pump_connector_template =
   }
 }
 
-circuit_connector_definitions["underground-mini-pump"] = circuit_connector_definitions.create
-(
+circuit_connector_definitions["underground-mini-pump"] = circuit_connector_definitions.create_vector(
   underground_pump_connector_template,
   {
     { variation = 2, main_offset = util.by_pixel(0, 0), shadow_offset = util.by_pixel(0, 0), show_shadow = true },

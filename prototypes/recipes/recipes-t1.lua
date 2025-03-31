@@ -5,13 +5,13 @@ data:extend({
     name = "one-to-one-forward-pipe",
     ingredients =
     {
-      {"pipe", 1},
-      {"swivel-joint", 1},
-      {"small-pipe-coupler", 1},
-      {"underground-pipe-segment-t1", 5}
+      {type = "item", name = "pipe", amount = 1},
+      {type = "item", name = "swivel-joint", amount = 1},
+      {type = "item", name = "small-pipe-coupler", amount = 1},
+      {type = "item", name = "underground-pipe-segment-t1", amount = 5}
     },
 	enabled = false,
-    result = "one-to-one-forward-pipe"
+    results = {{type="item", name="one-to-one-forward-pipe", amount=1}}
   },
   -- ONE TO TWO PIPES
   {
@@ -19,26 +19,26 @@ data:extend({
     name = "one-to-two-perpendicular-pipe",
     ingredients =
     {
-      {"pipe", 1},
-      {"swivel-joint", 1},
-      {"small-pipe-coupler", 2},
-      {"underground-pipe-segment-t1", 10},
+      {type = "item", name = "pipe", amount = 1},
+      {type = "item", name = "swivel-joint", amount = 1},
+      {type = "item", name = "small-pipe-coupler", amount = 2},
+      {type = "item", name = "underground-pipe-segment-t1", amount = 10},
     },
 	enabled = false,
-    result = "one-to-two-perpendicular-pipe"
+    results = {{type="item", name="one-to-two-perpendicular-pipe", amount=1}}
   },
   --[[{
     type = "recipe",
     name = "one-to-two-L-FL-pipe",
     ingredients =
     {
-      {"pipe", 1},
-      {"swivel-joint", 1},
-      {"small-pipe-coupler", 2},
-      {"underground-pipe-segment-t1", 10},
+      {type = "item", name = "pipe", 1},
+      {type = "item", name = "swivel-joint", 1},
+      {type = "item", name = "small-pipe-coupler", 2},
+      {type = "item", name = "underground-pipe-segment-t1", 10},
     },
 	enabled = false,
-    result = "one-to-two-L-FL-pipe"
+    results = {{type="item", name="one-to-two-L-FL-pipe", amount=1}}
   },]]--
 
 
@@ -48,13 +48,13 @@ data:extend({
     name = "one-to-three-forward-pipe",
     ingredients =
     {
-      {"pipe", 1},
-      {"swivel-joint", 1},
-      {"small-pipe-coupler", 3},
-      {"underground-pipe-segment-t1", 15},
+      {type = "item", name = "pipe", amount = 1},
+      {type = "item", name = "swivel-joint", amount = 1},
+      {type = "item", name = "small-pipe-coupler", amount = 3},
+      {type = "item", name = "underground-pipe-segment-t1", amount = 15},
     },
 	enabled = false,
-    result = "one-to-three-forward-pipe"
+    results = {{type="item", name="one-to-three-forward-pipe", amount=1}}
   },
 
   -- ONE TO FOUR PIPE
@@ -63,12 +63,12 @@ data:extend({
     name = "one-to-four-pipe",
     ingredients =
     {
-      {"pipe", 1},
-      {"small-pipe-coupler", 4},
-      {"underground-pipe-segment-t1", 20},
+      {type = "item", name = "pipe", amount = 1},
+      {type = "item", name = "small-pipe-coupler", amount = 4},
+      {type = "item", name = "underground-pipe-segment-t1", amount = 20},
     },
 	enabled = false,
-    result = "one-to-four-pipe"
+    results = {{type="item", name="one-to-four-pipe", amount=1}}
   },
   -- UNDERGROUND I PIPES
   {
@@ -76,11 +76,11 @@ data:extend({
     name = "underground-i-pipe",
     ingredients =
     {
-      {"small-pipe-coupler", 2},
-      {"underground-pipe-segment-t1", 10},
+      {type = "item", name = "small-pipe-coupler", amount = 2},
+      {type = "item", name = "underground-pipe-segment-t1", amount = 10},
     },
 	enabled = false,
-    result = "underground-i-pipe"
+    results = {{type="item", name="underground-i-pipe", amount=1}}
   },
   -- UNDERGROUND L PIPES
   {
@@ -88,11 +88,11 @@ data:extend({
     name = "underground-L-pipe",
     ingredients =
     {
-      {"small-pipe-coupler", 2},
-      {"underground-pipe-segment-t1", 10},
+      {type = "item", name = "small-pipe-coupler", amount = 2},
+      {type = "item", name = "underground-pipe-segment-t1", amount = 10},
     },
 	enabled = false,
-    result = "underground-L-pipe"
+    results = {{type="item", name="underground-L-pipe", amount=1}}
   },
   -- UNDERGROUND T PIPES
   {
@@ -100,11 +100,11 @@ data:extend({
     name = "underground-t-pipe",
     ingredients =
     {
-      {"small-pipe-coupler", 3},
-      {"underground-pipe-segment-t1", 15},
+      {type = "item", name = "small-pipe-coupler", amount = 3},
+      {type = "item", name = "underground-pipe-segment-t1", amount = 15},
     },
 	enabled = false,
-    result = "underground-t-pipe"
+    results = {{type="item", name="underground-t-pipe", amount=1}}
   },
   -- UNDERGROUND CROSS PIPES
   {
@@ -112,11 +112,11 @@ data:extend({
     name = "underground-cross-pipe",
     ingredients =
     {
-      {"small-pipe-coupler", 4},
-      {"underground-pipe-segment-t1", 20},
+      {type = "item", name = "small-pipe-coupler", amount = 4},
+      {type = "item", name = "underground-pipe-segment-t1", amount = 20},
     },
 	enabled = false,
-    result = "underground-cross-pipe"
+    results = {{type="item", name="underground-cross-pipe", amount=1}}
   },
   -- UNDERGROUND BUILDINGS
   {
@@ -124,13 +124,13 @@ data:extend({
     name = "underground-mini-pump",
     ingredients =
     {
-      {"engine-unit", 1},
-      {"steel-plate", 1},
-      {"small-pipe-coupler", 2},
-      {"underground-pipe-segment-t1", 10},
+      {type = "item", name = "engine-unit", amount = 1},
+      {type = "item", name = "steel-plate", amount = 1},
+      {type = "item", name = "small-pipe-coupler", amount = 2},
+      {type = "item", name = "underground-pipe-segment-t1", amount = 10},
     },
     enabled = false,
-    result = "underground-mini-pump"
+    results = {{type="item", name="underground-mini-pump", amount=1}}
   },
   -- MULTI PIPES
   {
@@ -138,11 +138,11 @@ data:extend({
     name = "4-to-4-pipe",
     ingredients =
     {
-      {"pipe", 1},
-      {"small-pipe-coupler", 4},
-      {"underground-pipe-segment-t1", 20},
+      {type = "item", name = "pipe", amount = 1},
+      {type = "item", name = "small-pipe-coupler", amount = 4},
+      {type = "item", name = "underground-pipe-segment-t1", amount = 20},
     },
 	enabled = false,
-    result = "4-to-4-pipe"
+    results = {{type="item", name="4-to-4-pipe", amount=1}}
   },
 })

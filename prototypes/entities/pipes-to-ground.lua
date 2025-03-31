@@ -1,7 +1,7 @@
-local north = {position = {0, -1}}
-local south = {position = {0, 1}}
-local west = {position = {-1, 0}}
-local east = {position = {1, 0}}
+local north = {direction=defines.direction.north, position = {0, 0}}
+local south = {direction=defines.direction.south, position = {0, .0}}
+local west = {direction=defines.direction.west, position = {0, 0}}
+local east = {direction=defines.direction.east, position = {0, 0}}
 
 local direction_table = {
   ['N'] = {north},
@@ -23,7 +23,7 @@ local direction_table = {
 local base_ug_distance = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"].fluid_box.pipe_connections[2].max_underground_distance)
 local function build_connections_table(directions, level)
   local connections_table = {
-    { position = {0, -1} },
+    north,
   }
   local max_distance
   for _, datas in pairs(direction_table[directions]) do
@@ -33,8 +33,11 @@ local function build_connections_table(directions, level)
       max_distance = (base_ug_distance + 1) * level
     end
     connections_table[#connections_table + 1] = {
+      connection_type = "underground",
+      underground_collision_mask = underground_collision_mask,
       position = datas.position,
-      max_underground_distance = max_distance
+      direction = datas.direction,
+      max_underground_distance = max_distance,
     }
   end
   return connections_table
@@ -103,9 +106,9 @@ local namesTable = {
 }
 
 local levelsTable = {
-  ["1"] = 1,
+  ["3"] = 3,
   ["2"] = 2,
-  ["3"] = 3
+  ["1"] = 1,
 }
 
 if mods["space-exploration"] then
@@ -120,61 +123,33 @@ local function build_picture_table(type, variant, level)
     variant = "-parallel-"
   end
   return {
-    up = {
-      filename = file_path .. level .. "/" .. type .. variant .. "pipe-up.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      hr_version =
-      {
-        filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-up.png",
-        priority = "extra-high",
-        width = 128,
-        height = 128,
-        scale = 0.5
-      }
+    north = {
+      filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-up.png",
+      priority = "extra-high",
+      width = 128,
+      height = 128,
+      scale = 0.5
     },
-    down = {
-      filename = file_path .. level .. "/" .. type .. variant .. "pipe-down.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      hr_version =
-      {
-        filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-down.png",
-        priority = "extra-high",
-        width = 128,
-        height = 128,
-        scale = 0.5
-      }
+    south = {
+      filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-down.png",
+      priority = "extra-high",
+      width = 128,
+      height = 128,
+      scale = 0.5
     },
-    left = {
-      filename = file_path .. level .. "/" .. type .. variant .. "pipe-left.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      hr_version =
-      {
-        filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-left.png",
-        priority = "extra-high",
-        width = 128,
-        height = 128,
-        scale = 0.5
-      }
+    west = {
+      filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-left.png",
+      priority = "extra-high",
+      width = 128,
+      height = 128,
+      scale = 0.5
     },
-    right = {
-      filename = file_path .. level .. "/" .. type .. variant .. "pipe-right.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      hr_version =
-      {
-        filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-right.png",
-        priority = "extra-high",
-        width = 128,
-        height = 128,
-        scale = 0.5
-      }
+    east = {
+      filename = file_path .. level .. "/hr-" .. type .. variant .. "pipe-right.png",
+      priority = "extra-high",
+      width = 128,
+      height = 128,
+      scale = 0.5
     }
   }
 end
@@ -184,6 +159,7 @@ local pipes ={}
 for types, sets in pairs(namesTable) do
   for _ , datas in pairs(sets) do
     for variants, directions in pairs(datas.variant) do
+      local next_upgrade = nil
       for levelsS , levelsN in pairs(levelsTable) do
         local currentPipe = util.table.deepcopy(data.raw["pipe-to-ground"]["pipe-to-ground"])
         if levelsS == "1" then
@@ -209,11 +185,17 @@ for types, sets in pairs(namesTable) do
         end
 
         currentPipe.icon_size = 32
+        currentPipe.collision_mask = afh_normal_mask
         local fluidBox = util.table.deepcopy(currentPipe.fluid_box)
         fluidBox.pipe_covers = _G.tierpipecoverspictures(levelsS)
         fluidBox.pipe_connections = build_connections_table(directions, levelsN)
         currentPipe.fluid_box = fluidBox
         currentPipe.fast_replaceable_group = "pipe-to-ground"
+        if next_upgrade then
+          currentPipe.next_upgrade = next_upgrade
+        end
+        next_upgrade = currentPipe.name
+
         currentPipe.pictures = build_picture_table(types, variants, levelsS)
         pipes[#pipes + 1] = currentPipe
       end
@@ -221,43 +203,3 @@ for types, sets in pairs(namesTable) do
   end
 end
 data:extend(pipes)
-
-
-if mods["boblogistics"] and settings.startup["bobmods-logistics-highpipes"] and settings.startup["bobmods-logistics-highpipes"].value == true then
-  bobmods.logistics.set_pipe_height("one-to-one-left-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-one-forward-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-one-reverse-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-one-right-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-two-perpendicular-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-two-perpendicular-secondary-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-two-parallel-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-two-parallel-secondary-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-two-L-FL-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-two-L-FR-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-two-L-RR-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-two-L-RL-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-three-left-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-three-forward-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-three-reverse-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-three-right-t2-pipe", 2)
-  bobmods.logistics.set_pipe_height("one-to-four-t2-pipe", 2)
-
-
-  bobmods.logistics.set_pipe_height("one-to-one-left-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-one-forward-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-one-reverse-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-one-right-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-two-perpendicular-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-two-perpendicular-secondary-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-two-parallel-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-two-parallel-secondary-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-two-L-FL-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-two-L-FR-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-two-L-RR-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-two-L-RL-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-three-left-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-three-forward-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-three-reverse-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-three-right-t3-pipe", 4)
-  bobmods.logistics.set_pipe_height("one-to-four-t3-pipe", 4)
-end

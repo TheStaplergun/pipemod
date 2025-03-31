@@ -16,10 +16,9 @@ data:extend(
             corpse = 'small-remnants',
             base_render_layer = 'transport-belt',
             collision_box = {{-0.29, -0.29}, {0.29, 0.2}},
-            collision_mask = {'water-tile'},
+            collision_mask = afh_walkable_mask,
             selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
             selection_priority = 51,
-            se_allow_in_space = false,
             circuit_wire_connection_points = circuit_connector_definitions["underground-mini-pump"].points,
             circuit_connector_sprites = circuit_connector_definitions["underground-mini-pump"].sprites,
             circuit_wire_max_distance = inserter_circuit_wire_max_distance,
@@ -34,18 +33,25 @@ data:extend(
                 }
             },
             fluid_box = {
-                base_area = 1,
-                height = 1,
+                --base_area = 1,
+                --height = 1,
+                volume = 100,
                 pipe_covers = _G.pipecoverspictures(),
                 pipe_connections = {
                     {
-                        position = {0, -1},
-                        type = 'output',
+                        underground_collision_mask = underground_collision_mask,
+                        connection_type = "underground",
+                        direction = defines.direction.north,
+                        position = {0, 0},
+                        flow_direction = 'output',
                         max_underground_distance = (base_ug_distance + 1) * 3
                     },
                     {
-                        position = {0, 1},
-                        type = 'input',
+                        underground_collision_mask = underground_collision_mask,
+                        connection_type = "underground",
+                        direction = defines.direction.south,
+                        position = {0, 0},
+                        flow_direction = 'input',
                         max_underground_distance = (base_ug_distance + 1) * 3
                     }
                 }
@@ -70,23 +76,14 @@ data:extend(
                 north = {
                     layers = {
                         {
-                            filename = '__underground-pipe-pack__/graphics/entity/minipump/lr-minipump-north.png',
-                            width = 48,
-                            height = 48,
+                            filename = '__underground-pipe-pack__/graphics/entity/minipump/hr-minipump-north.png',
+                            width = 96,
+                            height = 96,
+                            scale = 0.5,
                             line_length = 8,
                             frame_count = 64,
                             animation_speed = 1.0,
-                            shift = {0, 0.1875},
-                            hr_version = {
-                                filename = '__underground-pipe-pack__/graphics/entity/minipump/hr-minipump-north.png',
-                                width = 96,
-                                height = 96,
-                                scale = 0.5,
-                                line_length = 8,
-                                frame_count = 64,
-                                animation_speed = 1.0,
-                                shift = {0, 0.1875}
-                            }
+                            shift = {0, 0.1875}
                         },
                         {
                             filename = '__underground-pipe-pack__/graphics/entity/arrows/hr-ug-arrow-N.png',
@@ -100,46 +97,28 @@ data:extend(
                             scale = 0.5
                         },
                         {
-                            filename = '__underground-pipe-pack__/graphics/entity/shadows/lr-minipump-shadow.png',
+                            filename = '__underground-pipe-pack__/graphics/entity/shadows/hr-minipump-shadow.png',
                             priority = 'high',
-                            width = 48,
-                            height = 48,
+                            width = 96,
+                            height = 96,
+                            scale = 0.5,
                             shift = {0, 0.1875},
                             draw_as_shadow = true,
-                            repeat_count = 64,
-                            hr_version = {
-                                filename = '__underground-pipe-pack__/graphics/entity/shadows/hr-minipump-shadow.png',
-                                priority = 'high',
-                                width = 96,
-                                height = 96,
-                                scale = 0.5,
-                                shift = {0, 0.1875},
-                                draw_as_shadow = true,
-                                repeat_count = 64
-                            }
+                            repeat_count = 64
                         }
                     }
                 },
                 east = {
                     layers = {
                         {
-                            filename = '__underground-pipe-pack__/graphics/entity/minipump/lr-minipump-east.png',
-                            width = 48,
-                            height = 48,
+                            filename = '__underground-pipe-pack__/graphics/entity/minipump/hr-minipump-east.png',
+                            width = 96,
+                            height = 96,
+                            scale = 0.5,
                             line_length = 8,
                             frame_count = 64,
                             animation_speed = 1.0,
-                            shift = {0, 0.1875},
-                            hr_version = {
-                                filename = '__underground-pipe-pack__/graphics/entity/minipump/hr-minipump-east.png',
-                                width = 96,
-                                height = 96,
-                                scale = 0.5,
-                                line_length = 8,
-                                frame_count = 64,
-                                animation_speed = 1.0,
-                                shift = {0, 0.1875}
-                            }
+                            shift = {0, 0.1875}
                         },
                         {
                             filename = '__underground-pipe-pack__/graphics/entity/arrows/hr-ug-arrow-E.png',
@@ -153,46 +132,28 @@ data:extend(
                             scale = 0.5
                         },
                         {
-                            filename = '__underground-pipe-pack__/graphics/entity/shadows/lr-minipump-shadow.png',
+                            filename = '__underground-pipe-pack__/graphics/entity/shadows/hr-minipump-shadow.png',
                             priority = 'high',
-                            width = 48,
-                            height = 48,
+                            width = 96,
+                            height = 96,
+                            scale = 0.5,
                             shift = {0, 0.1875},
                             draw_as_shadow = true,
-                            repeat_count = 64,
-                            hr_version = {
-                                filename = '__underground-pipe-pack__/graphics/entity/shadows/hr-minipump-shadow.png',
-                                priority = 'high',
-                                width = 96,
-                                height = 96,
-                                scale = 0.5,
-                                shift = {0, 0.1875},
-                                draw_as_shadow = true,
-                                repeat_count = 64
-                            }
+                            repeat_count = 64
                         }
                     }
                 },
                 south = {
                     layers = {
                         {
-                            filename = '__underground-pipe-pack__/graphics/entity/minipump/lr-minipump-south.png',
-                            width = 48,
-                            height = 48,
+                            filename = '__underground-pipe-pack__/graphics/entity/minipump/hr-minipump-south.png',
+                            width = 96,
+                            height = 96,
+                            scale = 0.5,
                             line_length = 8,
                             frame_count = 64,
                             animation_speed = 1.0,
-                            shift = {0, 0.1875},
-                            hr_version = {
-                                filename = '__underground-pipe-pack__/graphics/entity/minipump/hr-minipump-south.png',
-                                width = 96,
-                                height = 96,
-                                scale = 0.5,
-                                line_length = 8,
-                                frame_count = 64,
-                                animation_speed = 1.0,
-                                shift = {0, 0.1875}
-                            }
+                            shift = {0, 0.1875}
                         },
                         {
                             filename = '__underground-pipe-pack__/graphics/entity/arrows/hr-ug-arrow-S.png',
@@ -206,46 +167,28 @@ data:extend(
                             scale = 0.5
                         },
                         {
-                            filename = '__underground-pipe-pack__/graphics/entity/shadows/lr-minipump-shadow.png',
+                            filename = '__underground-pipe-pack__/graphics/entity/shadows/hr-minipump-shadow.png',
                             priority = 'high',
-                            width = 48,
-                            height = 48,
+                            width = 96,
+                            height = 96,
+                            scale = 0.5,
                             shift = {0, 0.1875},
                             draw_as_shadow = true,
-                            repeat_count = 64,
-                            hr_version = {
-                                filename = '__underground-pipe-pack__/graphics/entity/shadows/hr-minipump-shadow.png',
-                                priority = 'high',
-                                width = 96,
-                                height = 96,
-                                scale = 0.5,
-                                shift = {0, 0.1875},
-                                draw_as_shadow = true,
-                                repeat_count = 64
-                            }
+                            repeat_count = 64
                         }
                     }
                 },
                 west = {
                     layers = {
                         {
-                            filename = '__underground-pipe-pack__/graphics/entity/minipump/lr-minipump-west.png',
-                            width = 48,
-                            height = 48,
+                            filename = '__underground-pipe-pack__/graphics/entity/minipump/hr-minipump-west.png',
+                            width = 96,
+                            height = 96,
+                            scale = 0.5,
                             line_length = 8,
                             frame_count = 64,
                             animation_speed = 1.0,
-                            shift = {0, 0.1875},
-                            hr_version = {
-                                filename = '__underground-pipe-pack__/graphics/entity/minipump/hr-minipump-west.png',
-                                width = 96,
-                                height = 96,
-                                scale = 0.5,
-                                line_length = 8,
-                                frame_count = 64,
-                                animation_speed = 1.0,
-                                shift = {0, 0.1875}
-                            }
+                            shift = {0, 0.1875}
                         },
                         {
                             filename = '__underground-pipe-pack__/graphics/entity/arrows/hr-ug-arrow-W.png',
@@ -259,23 +202,14 @@ data:extend(
                             scale = 0.5
                         },
                         {
-                            filename = '__underground-pipe-pack__/graphics/entity/shadows/lr-minipump-shadow.png',
+                            filename = '__underground-pipe-pack__/graphics/entity/shadows/hr-minipump-shadow.png',
                             priority = 'high',
-                            width = 48,
-                            height = 48,
+                            width = 96,
+                            height = 96,
+                            scale = 0.5,
                             shift = {0, 0.1875},
                             draw_as_shadow = true,
-                            repeat_count = 64,
-                            hr_version = {
-                                filename = '__underground-pipe-pack__/graphics/entity/shadows/hr-minipump-shadow.png',
-                                priority = 'high',
-                                width = 96,
-                                height = 96,
-                                scale = 0.5,
-                                shift = {0, 0.1875},
-                                draw_as_shadow = true,
-                                repeat_count = 64
-                            }
+                            repeat_count = 64
                         }
                     }
                 }
@@ -283,22 +217,4 @@ data:extend(
         }
     }
 )
-
-if mods["space-exploration"] then
-  data.raw['pump']['underground-mini-pump'].collision_mask = afh_ground_only
-  local space_pump = util.table.deepcopy(data.raw['pump']['underground-mini-pump'])
-  space_pump.name = "underground-space-pump"
-  for _, connection in pairs(space_pump.fluid_box.pipe_connections) do
-    connection.max_underground_distance = 16
-  end
-  space_pump.minable.result = "underground-space-pump"
-  space_pump.collision_mask = afh_space_only
-  space_pump.se_allow_in_space = true
-  data:extend{space_pump}
-end
-
-if mods["boblogistics"] and settings.startup["bobmods-logistics-highpipes"] and settings.startup["bobmods-logistics-highpipes"].value == true then
-  bobmods.logistics.set_pump_height("underground-mini-pump", 4)
-  bobmods.logistics.set_pumping_speed("underground-mini-pump", 4)
-end
 

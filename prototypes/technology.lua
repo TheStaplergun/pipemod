@@ -75,7 +75,7 @@ data:extend(
                     recipe = 'underground-pipe-segment-t1'
                 },
                 -- VALVES
-                {
+                --[[{
                     type = 'unlock-recipe',
                     recipe = '80-overflow-valve'
                 },
@@ -86,7 +86,7 @@ data:extend(
                 {
                     type = 'unlock-recipe',
                     recipe = 'check-valve'
-                }
+                }]]--
             },
             unit = {
                 count = 50,

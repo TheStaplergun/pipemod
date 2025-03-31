@@ -46,8 +46,10 @@ local function rotateUndergroundPipe(event)
     local player,_ = Player.get(event.player_index)
     local selection = player.selected
     if selection and selection.force == player.force then
+
         local researched = player.force.technologies['advanced-underground-piping'].researched
         if (selection.type == 'pipe-to-ground' or (selection.type == 'entity-ghost' and selection.ghost_type == 'pipe-to-ground')) and researched then
+
             RotateUnderground(selection, player, reverse)
         end
     end
@@ -55,7 +57,7 @@ end
 Event.register('rotate-underground-pipe', rotateUndergroundPipe)
 Event.register('reverse-rotate-underground-pipe', rotateUndergroundPipe)
 
-local function plus_valve(event)
+--[[local function plus_valve(event)
     local player,_ = Player.get(event.player_index)
     local selection = player.selected
     if selection and selection.force == player.force then
@@ -130,7 +132,7 @@ local function minus_valve(event)
     end
 end
 Event.register('minus-valve', minus_valve)
-
+]]--
 local function get_pipe_table()
     return advancedPiping.pipetable
 end

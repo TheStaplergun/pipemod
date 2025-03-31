@@ -11,7 +11,7 @@ data:extend{
         key_sequence = "CONTROL + SHIFT + R",
         consuming = "none"
     },
-    {
+    --[[{
         type = "custom-input",
         name = "minus-valve",
         key_sequence = "PAD -",
@@ -22,5 +22,5 @@ data:extend{
         name = "plus-valve",
         key_sequence = "PAD +",
         consuming = "none"
-    }
+    }]]--
 }

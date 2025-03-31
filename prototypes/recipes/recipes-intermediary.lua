@@ -5,32 +5,32 @@ data:extend({
     name = "small-pipe-coupler",
     ingredients =
     {
-      {"iron-plate", 1},
+      {type = "item", name = "iron-plate", amount = 1},
     },
 	enabled = false,
-    result = "small-pipe-coupler"
+    results = {{type="item", name="small-pipe-coupler", amount=1}}
   },
   {
     type = "recipe",
     name = "medium-pipe-coupler",
     ingredients =
     {
-      {"small-pipe-coupler", 1},
-      {"iron-plate", 1},
+      {type = "item", name = "small-pipe-coupler", amount = 1},
+      {type = "item", name = "iron-plate", amount = 1},
     },
 	enabled = false,
-    result = "medium-pipe-coupler"
+    results = {{type="item", name="medium-pipe-coupler", amount=1}}
   },
   {
     type = "recipe",
     name = "large-pipe-coupler",
     ingredients =
     {
-      {"medium-pipe-coupler", 1},
-      {"steel-plate", 1},
+      {type = "item", name = "medium-pipe-coupler", amount = 1},
+      {type = "item", name = "steel-plate", amount = 1},
     },
 	enabled = false,
-    result = "large-pipe-coupler"
+    results = {{type="item", name="large-pipe-coupler", amount=1}}
   },
 
   --Swivel Joint
@@ -40,11 +40,11 @@ data:extend({
     name = "swivel-joint",
     ingredients =
     {
-      {"iron-plate", 1},
-      {"iron-gear-wheel", 1},
+      {type = "item", name = "iron-plate", amount = 1},
+      {type = "item", name = "iron-gear-wheel", amount = 1},
     },
 	enabled = false,
-    result = "swivel-joint"
+    results = {{type="item", name="swivel-joint", amount=1}}
   },
 
   -- Segments
@@ -54,31 +54,31 @@ data:extend({
     name = "underground-pipe-segment-t1",
     ingredients =
     {
-      {"iron-plate", 1},
+      {type = "item", name = "iron-plate", amount = 1},
     },
 	enabled = false,
-    result = "underground-pipe-segment-t1"
+    results = {{type="item", name="underground-pipe-segment-t1", amount=1}}
   },
   {
     type = "recipe",
     name = "underground-pipe-segment-t2",
     ingredients =
     {
-      {"underground-pipe-segment-t1", 1},
-      {"iron-plate", 2},
+      {type = "item", name = "underground-pipe-segment-t1", amount = 1},
+      {type = "item", name = "iron-plate", amount = 2},
     },
 	enabled = false,
-    result = "underground-pipe-segment-t2"
+    results = {{type="item", name="underground-pipe-segment-t2", amount=1}}
   },
   {
     type = "recipe",
     name = "underground-pipe-segment-t3",
     ingredients =
     {
-      {"underground-pipe-segment-t2", 1},
-      {"steel-plate", 2},
+      {type = "item", name = "underground-pipe-segment-t2", amount = 1},
+      {type = "item", name = "steel-plate", amount = 2},
     },
 	enabled = false,
-    result = "underground-pipe-segment-t3"
+    results = {{type="item", name="underground-pipe-segment-t3", amount=1}}
   },
 })

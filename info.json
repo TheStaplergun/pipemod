@@ -1,16 +1,15 @@
 {
   "name": "underground-pipe-pack",
-  "version": "1.1.3",
-  "factorio_version": "1.1",
+  "version": "2.0.0",
+  "factorio_version": "2.0",
   "title": "Advanced Fluid Handling",
   "author": "TheStaplergun",
   "contact": "TheStaplergun#6920 (DISCORD)",
   "homepage": "",
   "description": "Now has advanced pipes for Space Exploration use\n--Adds I, L, T, and Cross underground pipe extensions.\n--Adds pipes to ground with I, L, T, and Cross shaped underground outputs that are able to be rotated independent of the above ground port with <CTRL + R>.\n--Adds an Underground pump.\n--Adds adjustable fluid valves (check, overflow, top-up). <NUMPAD + and ->",
   "dependencies": [
-    "base >= 1.1.0",
+    "base >= 2.0.0",
     "(?) Dectorio",
-    "stdlib >= 1.4.2",
     "(?) space-exploration",
     "(?) boblogistics"
   ]

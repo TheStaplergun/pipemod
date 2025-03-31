@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.0
+Date: 13. 11. 2024
+  Changes:
+    - Update to 2.0
+    - Removed Valves since the fluid engine has changed
+    - Removed hard coded Space Exploration compatibility and Bobsmod Compatibility, allowing for another mod creator to fill that gap
+---------------------------------------------------------------------------------------------------
 Version: 1.1.2
 Date: 14. 04. 2020
   Changes:

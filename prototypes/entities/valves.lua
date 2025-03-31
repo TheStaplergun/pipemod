@@ -391,9 +391,6 @@ for num, type in pairs(types) do
           current_valve.localised_name = {"valves.valve-name-space", percent .. "%", valve}
         end
 
-        current_valve.se_allow_in_space = true
-        current_valve.collision_mask = nil
-        current_valve.collision_mask = afh_space_only
       else
 
         current_valve.minable.result = datas.mine_and_place
@@ -405,10 +402,6 @@ for num, type in pairs(types) do
           current_valve.name = percent ..  "-" .. valve .. "-valve"
           current_valve.localised_name = {"valves.valve-name", percent .. "%", valve}
         end
-        current_valve.se_allow_in_space = false
-        if types[2] then
-          current_valve.collision_mask = afh_ground_only -- Prevents space placement if SE is active
-        end
       end
 
       current_valve.icon = "__base__/graphics/icons/pipe.png"
@@ -419,18 +412,40 @@ for num, type in pairs(types) do
       current_valve.collision_box = data.raw["pipe"]["pipe"].collision_box
       current_valve.selection_box = data.raw["pipe"]["pipe"].selection_box
       current_valve.next_upgrade = nil
+      current_valve.energy_usage = "0W"
+      current_valve.energy_source = {type = "void"}
+      current_valve.buffer_capacity = "0MJ"
+      current_valve.input_flow_limit = "0W"
+      current_valve.type = "pump"
+      if valve == "overflow" then
+        current_valve.pumping_speed = stat.base_size * 100
+      else
+        current_valve.pumping_speed = 100
+      end
+      local volume_to_set = nil
+      if stat.base_level > 0 then
+        volume_to_set = stat.base_level * 100
+      else
+        volume_to_set = 100
+      end
       current_valve.fluid_box =
       {
-        base_area = stat.base_size,
-        base_level = stat.base_level,
+        --base_area = stat.base_size,
+        --base_level = stat.base_level,
+        volume = volume_to_set,
         pipe_covers = _G.pipecoverspictures(),
         pipe_connections =
         {
           {
-            position = {0, -1},
-            type="output"
+            direction = defines.direction.south,
+            position = {0, 0},
+            flow_direction="output"
           },
-          { position = {0, 1} }
+          {
+            direction = defines.direction.north,
+            position = {0, 0},
+            flow_direction="input"
+          }
         },
       }
       current_valve.two_direction_only = false

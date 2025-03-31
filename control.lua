@@ -1,6 +1,6 @@
-local modInit = require('init')
-script.on_init(modInit.mod_init)
-script.on_configuration_changed(modInit.mod_init)
+--local modInit = require('init')
+--script.on_init(modInit.mod_init)
+--script.on_configuration_changed(modInit.mod_init)
 require('tables')
 
 local Event = require('lib/event')

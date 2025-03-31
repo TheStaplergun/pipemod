@@ -1,37 +1,37 @@
 data:extend(
 {
     {
-        type = 'recipe',
+        type = "recipe",
         name = "80-overflow-valve",
         ingredients = {
-            {'pipe', 1},
-            {'iron-plate', 1},
-            {'iron-gear-wheel', 1},
+            {type = "item", name = "pipe", amount = 1},
+            {type = "item", name = "iron-plate", amount = 1},
+            {type = "item", name = "iron-gear-wheel", amount = 1},
         },
         enabled = false,
-        result = "80-overflow-valve"
+        results = {{type="item", name="80-overflow-valve", amount=1}}
     },
     {
-        type = 'recipe',
+        type = "recipe",
         name = "80-top-up-valve",
         ingredients = {
-            {'pipe', 1},
-            {'iron-plate', 1},
-            {'iron-gear-wheel', 1},
+            {type = "item", name = "pipe", amount = 1},
+            {type = "item", name = "iron-plate", amount = 1},
+            {type = "item", name = "iron-gear-wheel", amount = 1},
         },
         enabled = false,
-        result = "80-top-up-valve"
+        results = {{type="item", name="80-top-up-valve", amount=1}}
     },
     {
-        type = 'recipe',
+        type = "recipe",
         name = "check-valve",
         ingredients = {
-            {'pipe', 1},
-            {'iron-plate', 1},
-            {'iron-gear-wheel', 1},
+            {type = "item", name = "pipe", amount = 1},
+            {type = "item", name = "iron-plate", amount = 1},
+            {type = "item", name = "iron-gear-wheel", amount = 1},
         },
         enabled = false,
-        result = "check-valve"
+        results = {{type="item", name="check-valve", amount=1}}
     }
 }
 )

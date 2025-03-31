@@ -5,13 +5,13 @@ data:extend({
     name = "one-to-one-forward-t2-pipe",
     ingredients =
     {
-      {"pipe", 1},
-      {"swivel-joint", 1},
-      {"medium-pipe-coupler", 1},
-      {"underground-pipe-segment-t2", 5}
+      {type = "item", name = "pipe", amount = 1},
+      {type = "item", name = "swivel-joint", amount = 1},
+      {type = "item", name = "medium-pipe-coupler", amount = 1},
+      {type = "item", name = "underground-pipe-segment-t2", amount = 5}
     },
 	enabled = false,
-    result = "one-to-one-forward-t2-pipe"
+    results = {{type="item", name="one-to-one-forward-t2-pipe", amount=1}}
   },
   -- ONE TO TWO PIPES
   {
@@ -19,26 +19,26 @@ data:extend({
     name = "one-to-two-perpendicular-t2-pipe",
     ingredients =
     {
-      {"pipe", 1},
-      {"swivel-joint", 1},
-      {"medium-pipe-coupler", 2},
-      {"underground-pipe-segment-t2", 10},
+      {type = "item", name = "pipe", amount = 1},
+      {type = "item", name = "swivel-joint", amount = 1},
+      {type = "item", name = "medium-pipe-coupler", amount = 2},
+      {type = "item", name = "underground-pipe-segment-t2", amount = 10},
     },
 	enabled = false,
-    result = "one-to-two-perpendicular-t2-pipe"
+    results = {{type="item", name="one-to-two-perpendicular-t2-pipe", amount=1}}
   },
   --[[{
     type = "recipe",
     name = "one-to-two-L-FL-t2-pipe",
     ingredients =
     {
-      {"pipe", 1},
-      {"swivel-joint", 1},
-      {"medium-pipe-coupler", 2},
-      {"underground-pipe-segment-t2", 10},
+      {type = "item", name = "pipe", 1},
+      {type = "item", name = "swivel-joint", 1},
+      {type = "item", name = "medium-pipe-coupler", 2},
+      {type = "item", name = "underground-pipe-segment-t2", 10},
     },
 	enabled = false,
-    result = "one-to-two-L-FL-t2-pipe"
+    results = {{type="item", name="one-to-two-L-FL-t2-pipe", amount=1}}
   },]]--
 
 
@@ -48,13 +48,13 @@ data:extend({
     name = "one-to-three-forward-t2-pipe",
     ingredients =
     {
-      {"pipe", 1},
-      {"swivel-joint", 1},
-      {"medium-pipe-coupler", 3},
-      {"underground-pipe-segment-t2", 15},
+      {type = "item", name = "pipe", amount = 1},
+      {type = "item", name = "swivel-joint", amount = 1},
+      {type = "item", name = "medium-pipe-coupler", amount = 3},
+      {type = "item", name = "underground-pipe-segment-t2", amount = 15},
     },
 	enabled = false,
-    result = "one-to-three-forward-t2-pipe"
+    results = {{type="item", name="one-to-three-forward-t2-pipe", amount=1}}
   },
 
   -- ONE TO FOUR PIPE
@@ -63,12 +63,12 @@ data:extend({
     name = "one-to-four-t2-pipe",
     ingredients =
     {
-      {"pipe", 1},
-      {"medium-pipe-coupler", 4},
-      {"underground-pipe-segment-t2", 20},
+      {type = "item", name = "pipe", amount = 1},
+      {type = "item", name = "medium-pipe-coupler", amount = 4},
+      {type = "item", name = "underground-pipe-segment-t2", amount = 20},
     },
 	enabled = false,
-    result = "one-to-four-t2-pipe"
+    results = {{type="item", name="one-to-four-t2-pipe", amount=1}}
   },
   -- UNDERGROUND I PIPES
   {
@@ -76,11 +76,11 @@ data:extend({
     name = "underground-i-t2-pipe",
     ingredients =
     {
-      {"medium-pipe-coupler", 2},
-      {"underground-pipe-segment-t2", 10},
+      {type = "item", name = "medium-pipe-coupler", amount = 2},
+      {type = "item", name = "underground-pipe-segment-t2", amount = 10},
     },
 	enabled = false,
-    result = "underground-i-t2-pipe"
+    results = {{type="item", name="underground-i-t2-pipe", amount=1}}
   },
   -- UNDERGROUND L PIPES
   {
@@ -88,11 +88,11 @@ data:extend({
     name = "underground-L-t2-pipe",
     ingredients =
     {
-      {"medium-pipe-coupler", 2},
-      {"underground-pipe-segment-t2", 10},
+      {type = "item", name = "medium-pipe-coupler", amount = 2},
+      {type = "item", name = "underground-pipe-segment-t2", amount = 10},
     },
 	enabled = false,
-    result = "underground-L-t2-pipe"
+    results = {{type="item", name="underground-L-t2-pipe", amount=1}}
   },
   -- UNDERGROUND T PIPES
   {
@@ -100,11 +100,11 @@ data:extend({
     name = "underground-t-t2-pipe",
     ingredients =
     {
-      {"medium-pipe-coupler", 3},
-      {"underground-pipe-segment-t2", 15},
+      {type = "item", name = "medium-pipe-coupler", amount = 3},
+      {type = "item", name = "underground-pipe-segment-t2", amount = 15},
     },
 	enabled = false,
-    result = "underground-t-t2-pipe"
+    results = {{type="item", name="underground-t-t2-pipe", amount=1}}
   },
   -- UNDERGROUND CROSS PIPES
   {
@@ -112,10 +112,10 @@ data:extend({
     name = "underground-cross-t2-pipe",
     ingredients =
     {
-      {"medium-pipe-coupler", 4},
-      {"underground-pipe-segment-t2", 20},
+      {type = "item", name = "medium-pipe-coupler", amount = 4},
+      {type = "item", name = "underground-pipe-segment-t2", amount = 20},
     },
 	enabled = false,
-    result = "underground-cross-t2-pipe"
+    results = {{type="item", name="underground-cross-t2-pipe", amount=1}}
   },
 })
