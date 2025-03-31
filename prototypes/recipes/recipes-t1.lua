@@ -118,31 +118,4 @@ data:extend({
 	enabled = false,
     results = {{type="item", name="underground-cross-pipe", amount=1}}
   },
-  -- UNDERGROUND BUILDINGS
-  {
-    type = "recipe",
-    name = "underground-mini-pump",
-    ingredients =
-    {
-      {type = "item", name = "engine-unit", amount = 1},
-      {type = "item", name = "steel-plate", amount = 1},
-      {type = "item", name = "small-pipe-coupler", amount = 2},
-      {type = "item", name = "underground-pipe-segment-t1", amount = 10},
-    },
-    enabled = false,
-    results = {{type="item", name="underground-mini-pump", amount=1}}
-  },
-  -- MULTI PIPES
-  {
-    type = "recipe",
-    name = "4-to-4-pipe",
-    ingredients =
-    {
-      {type = "item", name = "pipe", amount = 1},
-      {type = "item", name = "small-pipe-coupler", amount = 4},
-      {type = "item", name = "underground-pipe-segment-t1", amount = 20},
-    },
-	enabled = false,
-    results = {{type="item", name="4-to-4-pipe", amount=1}}
-  },
 })

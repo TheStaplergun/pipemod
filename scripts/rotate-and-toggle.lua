@@ -26,7 +26,7 @@ local function RotateUnderground(old_pipe, player, reverse)
         create_build_effect_smoke = false,
         spill = false
     }
-    new_pipe.fluidbox[1] = old_pipeFluid
+    --new_pipe.fluidbox[1] = old_pipeFluid
     new_pipe.last_user = player
     local event = {
         entity = new_pipe,
@@ -47,8 +47,7 @@ local function rotateUndergroundPipe(event)
     local selection = player.selected
     if selection and selection.force == player.force then
 
-        local researched = player.force.technologies['advanced-underground-piping'].researched
-        if (selection.type == 'pipe-to-ground' or (selection.type == 'entity-ghost' and selection.ghost_type == 'pipe-to-ground')) and researched then
+        if (selection.type == 'pipe-to-ground' or (selection.type == 'entity-ghost' and selection.ghost_type == 'pipe-to-ground')) then
 
             RotateUnderground(selection, player, reverse)
         end

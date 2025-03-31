@@ -111,10 +111,6 @@ local levelsTable = {
   ["1"] = 1,
 }
 
-if mods["space-exploration"] then
-  levelsTable["space"] = 4
-end
-
 local file_path = "__underground-pipe-pack__/graphics/entity/level-"
 local function build_picture_table(type, variant, level)
   if variant == "-perpendicular-secondary-" then
@@ -166,26 +162,18 @@ for types, sets in pairs(namesTable) do
           currentPipe.name = types .. variants ..  "pipe"
           currentPipe.minable.result = types .. datas.mine_and_place .. "-pipe"
           currentPipe.placeable_by = {item = types .. datas.mine_and_place .. "-pipe", count = 1}
-        elseif levelsS == "space" then
-          currentPipe.name = types .. variants ..  "space-pipe"
-          currentPipe.minable.result = types .. datas.mine_and_place .. "-space-pipe"
-          currentPipe.placeable_by = {item = types .. datas.mine_and_place .. "-space-pipe", count = 1}
         else
           currentPipe.name = types .. variants .. "t" .. levelsS .. "-pipe"
           currentPipe.minable.result = types .. datas.mine_and_place .. "-t" .. levelsS .. "-pipe"
           currentPipe.placeable_by = {item = types .. datas.mine_and_place .. "-t" .. levelsS .. "-pipe", count = 1}
         end
 
-        if levelsS == "space" then
-          currentPipe.icon = "__underground-pipe-pack__/graphics/icons/space-exploration-compat/" .. datas.icon .. ".png"
-          currentPipe.se_allow_in_space = true
-        else
-          currentPipe.icon = "__underground-pipe-pack__/graphics/icons/" .. datas.icon .. "-t" .. levelsS .. ".png"
-          currentPipe.se_allow_in_space = false
-        end
+        currentPipe.icon = "__underground-pipe-pack__/graphics/icons/" .. datas.icon .. "-t" .. levelsS .. ".png"
 
         currentPipe.icon_size = 32
         currentPipe.collision_mask = afh_normal_mask
+        currentPipe.npt_compat = {mod = "afh", tier = levelsS}
+
         local fluidBox = util.table.deepcopy(currentPipe.fluid_box)
         fluidBox.pipe_covers = _G.tierpipecoverspictures(levelsS)
         fluidBox.pipe_connections = build_connections_table(directions, levelsN)

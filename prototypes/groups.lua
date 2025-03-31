@@ -64,35 +64,3 @@ local base_groups = {
 }
 
 data:extend(base_groups)
-
-local space_groups =
-{
-  {
-    type = "item-subgroup",
-    name = "space-intermediates",
-    group = "advanced-underground-piping",
-    order = "f",
-  },
-  {
-    type = "item-subgroup",
-    name = "underground-buildings-space",
-    group = "advanced-underground-piping",
-    order = "g",
-  },
-  {
-    type = "item-subgroup",
-    name = "pipes-to-ground-space",
-    group = "advanced-underground-piping",
-    order = "h",
-  },
-  {
-    type = "item-subgroup",
-    name = "underground-pipes-space",
-    group = "advanced-underground-piping",
-    order = "i",
-  },
-}
-
-if mods["space-exploration"] then
-  data:extend(space_groups)
-end

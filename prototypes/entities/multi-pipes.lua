@@ -1,8 +1,11 @@
 local pipes = {}
 local pipe = util.table.deepcopy(data.raw["pipe"]["pipe"])
 pipe.name = "4-to-4-pipe"
+pipe.icon = "__underground-pipe-pack__/graphics/icons/four-to-four-t1.png"
+pipe.icon_size = 32
 pipe.minable = {hardness = 0.2, mining_time = 0.5, result = "4-to-4-pipe"}
 pipe.underground_collision_mask = underground_collision_mask
+pipe.auto_recycle = true
 pipe.fluid_box = {
   volume = 100,
   pipe_covers = _G.pipecoverspictures(),
@@ -69,7 +72,6 @@ data:extend(pipes)
     minable = {hardness = 0.2, mining_time = 0.5, result = "4-to-4-pipe"},
     max_health = 100,
     corpse = "small-remnants",
-    se_allow_in_space = false,
     resistances =
     {
       {

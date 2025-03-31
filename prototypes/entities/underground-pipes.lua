@@ -14,11 +14,7 @@ local function build_connections_table(directions, level)
     local connections_table = {}
     local max_distance
     for _, datas in pairs(direction_table[directions]) do
-        if level == "space" then
-            max_distance = 14
-        else
-            max_distance = (base_ug_distance + 1) * level
-        end
+        max_distance = (base_ug_distance + 1) * level
         connections_table[#connections_table + 1] = {
             underground_collision_mask = underground_collision_mask,
             connection_type = "underground",
@@ -70,9 +66,9 @@ local names_table = {
 }
 
 local levels_table = {
-    ["3"] = {r=38,g=173,b=227,a=0.5},--util.color(),
-    ["2"] = {r=227,g=38,b=45,a=0.5},--util.color(),
-    ["1"] = {r=255,g=191,b=0,a=0.5}--util.color(),
+    ["3"] = {r=38,g=173,b=227,a=0.5},
+    ["2"] = {r=227,g=38,b=45,a=0.5},
+    ["1"] = {r=255,g=191,b=0,a=0.5},
     --[4] = Color.from_rgb(75,0,130,255),
     --[5] = Color.from_rgb(5,73,53,255)
 }
@@ -138,27 +134,16 @@ for name, properties in pairs(names_table) do
         if level == "1" then
             current_pipe.name = name .. "-pipe"
             current_pipe.minable.result = name .. "-pipe"
-        elseif level == "space" then
-            current_pipe.name = name .. "-space-pipe"
-            current_pipe.minable.result = name .. "-space-pipe"
         else
             current_pipe.name = name .. "-t" .. level .. "-pipe"
             current_pipe.minable.result = name .. "-t" .. level .. "-pipe"
         end
-
-        if level == "space" then
-            current_pipe.collision_mask = afh_space_only
-            current_pipe.icon = "__underground-pipe-pack__/graphics/icons/space-exploration-compat/" .. name .. ".png"
-            current_pipe.se_allow_in_space = true
-        else
-            current_pipe.collision_mask = afh_walkable_mask
-            current_pipe.icon = "__underground-pipe-pack__/graphics/icons/" .. name .. "-t" .. level .. ".png"
-            current_pipe.se_allow_in_space = false
-        end
+        current_pipe.collision_mask = afh_walkable_mask
+        current_pipe.icon = "__underground-pipe-pack__/graphics/icons/" .. name .. "-t" .. level .. ".png"
 
         current_pipe.icon_size = 32
         current_pipe.selection_priority = 51
-
+        current_pipe.npt_compat = {mod = "afh", tier = level}
         local fluid_box = util.table.deepcopy(current_pipe.fluid_box)
         fluid_box.pipe_connections = build_connections_table(properties.directions, level)
         fluid_box.pipe_covers = nil

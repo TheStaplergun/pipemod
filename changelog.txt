@@ -1,4 +1,31 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.5
+Date: 31. 03. 2024
+  Fixes:
+    - Fix fluid being flushed from entire network connected to a pipe when using CTRL + R.
+---------------------------------------------------------------------------------------------------
+Version: 2.0.4
+Date: 05. 12. 2024
+  Fixes:
+    - Fix non space-age pipe connection issues.
+---------------------------------------------------------------------------------------------------
+Version: 2.0.3
+Date: 19. 11. 2024
+  Fixes:
+    - Fix underground pump not showing correct circuit connection sprites
+---------------------------------------------------------------------------------------------------
+Version: 2.0.2
+Date: 19. 11. 2024
+  Fixes:
+    - Fix T2 and T3 item not placing the right pump tier
+---------------------------------------------------------------------------------------------------
+Version: 2.0.1
+Date: 19. 11. 2024
+  Changes:
+    - Added Tier 2 and Tier 3 to the Underground Mini pump with recipes that work for space age or base game
+  Fixes:
+    - Removed references to Space Exploration and valves in info.json
+---------------------------------------------------------------------------------------------------
 Version: 2.0.0
 Date: 13. 11. 2024
   Changes:
