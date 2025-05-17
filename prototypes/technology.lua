@@ -66,7 +66,7 @@ local technologies =
                 recipe = 'underground-pipe-segment-t1'
             },
             -- VALVES
-            --[[{
+            {
                 type = 'unlock-recipe',
                 recipe = '80-overflow-valve'
             },
@@ -77,7 +77,7 @@ local technologies =
             {
                 type = 'unlock-recipe',
                 recipe = 'check-valve'
-            }]]--
+            }
         },
         unit = {
             count = 50,
