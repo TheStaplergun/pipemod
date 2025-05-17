@@ -1,14 +1,14 @@
 {
   "name": "underground-pipe-pack",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "factorio_version": "2.0",
   "title": "Advanced Fluid Handling",
   "author": "TheStaplergun",
   "contact": "TheStaplergun#6920 (DISCORD)",
   "homepage": "",
-  "description": "Valves have been removed due to the current engine limitations.\n*Check out “Configurable Valves” by Stringweasel for a very clever and convenient valve mod*\n--Adds I, L, T, and Cross underground pipe extensions.\n--Adds pipes to ground with I, L, T, and Cross shaped underground outputs that are able to be rotated independent of the above ground port with <CTRL + R>.\n--Adds 3 tiers of Underground pump.",
+  "description": "Valves have been re-added to the mod pack with the new prototype.\n--Adds I, L, T, and Cross underground pipe extensions.\n--Adds pipes to ground with I, L, T, and Cross shaped underground outputs that are able to be rotated independent of the above ground port with <CTRL + R>.\n--Adds 3 tiers of Underground pump.",
   "dependencies": [
-    "base >= 2.0.0",
+    "base >= 2.0.48",
     "(?) Dectorio",
     "(?) space-exploration",
     "(?) boblogistics",

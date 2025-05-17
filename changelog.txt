@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.6
+Date: 17. 05. 2025
+  Features:
+    - Add valves back using the new valve prototype. Flow rate is determined by the valve type and threshold, up to 6000/s for a base quality entity.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.5
 Date: 31. 03. 2025
   Fixes:

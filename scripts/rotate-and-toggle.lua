@@ -56,7 +56,7 @@ end
 Event.register('rotate-underground-pipe', rotateUndergroundPipe)
 Event.register('reverse-rotate-underground-pipe', rotateUndergroundPipe)
 
---[[local function plus_valve(event)
+local function plus_valve(event)
     local player,_ = Player.get(event.player_index)
     local selection = player.selected
     if selection and selection.force == player.force then
@@ -78,7 +78,7 @@ Event.register('reverse-rotate-underground-pipe', rotateUndergroundPipe)
                 create_build_effect_smoke = false,
                 spill = false
             }
-            new_valve.fluidbox[1] = old_valve_fluid
+            --new_valve.fluidbox[1] = old_valve_fluid
             new_valve.last_user = player
             event_data = {
                 created_entity = new_valve,
@@ -116,7 +116,7 @@ local function minus_valve(event)
                 create_build_effect_smoke = false,
                 spill = false
             }
-            new_valve.fluidbox[1] = old_valve_fluid
+            --new_valve.fluidbox[1] = old_valve_fluid
             new_valve.last_user = player
             event_data = {
                 created_entity = new_valve,
@@ -131,7 +131,7 @@ local function minus_valve(event)
     end
 end
 Event.register('minus-valve', minus_valve)
-]]--
+
 local function get_pipe_table()
     return advancedPiping.pipetable
 end
