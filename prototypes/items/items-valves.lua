@@ -8,7 +8,7 @@ data:extend(
       icon_size = 32,
       flags = nil,
       subgroup = "underground-buildings",
-      order = "a-b",
+      order = "a-d",
       place_result = "80-overflow-valve",
       stack_size = 50
     },
@@ -20,7 +20,7 @@ data:extend(
       icon_size = 32,
       flags = nil,
       subgroup = "underground-buildings",
-      order = "a-b",
+      order = "a-e",
       place_result = "80-top-up-valve",
       stack_size = 50
     },
@@ -31,7 +31,7 @@ data:extend(
       icon_size = 32,
       flags = nil,
       subgroup = "underground-buildings",
-      order = "a-b",
+      order = "a-f",
       place_result = "check-valve",
       stack_size = 50
     },
