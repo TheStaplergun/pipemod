@@ -1,6 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.6
 Date: 17. 05. 2025
+  Changes:
+    - Add color to underground pump icons to make them easier to distinguish in your inventory and on recipe pages.
   Features:
     - Add valves back using the new valve prototype. Flow rate is determined by the valve type and threshold, up to 6000/s for a base quality entity.
 ---------------------------------------------------------------------------------------------------
