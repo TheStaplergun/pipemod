@@ -5,40 +5,65 @@ local Event = require('lib/event')
 local Position = require('lib/position')
 
 local function RotateUnderground(old_pipe, player, reverse)
-    local new_name = reverse and advancedPiping.getReverseRotatedPipe[old_pipe.name] or advancedPiping.getRotatedPipe[old_pipe.name]
-    if not new_name then
-        return
-    end
-    local old_entity_unit_number = old_pipe.unit_number
-    local old_pipeFluid = old_pipe.fluidbox[1]
-    local event_data = {
-        entity = old_pipe,
-        player_index = player.index,
-    }
-    script.raise_event(defines.events.script_raised_destroy, event_data)
-    local new_pipe =
-        old_pipe.surface.create_entity {
-        name = new_name,
-        position = old_pipe.position,
-        direction = old_pipe.direction,
-        force = old_pipe.force,
-        fast_replace = true,
-        create_build_effect_smoke = false,
-        spill = false
-    }
-    --new_pipe.fluidbox[1] = old_pipeFluid
-    new_pipe.last_user = player
-    local event = {
-        entity = new_pipe,
-        created_entity = new_pipe,
-        player_index = player.index,
-        clamped = true,
-        replaced_entity_unit_number = old_entity_unit_number
-    }
-    script.raise_event(defines.events.script_raised_built, event)
-    if old_pipe then
-        old_pipe.destroy()
-    end
+	local new_pipe={}
+	if ( old_pipe.type == 'pipe-to-ground' ) then
+		local new_name = reverse and advancedPiping.getReverseRotatedPipe[old_pipe.name] or advancedPiping.getRotatedPipe[old_pipe.name]
+		if not new_name then
+			return
+		end
+		local old_entity_unit_number = old_pipe.unit_number
+		local old_pipeFluid = old_pipe.fluidbox[1]
+		local event_data = {
+			entity = old_pipe,
+			player_index = player.index,
+		}
+		script.raise_event(defines.events.script_raised_destroy, event_data)
+		new_pipe =
+			old_pipe.surface.create_entity {
+			name = new_name,
+			position = old_pipe.position,
+			direction = old_pipe.direction,
+			force = old_pipe.force,
+			fast_replace = true,
+			create_build_effect_smoke = false,
+			spill = false
+		}
+		--new_pipe.fluidbox[1] = old_pipeFluid
+	elseif (old_pipe.type == 'entity-ghost' and old_pipe.ghost_type == 'pipe-to-ground') then
+		local new_name = reverse and advancedPiping.getReverseRotatedPipe[old_pipe.gost_name] or advancedPiping.getRotatedPipe[old_pipe.ghost_name]
+
+		if not new_name then
+			return
+		end
+
+		local old_entity_unit_number = old_pipe.unit_number
+		--local old_pipeFluid = old_pipe.fluidbox[1]
+		local event_data = {
+			entity = old_pipe,
+			player_index = player.index,
+		}
+		script.raise_event(defines.events.script_raised_destroy, event_data)
+		new_pipe =
+			old_pipe.surface.create_entity {
+			name = "entity-ghost",
+			ghost_name = new_name,
+			position = old_pipe.position,
+			direction = old_pipe.direction,
+			force = old_pipe.force
+		}
+	end
+	new_pipe.last_user = player
+	local event = {
+		entity = new_pipe,
+		created_entity = new_pipe,
+		player_index = player.index,
+		clamped = true,
+		replaced_entity_unit_number = old_entity_unit_number
+	}
+	script.raise_event(defines.events.script_raised_built, event)
+	if old_pipe then
+		old_pipe.destroy()
+	end
 end
 
 local function rotateUndergroundPipe(event)
