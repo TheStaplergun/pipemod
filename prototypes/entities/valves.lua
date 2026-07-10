@@ -2,7 +2,6 @@ local valve_table =
 {
   ["overflow"] = {
     mine_and_place = "80-overflow-valve",
-    mine_and_place_space = "80-overflow-space-valve",
     percents = {
       ["10"] = {
         threshold = 0.1,
@@ -35,7 +34,6 @@ local valve_table =
   },
   ["top-up"] = {
     mine_and_place = "80-top-up-valve",
-    mine_and_place_space = "80-top-up-space-valve",
     percents = {
       ["10"] = {
         threshold = 0.1,
@@ -68,7 +66,6 @@ local valve_table =
   },
   [""] = {
     mine_and_place = "check-valve",
-    mine_and_place_space = "check-space-valve",
     percents = {
       ["check"] =
       {
@@ -252,37 +249,20 @@ local types =
   [1] = ""
 }
 
-if mods["space-exploration"] then
-  types[2] = "-space"
-end
 local max_flow = 6000/60
 for num, type in pairs(types) do
   for valve, datas in pairs(valve_table) do
     for percent, stat in pairs(datas.percents) do
       local current_valve = util.table.deepcopy(data.raw["storage-tank"]["storage-tank"])
 
-      if num == 2 then
-        current_valve.minable.result = datas.mine_and_place_space
-        current_valve.placeable_by = {item = datas.mine_and_place_space, count = 1}
-        if percent == "check" then
-          current_valve.name = percent .. valve .. type .. "-valve"
-          current_valve.localised_name = {"valves.check-valve-space-name"}
-        else
-          current_valve.name = percent ..  "-" .. valve .. type .. "-valve"
-          current_valve.localised_name = {"valves.valve-name-space", percent .. "%", valve}
-        end
-
+      current_valve.minable.result = datas.mine_and_place
+      current_valve.placeable_by = {item = datas.mine_and_place, count = 1}
+      if percent == "check" then
+        current_valve.name = percent .. "-" .. valve .. "valve"
+        current_valve.localised_name = {"valves.check-valve-name"}
       else
-
-        current_valve.minable.result = datas.mine_and_place
-        current_valve.placeable_by = {item = datas.mine_and_place, count = 1}
-        if percent == "check" then
-          current_valve.name = percent .. "-" .. valve .. "valve"
-          current_valve.localised_name = {"valves.check-valve-name"}
-        else
-          current_valve.name = percent ..  "-" .. valve .. "-valve"
-          current_valve.localised_name = {"valves.valve-name", percent .. "%", valve}
-        end
+        current_valve.name = percent ..  "-" .. valve .. "-valve"
+        current_valve.localised_name = {"valves.valve-name", percent .. "%", valve}
       end
 
       current_valve.icon = "__base__/graphics/icons/pipe.png"
