@@ -232,7 +232,7 @@ local technologies =
         order = 'd-a-a'
     }
 }
-if _G.mods["no-pipe-touching"] then else
+if not mods["no-pipe-touching"] then
     technologies[1].effects[#technologies[1].effects + 1] =
         -- MULTI PIPES
         {

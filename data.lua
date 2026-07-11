@@ -1,6 +1,6 @@
 afh_walkable_mask = {layers={floor=true, item=true, object=true, rail=true, water_tile=true, is_lower_object=true}}
 afh_normal_mask = {layers={item=true, meltable=true, floor=true, car=true, water_tile=true, transport_belt=true, is_lower_object=true}}
-underground_collision_mask = _G.mods["space-age"] and {layers={lava_tile=true, empty_space=true}} or {layers={}}
+underground_collision_mask = mods["space-age"] and {layers={lava_tile=true, empty_space=true}} or {layers={}}
 afh_t1_connector_mask = {"afh_t1"}
 afh_t2_connector_mask = {"afh_t2"}
 afh_t3_connector_mask = {"afh_t3"}
@@ -25,7 +25,7 @@ require("prototypes.recipes.recipes-valves")
 require("prototypes.recipes.recipes-intermediary")
 require("prototypes.controls")
 require("prototypes.technology")
-if _G.mods["no-pipe-touching"] then else
+if not mods["no-pipe-touching"] then
     require("prototypes.entities.multi-pipes")
     require("prototypes.recipes.recipes-multi-pipes")
     require("prototypes.items.items-multi-pipes")

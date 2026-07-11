@@ -1,17 +1,17 @@
 {
   "name": "underground-pipe-pack",
-  "version": "2.0.6",
-  "factorio_version": "2.0",
+  "version": "2.1.0",
+  "factorio_version": "2.1",
   "title": "Advanced Fluid Handling",
   "author": "TheStaplergun",
   "contact": "TheStaplergun#6920 (DISCORD)",
-  "homepage": "",
-  "description": "Valves have been re-added to the mod pack with the new prototype.\n--Adds I, L, T, and Cross underground pipe extensions.\n--Adds pipes to ground with I, L, T, and Cross shaped underground outputs that are able to be rotated independent of the above ground port with <CTRL + R>.\n--Adds 3 tiers of Underground pump.",
+  "homepage": "https://github.com/TheStaplergun/pipemod",
+  "description": "Adds tiered underground pipe extensions, independently rotatable multi-port pipes-to-ground, underground pumps, and adjustable valves. Updated for Factorio 2.1 and Space Age while preserving the original prototype names, progression, graphics, and gameplay.",
   "dependencies": [
-    "base >= 2.0.48",
+    "base >= 2.1",
     "(?) Dectorio",
     "(?) space-exploration",
     "(?) boblogistics",
-    "(?) space-age"
+    "? space-age >= 2.1"
   ]
 }
