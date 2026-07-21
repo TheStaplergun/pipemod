@@ -11,40 +11,19 @@ local function RotateUnderground(old_pipe, player, reverse)
     if not new_name then
         return
     end
-    local position = old_pipe.position
-    local direction = old_pipe.direction
-    local force = old_pipe.force
-    local surface = old_pipe.surface
-    -- Save the contents of the old pipe before destroying it and restore it after creating the new pipe.
-    -- This prevents losing fluids when recreating the pipe when the pipe network is full.
-    local contents = {}
-    for i = 1, old_pipe.fluids_count do
-        contents[i] = old_pipe.get_fluid(i)
-    end
-    old_pipe.destroy {
-            raise_destroy = true,
-            player = player
-        }
 
-    local new_pipe = surface.create_entity {
+    old_pipe.surface.create_entity {
             name = is_ghost and 'entity-ghost' or new_name,
             inner_name = is_ghost and new_name or nil,
-            position = position,
-            direction = direction,
-            force = force,
+            position = old_pipe.position,
+            direction = old_pipe.direction,
+            force = old_pipe.force,
             fast_replace = true,
             create_build_effect_smoke = false,
             spill = false,
             player = player,
             raise_built = true
         }
-    if new_pipe and new_pipe.valid then
-        for i = 1, #contents do
-            if contents[i] then
-                new_pipe.set_fluid(i, contents[i])
-            end
-        end
-    end
 end
 
 local function rotateUndergroundPipe(event)
